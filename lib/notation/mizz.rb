@@ -24,7 +24,7 @@ module Notation
           end
         end
 
-        if depth.zero? && text[n-1,1] == " "
+        if depth.zero? && (text[n-1].nil? || text[n-1,1] == " ")
           text, enclosed = text[0..(n-1)].strip, text[(n+1)..-2].strip
         end
       end
