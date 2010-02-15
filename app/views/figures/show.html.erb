@@ -1,0 +1,28 @@
+<% @title = @figure.common_name %>
+
+<% @figure.constructions.each do |cons| %>
+  <h2>
+    <%= cons.notation %>
+    <% if cons.name %>
+      (<%= cons.name %>)
+    <% end %>
+    [<%= link_to("edit", edit_construction_path(cons)) %>]
+  </h2>
+
+  <ol>
+    <% cons.steps.each do |step| %>
+      <li value="<%= step.position %>">
+        <% if step.duplicate_type == "range" %>
+          steps <%= step.duplicate_from %> to <%= step.duplicate_to %> of <%= link_to(step.duplicate.common_name, figure_path(step.duplicate.figure)) %>
+        <% elsif step.duplicate_type == "make" %>
+          <%= link_to(step.duplicate.common_name, figure_path(step.duplicate.figure)) %>
+        <% else %>
+          <%= step.instruction %>
+          <% if step.comment.present? %>
+            (<%= step.comment %>)
+          <% end %>
+        <% end %>
+      </li>
+    <% end %>
+  </ol>
+<% end %>

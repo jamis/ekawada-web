@@ -1,0 +1,21 @@
+<html>
+<head>
+  <title><%= @title ? "Mataka: #{@title}" : "Mataka!" %></title>
+  <%= javascript_include_tag :defaults %>
+  <%= stylesheet_link_tag 'application' %>
+</head>
+<body>
+  <div id="header">
+    <% if @title %>
+      <div class="subtle">Mataka</div>
+      <h1 class="secondary"><%= @title %></h1>
+    <% else %>
+      <h1 class="primary">Mataka</h1>
+    <% end %>
+  </div>
+
+  <div id="content">
+    <%= yield %>
+  </div>
+</body>
+</html>

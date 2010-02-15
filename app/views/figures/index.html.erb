@@ -1,0 +1,7 @@
+<ul>
+<% @figures.each do |figure| %>
+  <li><%= link_to(figure.common_name, figure_path(figure)) %></li>
+<% end %>
+</ul>
+
+<%= link_to("Add a new figure", new_figure_path) %>

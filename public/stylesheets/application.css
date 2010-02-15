@@ -1,0 +1,72 @@
+* {
+  font-family: helvetica, sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+#header {
+  padding: 5px 20px;
+  margin-bottom: 20px;
+  border-bottom: 3px solid #99f;
+  background: #009;
+  color: #ddf;
+}
+
+#header h1 {
+  padding: 0;
+  margin: 0;
+}
+
+#header h1.primary {
+  font-size: 80px;
+  font-weight: bold;
+  letter-spacing: 6px;
+  line-height: 80px;
+  color: #66f;
+}
+
+#header h1.secondary {
+  font-size: 30px;
+  line-height: 40px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+#header .subtle {
+  color: #22b;
+  font-size: 80px;
+  font-weight: bold;
+  letter-spacing: 6px;
+  margin-bottom: -50px;
+  line-height: 80px;
+}
+
+#content {
+  margin: 10px 20px;
+}
+
+input.text {
+  font-size: 30px;
+  font-weight: bold;
+  width: 600px;
+}
+
+input.text2 {
+  font-size: 20px;
+  font-weight: bold;
+  width: 600px;
+}
+
+label.text {
+  font-size: 14px;
+  color: #555;
+}
+
+textarea.instructions {
+  font-size: 16px;
+  width: 600px;
+  height: 300px;
+}

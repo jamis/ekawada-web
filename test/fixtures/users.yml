@@ -1,0 +1,17 @@
+jamis:
+  name: Jamis Buck
+  login: jb
+  email: jamis@example.com
+  salt: abc123
+  password_digest: <%= Digest::SHA1.hexdigest("abc123password") %>
+  created_at: <%= 2.weeks.ago.utc.to_s(:db) %>
+  updated_at: <%= 1.week.ago.utc.to_s(:db) %>
+
+cfj: # must have no submissions
+  name: Caroline Furness Jayne
+  login: cfj
+  email: cfj@example.com
+  salt: "123abc"
+  password_digest: <%= Digest::SHA1.hexdigest("123abcpassword") %>
+  created_at: <%= 2.weeks.ago.utc.to_s(:db) %>
+  updated_at: <%= 1.week.ago.utc.to_s(:db) %>

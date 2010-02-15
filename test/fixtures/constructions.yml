@@ -1,0 +1,6 @@
+base:
+  figure: openinga
+  notation: mizz
+  submitter: jamis
+  created_at: <%= 12.days.ago.utc.to_s(:db) %>
+  updated_at: <%= 12.days.ago.utc.to_s(:db) %>

@@ -1,0 +1,36 @@
+<% @title = "Add a new figure" %>
+
+<% form_for(@figure) do |f| %>
+  <fieldset>
+    <legend>General information</legend>
+
+    <p>
+      <%= f.label :common_name, nil, :class => "text" %><br />
+      <%= f.text_field :common_name, :class => "text" %>
+    </p>
+
+    <p>
+      <%= f.label :aliases, "Aliases (if any)", :class => "text" %><br />
+      <%= f.text_field :aliases, :class => "text2" %>
+    </p>
+
+    <p>
+      This is an
+      <%= f.check_box :opening %> <%= f.label :opening %> |
+      <%= f.check_box :ending %> <%= f.label :ending %> |
+      <%= f.check_box :maneuver %> <%= f.label :maneuver %>
+      (check all that apply)
+    </p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Instructions</legend>
+
+    <% f.fields_for :construction do |c| %>
+      Notation: <%= c.select :notation, %w(isfa mizz sfn fsfn haddon-rivers cfj prose other) %><br />
+      <%= c.text_area :instructions, :class => "instructions" %>
+    <% end %>
+  </fieldset>
+
+  <%= f.submit "Add this figure" %>
+<% end %>

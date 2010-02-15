@@ -1,0 +1,12 @@
+base1:
+  construction: base
+  position: 1
+  instruction: "1-5,s"
+base2:
+  construction: base
+  position: 2
+  instruction: "R2,p/"
+base3:
+  construction: base
+  position: 3
+  instruction: "L2,2p/"

@@ -1,0 +1,67 @@
+Opening A:
+  isfa: |
+    1. Position 1.
+    2. R2 picks up L palmar string.
+    3. Pass L2 distally through R2 loop and pick up R palmar string.
+    4. Extend.
+  mizz: |
+    1 1-5,s
+    2 R2,p/
+    3 L2,2p/
+
+Opening B:
+  isfa: |
+    1. Position 1.
+    2. L2 picks up R palmar string.
+    3. Pass R2 distally through L2 loop and pick up L palmar string.
+    4. Extend.
+  mizz: |
+    1 1-5,s
+    2 L2,p/
+    3 R2,2p/
+
+OB Kwakiutl:
+  rivers-haddon: |
+    1. Place loop on thumbs.
+    2. Insert left index proximally into thumb loop and return with left ulnar thumb string. You now have a short string passing between the left thumb and index.
+    3. Bring hands together and pass right index distal to the short string described above. Hook back this string with the right index. Rotate the right index half a turn in the ulnar direction in order to place the string on the back of the finger.
+  isfa: |
+    1. Place loop on 1.
+    2. L2 picks up 1f.
+    3. R2 hooks down L2a and returns to position, rotating away and up.
+  mizz: |
+    1. 1,s
+    2. L2,1b
+    3. R2bd,2a/
+
+Osage Diamonds:
+  isfa: |
+    1. Opening A.
+    2. Release 1.
+    3. 1, under 2 and 5n, picks up 5f.
+    4. 1 picks up 2f.
+    5. Release 5.
+    6. 5 picks up lower 1f.
+    7. Release 1.
+    8. 1 picks up 5n.
+    9. 1 shares 2 loop.
+    10. Navaho 1.
+    11. 2 hooks down transverse string that loops over the 1f-2n string.
+    12. Release 5.
+    13. 2 rotates away and up, allowing original 2 loop to slip over knuckle.
+    14. Display with palms facing out, 1 and 2 spread far apart.
+  mizz: |
+    0 base
+    1 1
+    2 1,(s)5b
+    3 1,2b
+    4 5
+    5 5,1b
+    6 1
+    7 1,5a
+    8 1h,2a
+    9 (1h*)1l
+    10 2.6,qu (=on 1d-2d)
+    11 5 (auto-off 2 old)
+    12 2bd,2.6b (auto-off 2.6)
+    13 caroline

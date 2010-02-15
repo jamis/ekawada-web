@@ -1,0 +1,12 @@
+<% @title = "Edit this construction" %>
+
+<% form_for(@construction) do |f| %>
+  <fieldset>
+    <legend>Instructions</legend>
+
+    Notation: <%= @construction.notation %><br />
+    <%= f.text_area :definition, :class => "instructions" %>
+  </fieldset>
+
+  <%= f.submit "Save changes" %>
+<% end %>
