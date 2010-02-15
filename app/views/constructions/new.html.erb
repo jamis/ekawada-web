@@ -1,0 +1,12 @@
+<% @title = "Add a new construction" %>
+
+<% form_for([@figure, @figure.constructions.build]) do |f| %>
+  <fieldset>
+    <legend>Instructions</legend>
+
+    Notation: <%= f.select :notation, notation_options %><br />
+    <%= f.text_area :definition, :class => "instructions" %>
+  </fieldset>
+
+  <%= f.submit "Add this construction" %>
+<% end %>

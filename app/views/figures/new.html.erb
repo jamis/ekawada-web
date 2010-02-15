@@ -27,7 +27,7 @@
     <legend>Instructions</legend>
 
     <% f.fields_for :construction do |c| %>
-      Notation: <%= c.select :notation, %w(isfa mizz sfn fsfn haddon-rivers cfj prose other) %><br />
+      Notation: <%= c.select :notation, notation_options %><br />
       <%= c.text_area :instructions, :class => "instructions" %>
     <% end %>
   </fieldset>

@@ -1,5 +1,8 @@
 Mataka::Application.routes.draw do |map|
-  resources :figures
+  resources :figures do
+    resources :constructions
+  end
+
   resources :constructions
 
   # The priority is based upon order of creation:

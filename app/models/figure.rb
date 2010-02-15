@@ -9,13 +9,13 @@ class Figure < ActiveRecord::Base
   attr_accessor :submitter_id
   after_create :build_construction
 
-  def build_construction_from(notation, definition, options={})
-    parser = Notation.for(notation)
-    parser.parse(self, definition, :construction => options.merge(:notation => notation))
+  def build_construction_from(options)
+    parser = Notation.for(options[:notation])
+    parser.parse(self, options[:definition], :construction => options)
   end
 
-  def create_construction_from(notation, definition, options={})
-    build_construction_from(notation, definition, options).tap do |c|
+  def create_construction_from(options)
+    build_construction_from(options).tap do |c|
       c.save!
     end
   end
@@ -24,10 +24,7 @@ class Figure < ActiveRecord::Base
 
     def build_construction
       return unless @construction
-      notation = @construction[:notation]
-      instructions = @construction[:instructions]
+      create_construction_from(:construction => @construction.merge(:submitter_id => submitter_id))
       @construction = nil
-
-      create_construction_from(notation, instructions, :submitter_id => submitter_id)
     end
 end
