@@ -70,3 +70,7 @@ textarea.instructions {
   width: 600px;
   height: 300px;
 }
+
+.step .comment {
+  color: #999;
+}
