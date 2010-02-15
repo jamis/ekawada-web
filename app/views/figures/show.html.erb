@@ -9,20 +9,23 @@
     [<%= link_to("edit", edit_construction_path(cons)) %>]
   </h2>
 
-  <ol>
-    <% cons.steps.each do |step| %>
-      <li value="<%= step.position %>" class="step">
-        <% if step.duplicate_type == "range" %>
-          steps <%= step.duplicate_from %> to <%= step.duplicate_to %> of <%= link_to(step.duplicate.common_name, figure_path(step.duplicate.figure)) %>
-        <% elsif step.duplicate_type == "make" %>
-          <%= link_to(step.duplicate.common_name, figure_path(step.duplicate.figure)) %>
-        <% else %>
-          <%= step.instruction %>
-          <% if step.comment.present? %>
-            <span class="comment">(<%= step.comment %>)</span>
+  <table>
+    <% each_step(cons) do |number, step| %>
+      <tr>
+        <th class="number"><%= number %></th>
+        <td class="step">
+          <% if step.range? %>
+            steps <%= step.duplicate_from %> to <%= step.duplicate_to %> of <%= link_to(step.duplicate.common_name, figure_path(step.duplicate.figure)) %>
+          <% elsif step.make? %>
+            <%= link_to(step.duplicate.common_name, figure_path(step.duplicate.figure)) %>
+          <% else %>
+            <%= step.instruction %>
+            <% if step.comment.present? %>
+              <span class="comment">(<%= step.comment %>)</span>
+            <% end %>
           <% end %>
-        <% end %>
-      </li>
+        </td>
+      </tr>
     <% end %>
-  </ol>
+  </table>
 <% end %>

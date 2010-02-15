@@ -74,3 +74,9 @@ textarea.instructions {
 .step .comment {
   color: #999;
 }
+
+th.number {
+  text-align: right;
+  color: #999;
+  font-weight: normal;
+}

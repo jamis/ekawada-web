@@ -1,5 +1,15 @@
 module Notation
   class Mizz < General
+    def start_at
+      first = construction.steps.first
+      return 0 if first && first.make? && first.duplicate.figure.opening?
+      return 1
+    end
+
+    def format_step_number(number)
+      "#{number} "
+    end
+
     def extract_step_data(line, instruction)
       instruction = instruction.strip
       instruction, name = extract_enclosed_text(instruction, ?[, ?])

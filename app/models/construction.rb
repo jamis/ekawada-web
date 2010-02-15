@@ -24,10 +24,13 @@ class Construction < ActiveRecord::Base
     name.present? ? name : figure.common_name
   end
 
+  def meta
+    @meta ||= Notation.for(notation).new(figure, :construction => self)
+  end
+
   def update_with_definition(options={})
-    parser = Notation.for(notation)
     transaction do
-      parser.parse(figure, options[:definition], options.merge(:construction => self))
+      meta.parse(options[:definition])
       save!
     end
   end

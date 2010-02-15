@@ -6,4 +6,12 @@ class Step < ActiveRecord::Base
 
   # the duplicate construction that this step references
   belongs_to :duplicate, :class_name => "Construction"
+
+  def range?
+    duplicate_type == "range"
+  end
+
+  def make?
+    duplicate_type == "make"
+  end
 end

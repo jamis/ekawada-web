@@ -36,6 +36,16 @@ module Notation
       { :instruction => instruction.strip }
     end
 
+    # Steps begin counting at #1, in general. Subclasses may override this for
+    # notations with different behavior (like mizz code)
+    def start_at
+      1
+    end
+
+    def format_step_number(number)
+      "#{number}. "
+    end
+
     def interpret_step_data(data)
       if data[:instruction] && data[:instruction] =~ /^\{(.*)\}$/
         directive = $1
