@@ -1,4 +1,4 @@
-Mataka::Application.routes.draw do |map|
+Ekawada::Application.routes.draw do |map|
   resources :figures do
     resources :constructions
   end
