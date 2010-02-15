@@ -14,4 +14,8 @@ class Step < ActiveRecord::Base
   def make?
     duplicate_type == "make"
   end
+
+  def silent?
+    duplicate_type.blank? && instruction.blank?
+  end
 end
