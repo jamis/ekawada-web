@@ -33,15 +33,18 @@ document.observe("dom:loaded", function() {
   });
 
   $(document.body).observe("click", function(event) {
-    var element;
-    if(element = event.findElement("a[data-toggle]")) {
+    var element = event.findElement("a[data-toggle]");
+    if(element) {
       var action = element.readAttribute("data-toggle");
       element.hide();
       element.next().show();
       event.stop();
-
-    } else if(element = event.findElement("a[data-tab]")) {
-      selectTab(element.readAttribute("data-tab"));
+    } else {
+      var element = event.element();
+      if(!element.readAttribute("data-tab")) element = element.up("a[data-tab]")
+      if(element) {
+        selectTab(element.readAttribute("data-tab"));
+      }
     }
   });
 });
