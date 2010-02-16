@@ -75,6 +75,10 @@ textarea.instructions {
   color: #999;
 }
 
+tr.named {
+  background: #ffc;
+}
+
 th.number {
   text-align: right;
   color: #999;

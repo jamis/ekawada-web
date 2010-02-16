@@ -20,6 +20,9 @@ module Notation
       construction.reviewed_at = construction.reviewed_by = nil
 
       body.split(/[\r\n]+/).each_with_index do |instruction, position|
+        # skip blank lines
+        next if instruction.strip.blank?
+
         # remove line numbers
         line, instruction = instruction.match(/^\s*(?:(\d+)[.\)\]:]?\s+)?(.*)$/)[1,2]
         line = line.to_i if line.present?
@@ -62,6 +65,11 @@ module Notation
           data[:duplicate] = Construction.find_best_match($1, construction.notation)
         else raise ArgumentError, "unknown directive: #{directive.inspect}"
         end
+      end
+
+      if data[:name] && data[:name] =~ /^\{(.*)\}$/
+        data[:name] = nil
+        data[:figure] = Figure.find_by_common_name($1)
       end
 
       data

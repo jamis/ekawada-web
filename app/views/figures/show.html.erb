@@ -11,21 +11,34 @@
 
   <table>
     <% each_step(cons) do |number, step| %>
-      <tr>
+      <tr <%= "class='named'" if step.named? %>>
         <th class="number"><%= number %></th>
         <td class="step">
           <% if step.range? %>
-            steps <%= step.duplicate_from %> to <%= step.duplicate_to %> of <%= link_to(step.duplicate.common_name, figure_path(step.duplicate.figure)) %>
+            steps <%= step.duplicate_from %> to <%= step.duplicate_to %> of <%= link_to(step.duplicate.common_name, construction_path(step.duplicate)) %>
           <% elsif step.make? %>
-            <%= link_to(step.duplicate.common_name, figure_path(step.duplicate.figure)) %>
+            <%= link_to(step.duplicate.common_name, construction_path(step.duplicate)) %>
           <% else %>
             <%= step.instruction %>
             <% if step.comment.present? %>
               <span class="comment">(<%= step.comment %>)</span>
             <% end %>
           <% end %>
+
+          <% if step.named? %>
+            <span class="name">
+              <% if step.figure %>
+                [<%= link_to(step.display_name, figure_path(step.figure)) %>]
+              <% else %>
+                [<%= step.display_name %>]
+              <% end %>
+            </span>
+          <% end %>
         </td>
       </tr>
+      <% if step.named? %>
+        <tr class="spacer"><td colspan="2"></td></tr>
+      <% end %>
     <% end %>
   </table>
 <% end %>

@@ -18,4 +18,16 @@ class Step < ActiveRecord::Base
   def silent?
     duplicate_type.blank? && instruction.blank?
   end
+
+  def named?
+    name.present? || figure
+  end
+
+  def display_name
+    if name.present? 
+      name
+    elsif figure
+      figure.common_name
+    end
+  end
 end
