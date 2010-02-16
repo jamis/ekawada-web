@@ -15,6 +15,6 @@ module ConstructionsHelper
   end
 
   def notation_options
-    Notation::MAP.keys.sort_by { |k| Notation::MAP[k] }.map { |k| [Notation::MAP[k], k] }
+    Notation::TYPES.map { |type| [type.name, type.id] }
   end
 end

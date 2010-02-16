@@ -1,0 +1,52 @@
+isfa:
+  full: "ISFA Standard (Storer-D'Antoni)"
+  short: ISFA
+  sort: 0
+  resources:
+    - "http://isfa.org/sfotm/terminology/string_figure_terminology.pdf"
+    - "http://www.isfa.org/arctic/n.htm"
+
+mizz:
+  full: "Mizz Code"
+  sort: 1
+  resources:
+    - "http://home.p07.itscom.net/nenemei/v2/index.html"
+    - "http://stringfigures.info/mizz-quickref.html"
+
+sfn:
+  full: "String Figure Notation (SFN)"
+  short: "SFN"
+  sort: 2
+  resources:
+    - "http://www.alysion.org/figures/notation.htm"
+
+fsfn:
+  full: "Formal String Figure Notation (FSFN)"
+  short: "FSFN"
+  sort: 3
+  resources:
+    - "http://www.ben-daglish.net/string/"
+
+cfj:
+  full: "Jayne's Notation"
+  short: "CFJ"
+  sort: 4
+  resources:
+    - "http://www.stringfigures.info/cfj/chapter-01.html"
+
+rivers-haddon:
+  full: "Rivers-Haddon Notation"
+  short: "Rivers-Haddon"
+  sort: 5
+  resources:
+    - "http://books.google.com/books?id=yRP0I0s8QdEC&pg=PA146"
+
+prose:
+  full: "Other Prose Notation"
+  short: "Prose"
+  sort: 6
+
+other:
+  full: "Other Notation"
+  short: "Other"
+  sort: 7

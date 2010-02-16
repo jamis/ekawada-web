@@ -10,7 +10,7 @@ class Figure < ActiveRecord::Base
   after_create :build_construction
 
   def build_construction_from(options)
-    parser = Notation.for(options[:notation])
+    parser = Notation.behavior_for(options[:notation])
     parser.parse(self, options[:definition], :construction => options)
   end
 

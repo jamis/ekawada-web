@@ -1,14 +1,19 @@
 <% @title = @figure.common_name %>
 
+<ul class="tabs">
+  <% @figure.constructions.each do |cons| %>
+    <li id="<%= dom_id(cons, :tab) %>"><%= link_to(Notation.for(cons.notation).name(:short), { :anchor => dom_id(cons) }, "data-tab" => dom_id(cons)) %></li>
+  <% end %>
+</ul>
+
+<div id="pages">
 <% @figure.constructions.each do |cons| %>
-  <div class="tab" id="<%= dom_id(cons) %>">
-    <h2>
-      <%= Notation::MAP[cons.notation] %>
-      <% if cons.name %>
-        (<%= cons.name %>)
-      <% end %>
-      [<%= link_to("edit", edit_construction_path(cons)) %>]
-    </h2>
+  <div class="tab-body" id="<%= dom_id(cons) %>">
+    <% if cons.name %>
+      <h2><%= cons.name %></h2>
+    <% end %>
+
+    <p>[<%= link_to("edit", edit_construction_path(cons)) %>]</p>
 
     <table>
       <% each_step(cons) do |number, step| %>
@@ -44,6 +49,7 @@
     </table>
   </div>
 <% end %>
+</div>
 
 <p>
   <%= link_to("Add a new construction", new_figure_construction_path(@figure)) %>

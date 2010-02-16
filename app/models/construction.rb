@@ -25,7 +25,7 @@ class Construction < ActiveRecord::Base
   end
 
   def meta
-    @meta ||= Notation.for(notation).new(figure, :construction => self)
+    @meta ||= Notation.behavior_for(notation).new(figure, :construction => self)
   end
 
   def update_with_definition(options={})
