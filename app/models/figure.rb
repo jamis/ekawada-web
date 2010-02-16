@@ -24,7 +24,7 @@ class Figure < ActiveRecord::Base
 
     def build_construction
       return unless @construction
-      create_construction_from(:construction => @construction.merge(:submitter_id => submitter_id))
+      create_construction_from(@construction.merge(:submitter_id => submitter_id))
       @construction = nil
     end
 end
