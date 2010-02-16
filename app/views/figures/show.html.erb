@@ -1,46 +1,48 @@
 <% @title = @figure.common_name %>
 
 <% @figure.constructions.each do |cons| %>
-  <h2>
-    <%= cons.notation %>
-    <% if cons.name %>
-      (<%= cons.name %>)
-    <% end %>
-    [<%= link_to("edit", edit_construction_path(cons)) %>]
-  </h2>
-
-  <table>
-    <% each_step(cons) do |number, step| %>
-      <tr <%= "class='named'" if step.named? %>>
-        <th class="number"><%= number %></th>
-        <td class="step">
-          <% if step.range? %>
-            steps <%= step.duplicate_from %> to <%= step.duplicate_to %> of <%= link_to(step.duplicate.common_name, construction_path(step.duplicate)) %>
-          <% elsif step.make? %>
-            <%= link_to(step.duplicate.common_name, construction_path(step.duplicate)) %>
-          <% else %>
-            <%= step.instruction %>
-            <% if step.comment.present? %>
-              <span class="comment">(<%= step.comment %>)</span>
-            <% end %>
-          <% end %>
-
-          <% if step.named? %>
-            <span class="name">
-              <% if step.figure %>
-                [<%= link_to(step.display_name, figure_path(step.figure)) %>]
-              <% else %>
-                [<%= step.display_name %>]
-              <% end %>
-            </span>
-          <% end %>
-        </td>
-      </tr>
-      <% if step.named? %>
-        <tr class="spacer"><td colspan="2"></td></tr>
+  <div class="tab" id="<%= dom_id(cons) %>">
+    <h2>
+      <%= Notation::MAP[cons.notation] %>
+      <% if cons.name %>
+        (<%= cons.name %>)
       <% end %>
-    <% end %>
-  </table>
+      [<%= link_to("edit", edit_construction_path(cons)) %>]
+    </h2>
+
+    <table>
+      <% each_step(cons) do |number, step| %>
+        <tr class="step<%= " named" if step.named? %>">
+          <th class="number"><%= number %></th>
+          <td class="step">
+            <% if step.range? %>
+              steps <%= step.duplicate_from %> to <%= step.duplicate_to %> of <%= link_to(step.duplicate.common_name, construction_path(step.duplicate)) %>
+            <% elsif step.make? %>
+              <%= link_to(step.duplicate.common_name, construction_path(step.duplicate)) %>
+            <% else %>
+              <%= step.instruction %>
+              <% if step.comment.present? %>
+                <span class="comment">(<%= step.comment %>)</span>
+              <% end %>
+            <% end %>
+
+            <% if step.named? %>
+              <span class="name">
+                <% if step.figure %>
+                  [<%= link_to(step.display_name, figure_path(step.figure)) %>]
+                <% else %>
+                  [<%= step.display_name %>]
+                <% end %>
+              </span>
+            <% end %>
+          </td>
+        </tr>
+        <% if step.named? %>
+          <tr class="spacer"><td colspan="2"></td></tr>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
 <% end %>
 
 <p>
