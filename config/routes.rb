@@ -7,6 +7,8 @@ Ekawada::Application.routes.draw do |map|
   resources :notations
   resources :sources
 
+  root :to => "figures#index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
