@@ -28,6 +28,10 @@ class Construction < ActiveRecord::Base
     @meta ||= Notation.behavior_for(notation).new(figure, :construction => self)
   end
 
+  def notation_info
+    @notation_info ||= Notation.for(notation)
+  end
+
   def update_with_definition(options={})
     transaction do
       meta.parse(options[:definition])

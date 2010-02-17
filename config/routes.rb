@@ -4,6 +4,7 @@ Ekawada::Application.routes.draw do |map|
   end
 
   resources :constructions
+  resources :notations
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

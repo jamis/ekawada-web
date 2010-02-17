@@ -42,6 +42,10 @@ module Notation
     def to_s
       name
     end
+
+    def to_param
+      id
+    end
   end
 
   TYPES = YAML.load_file(File.join(File.dirname(__FILE__), "..", "config", "notations.yml")).inject([]) { |a,(id,data)| a << Type.new(id, data) }.sort

@@ -2,18 +2,23 @@
 
 <ul class="tabs">
   <% @figure.constructions.each do |cons| %>
-    <li id="<%= dom_id(cons, :tab) %>"><%= link_to(Notation.for(cons.notation).name(:short), { :anchor => dom_id(cons) }, "data-tab" => dom_id(cons)) %></li>
+    <li id="<%= dom_id(cons, :tab) %>"><%= link_to(cons.notation_info.name(:short), { :anchor => dom_id(cons) }, "data-tab" => dom_id(cons)) %></li>
   <% end %>
 </ul>
 
 <div id="pages">
 <% @figure.constructions.each do |cons| %>
   <div class="tab-body" id="<%= dom_id(cons) %>">
-    <% if cons.name %>
-      <h2><%= cons.name %></h2>
-    <% end %>
+    <div class="meta">
+      <p>
+        These instructions are in <%= link_to(cons.notation_info.name, notation_path(cons.notation_info)) %>.
+        <% if cons.name %>
+          <%= cons.notation_info.name(:short) %> specifically calls this figure "<strong><%= cons.name %></strong>".
+        <% end %>
+      </p>
 
-    <p>[<%= link_to("edit", edit_construction_path(cons)) %>]</p>
+      <p>You may <%= link_to("edit these instructions", edit_construction_path(cons)) %>, or <%= link_to("delete them", construction_path(cons), :method => :delete, :confirm => "Are you sure you want to delete these instructions? This is permanent!") %>.</p>
+    </div>
 
     <table>
       <% each_step(cons) do |number, step| %>
@@ -52,5 +57,5 @@
 </div>
 
 <p>
-  <%= link_to("Add a new construction", new_figure_construction_path(@figure)) %>
+  <%= link_to("Add new instructions", new_figure_construction_path(@figure)) %> for <%= @figure.common_name %>
 </p>
