@@ -3,6 +3,7 @@
   <title><%= @title ? "Ekawada: #{@title}" : "Ekawada!" %></title>
   <%= javascript_include_tag :defaults %>
   <%= stylesheet_link_tag 'application' %>
+  <%= yield :header %>
 </head>
 <body>
   <div id="header">
