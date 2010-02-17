@@ -3,6 +3,7 @@ class ConstructionsController < ApplicationController
   before_filter :find_construction, :except => %w(new create)
 
   def new
+    redirect_to(figure_url(@figure, :anchor => "new_construction"))
   end
 
   def create

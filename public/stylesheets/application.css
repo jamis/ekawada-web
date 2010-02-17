@@ -2,6 +2,10 @@
   font-family: helvetica, sans-serif;
 }
 
+a {
+  color: #00f;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -30,9 +34,11 @@ body {
 
 #header h1.secondary {
   font-size: 30px;
-  line-height: 40px;
-  margin-bottom: 10px;
-  margin-left: 20px;
+  position: relative;
+  top: -50px;
+  left: 20px;
+  height: 1px;
+  padding: 0;
 }
 
 #header .subtle {
@@ -40,7 +46,6 @@ body {
   font-size: 80px;
   font-weight: bold;
   letter-spacing: 6px;
-  margin-bottom: -50px;
   line-height: 80px;
 }
 
@@ -106,7 +111,7 @@ ul.tabs li {
 ul.tabs li a {
   padding: 3px 4px;
   border: 1px solid #ccc;
-  background-color: #cfc;
+  background-color: #bbb;
   color: #666;
   text-decoration: none;
   border-bottom: none;
@@ -118,6 +123,14 @@ ul.tabs li.selected a {
   position: relative;
   top: 1px;
   padding-top: 4px;
+}
+
+ul.tabs li.new {
+  float: right;
+}
+
+ul.tabs li.new a {
+  background-color: #ffc;
 }
 
 .tab-body {

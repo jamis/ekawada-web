@@ -1,6 +1,7 @@
 <% @title = @figure.common_name %>
 
 <ul class="tabs">
+  <li id="tab_new_construction" class="new"><%= link_to("New instructions", { :anchor => "new_construction" }, "data-tab" => "new_construction") %></li>
   <% @figure.constructions.each do |cons| %>
     <li id="<%= dom_id(cons, :tab) %>"><%= link_to(cons.notation_info.name(:short), { :anchor => dom_id(cons) }, "data-tab" => dom_id(cons)) %></li>
   <% end %>
@@ -54,8 +55,19 @@
     </table>
   </div>
 <% end %>
-</div>
+  <div class="tab-body" id="new_construction">
+    <div class="meta">
+      <p>Add new instructions to <strong><%= @figure.common_name %></strong>.</p>
+    </div>
 
-<p>
-  <%= link_to("Add new instructions", new_figure_construction_path(@figure)) %> for <%= @figure.common_name %>
-</p>
+    <% form_for([@figure, @figure.constructions.build]) do |f| %>
+      <p>Notation: <%= f.select :notation, notation_options %></p>
+
+      <p>Instructions:<br />
+        <%= f.text_area :definition, :class => "instructions" %>
+      </p>
+
+      <p><%= f.submit "Add these instructions to #{@figure.common_name}" %></p>
+    <% end %>
+  </div>
+</div>
