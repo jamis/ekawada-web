@@ -13,7 +13,6 @@ body {
 
 #header {
   padding: 5px 20px;
-  margin-bottom: 20px;
   border-bottom: 3px solid #99f;
   background: #009;
   color: #ddf;
@@ -51,6 +50,10 @@ body {
 
 #content {
   margin: 10px 20px;
+}
+
+.nav {
+  font-size: 14px;
 }
 
 input.text {
