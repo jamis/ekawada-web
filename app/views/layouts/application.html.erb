@@ -8,15 +8,19 @@
 <body>
   <div id="header">
     <% if @title %>
-      <div class="subtle">Ekawada</div>
+      <div class="subtle">Ekawada!</div>
       <h1 class="secondary"><%= @title %></h1>
     <% else %>
-      <h1 class="primary">Ekawada</h1>
+      <h1 class="primary">Ekawada!</h1>
     <% end %>
   </div>
 
   <div id="content">
     <%= yield %>
+  </div>
+
+  <div id="footer">
+    <%= link_to "Sources", sources_path %>
   </div>
 </body>
 </html>

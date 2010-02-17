@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(:version => 20100207232836) do
   add_index "constructions", ["notation"], :name => "index_constructions_on_notation"
   add_index "constructions", ["submitter_id"], :name => "index_constructions_on_submitter_id"
 
+  create_table "figure_sources", :force => true do |t|
+    t.integer  "figure_id",                        :null => false
+    t.integer  "source_id",                        :null => false
+    t.text     "info",       :default => "--- {}", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "figure_sources", ["figure_id"], :name => "index_figure_sources_on_figure_id"
+  add_index "figure_sources", ["source_id"], :name => "index_figure_sources_on_source_id"
+
   create_table "figures", :force => true do |t|
     t.string   "common_name", :null => false
     t.string   "aliases"
@@ -40,19 +51,19 @@ ActiveRecord::Schema.define(:version => 20100207232836) do
   add_index "figures", ["updated_at"], :name => "index_figures_on_updated_at"
 
   create_table "references", :force => true do |t|
-    t.integer  "construction_id", :null => false
-    t.string   "info"
-    t.integer  "source_id",       :null => false
+    t.integer  "construction_id",  :null => false
+    t.integer  "figure_source_id", :null => false
+    t.text     "info"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "references", ["construction_id"], :name => "index_references_on_construction_id"
-  add_index "references", ["source_id"], :name => "index_references_on_source_id"
+  add_index "references", ["figure_source_id"], :name => "index_references_on_figure_source_id"
 
   create_table "sources", :force => true do |t|
-    t.string   "name"
-    t.text     "info"
+    t.string   "type"
+    t.text     "info",       :default => "--- {}", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

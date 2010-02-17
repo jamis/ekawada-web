@@ -12,6 +12,12 @@ class InitialMigration < ActiveRecord::Migration
     add_index :users, :login, :unique => true
     add_index :users, :email
 
+    create_table :sources do |t|
+      t.string :type
+      t.text :info, :null => false, :default => "--- {}"
+      t.timestamps
+    end
+
     create_table :figures do |t|
       t.string :common_name, :null => false
       t.string :aliases
@@ -22,6 +28,16 @@ class InitialMigration < ActiveRecord::Migration
     end
 
     add_index :figures, :updated_at
+
+    create_table :figure_sources do |t|
+      t.integer :figure_id, :null => false
+      t.integer :source_id, :null => false
+      t.text :info, :null => false, :default => "--- {}"
+      t.timestamps
+    end
+
+    add_index :figure_sources, :figure_id
+    add_index :figure_sources, :source_id
 
     create_table :constructions do |t|
       t.string :name
@@ -42,19 +58,13 @@ class InitialMigration < ActiveRecord::Migration
 
     create_table :references do |t|
       t.integer :construction_id, :null => false
-      t.string :info
-      t.integer :source_id, :null => false
+      t.integer :figure_source_id, :null => false
+      t.text :info
       t.timestamps
     end
 
     add_index :references, :construction_id
-    add_index :references, :source_id
-
-    create_table :sources do |t|
-      t.string :name
-      t.text   :info
-      t.timestamps
-    end
+    add_index :references, :figure_source_id
 
     create_table :steps do |t|
       t.integer :construction_id, :null => false
