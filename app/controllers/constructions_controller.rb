@@ -23,6 +23,11 @@ class ConstructionsController < ApplicationController
     redirect_to(@construction)
   end
 
+  def destroy
+    @construction.destroy
+    redirect_to(@construction.figure)
+  end
+
   private
 
     def find_figure
