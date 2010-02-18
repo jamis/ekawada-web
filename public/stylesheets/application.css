@@ -19,33 +19,10 @@ body {
 }
 
 #header h1 {
-  padding: 0;
+  padding: 5px 0 0 0;
   margin: 0;
-}
-
-#header h1.primary {
-  font-size: 80px;
-  font-weight: bold;
-  letter-spacing: 6px;
-  line-height: 80px;
-  color: #66f;
-}
-
-#header h1.secondary {
-  font-size: 30px;
-  position: relative;
-  top: -50px;
-  left: 20px;
-  height: 1px;
-  padding: 0;
-}
-
-#header .subtle {
-  color: #22b;
-  font-size: 80px;
-  font-weight: bold;
-  letter-spacing: 6px;
-  line-height: 80px;
+  color: #ccf;
+  font-size: 36px;
 }
 
 #content {
@@ -53,7 +30,21 @@ body {
 }
 
 .nav {
-  font-size: 14px;
+  font-size: 12px;
+  border-bottom: 1px solid #ccc;
+  padding: 3px 20px;
+  background: #eee;
+}
+
+#content h1 {
+  font-size: 24px;
+  margin: 0;
+  margin-top: 16px;
+}
+
+#content h2 {
+  margin: 3px 0;
+  font-size: 18px;
 }
 
 input.text {
@@ -113,7 +104,6 @@ ul.tabs {
 
 ul.tabs li {
   display: inline;
-  font-size: 14px;
 }
 
 ul.tabs li a {
@@ -136,7 +126,6 @@ ul.tabs li.selected a {
 ul.tabs li.new {
   float: right;
   position: relative;
-  top: 2px;
 }
 
 .tab-body {

@@ -10,6 +10,12 @@
     <h1>Ekawada!</h1>
   </div>
 
+  <div class="nav">
+    <% unless current_page?(figures_path) || current_page?(root_path) %>
+      <%= link_to("&larr; All figures".html_safe, figures_path) %>
+    <% end %>
+  </div>
+
   <div id="content">
     <%= yield %>
   </div>

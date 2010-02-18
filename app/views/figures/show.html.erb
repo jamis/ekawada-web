@@ -4,9 +4,10 @@
   <%= csrf_meta_tag %>
 <% end %>
 
-<div class="nav">
-  <%= link_to("&larr; All figures".html_safe, figures_path) %>
-</div>
+<h1><%= @figure.canonical_name %></h1>
+<% if @figure.aliases.present? %>
+<h2>Also known as <%= @figure.aliases %></h2>
+<% end %>
 
 <ul class="tabs">
   <li id="tab_new_construction" class="new"><%= link_to("New instructions", { :anchor => "new_construction" }, "data-tab" => "new_construction") %></li>
