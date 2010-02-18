@@ -20,7 +20,6 @@ class InitialMigration < ActiveRecord::Migration
 
     create_table :figures do |t|
       t.string :canonical_name, :null => false
-      t.string :aliases
       t.boolean :opening
       t.boolean :ending
       t.boolean :maneuver
@@ -38,6 +37,15 @@ class InitialMigration < ActiveRecord::Migration
 
     add_index :figure_sources, :figure_id
     add_index :figure_sources, :source_id
+
+    create_table :aliases do |t|
+      t.integer :figure_id, :null => false
+      t.string  :name, :null => false
+      t.text    :locations, :null => false, :default => "--- []"
+      t.timestamps
+    end
+
+    add_index :aliases, :figure_id
 
     create_table :constructions do |t|
       t.string :name

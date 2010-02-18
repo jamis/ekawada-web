@@ -5,8 +5,12 @@
 <% end %>
 
 <h1><%= @figure.canonical_name %></h1>
-<% if @figure.aliases.present? %>
-<h2>Also known as <%= @figure.aliases %></h2>
+<% if @figure.aliases.any? %>
+<h2 class="aliases">
+  <% @figure.aliases.each_with_index do |alt, index| %>
+    <span class="aka aka<%= index %>">Also known as </span><%= alt.name %> <%= alias_locations_for(alt) %><br />
+  <% end %>
+</h2>
 <% end %>
 
 <ul class="tabs">

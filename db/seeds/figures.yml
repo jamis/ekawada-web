@@ -1,5 +1,6 @@
 - :canonical_name: Position 1
-  :aliases: First Position
+  :aliases:
+    - name: "First Position"
   :opening: true
   :sources:
     - :source: :cfj
@@ -16,6 +17,10 @@
       :info:
         :url: "http://home.p07.itscom.net/nenemei/v2/sf_string_flying04.png"
         :article: "String Flying Code 1-5,s"
+    - :source: :alysion
+      :info:
+        :url: "http://www.alysion.org/figures/openings.htm"
+        :article: "Openings, Moves, and Endings"
   :constructions:
     - :notation: isfa
       :references:
@@ -25,6 +30,13 @@
       :references:
         - :source: :mizz
       :definition: "1-5,s"
+    - :notation: sfn
+      :name: P1
+      :references:
+        - :source: :alysion
+      :definition: |
+        1 T pu SN:ex
+        2 L pu fTS:ex
     - :notation: rivers-haddon
       :references:
         - :source: :kwakiutl
@@ -34,8 +46,29 @@
 
 - :canonical_name: Opening A
   :opening: true
+  :sources:
+    - :source: :cfj
+      :info:
+        :pages: Pgs. 11-12
+    - :source: :kwakiutl
+      :info:
+        :pages: Pg. xxxi
+    - :source: :arctic
+      :info:
+        :url: "http://www.isfa.org/arctic/n.htm"
+        :article: Nomenclature
+    - :source: :mizz
+      :info:
+        :url: "http://home.p07.itscom.net/nenemei/v2/sf_string_base.png"
+        :article: "String Name"
+    - :source: :alysion
+      :info:
+        :url: "http://www.alysion.org/figures/openings.htm"
+        :article: "Openings, Moves, and Endings"
   :constructions:
     - :notation: isfa
+      :references:
+        - :source: :arctic
       :definition: |
         1. {make:Position 1}
         2. R2 picks up L palmar string.
@@ -43,13 +76,28 @@
         4. Extend.
     - :notation: mizz
       :name: base
+      :references:
+        - :source: :mizz
       :definition: |
         1 1-5,s
         2 R2,p/
         3 L2,2p/
+    - :notation: sfn
+      :name: OA
+      :references:
+        - :source: :alysion
+      :definition: |
+        1 {make:P1}
+        2 rF ml-pu lPS
+        3 lF mr-th rFN pu rPS
 
 - :canonical_name: Opening B
   :opening: true
+  :sources:
+    - :source: :alysion
+      :info:
+        :url: "http://www.alysion.org/figures/openings.htm"
+        :article: "Openings, Moves, and Endings"
   :constructions:
     - :notation: isfa
       :definition: |
@@ -63,13 +111,25 @@
         1 1-5,s
         2 L2,p/
         3 R2,2p/
+    - :notation: sfn
+      :name: OB
+      :references:
+        - :source: :alysion
+      :definition: |
+        1 {make:P1}
+        2 lF mr-pu rPS
+        3 rF ml-th lFN pu lPS
 
-- :canonical_name: Kwakiutl Opening B
+- :canonical_name: Arctic Opening B
   :opening: true
   :sources:
     - :source: :kwakiutl
       :info:
         :pages: Pg. xxxi
+    - :source: :arctic
+      :info:
+        :url: "http://www.isfa.org/arctic/n.htm"
+        :article: Nomenclature
   :constructions:
     - :notation: rivers-haddon
       :definition: |
@@ -81,6 +141,14 @@
         1. Place loop on 1.
         2. L2 picks up 1f.
         3. R2 hooks down L2a and returns to position, rotating away and up.
+    - :notation: isfa
+      :references:
+        - :source: :arctic
+      :definition: |
+        1. {make:Position 1}
+        2. R2. hooks up L palmar string; rotate R2 away from the body and up.
+        3. L2 picks up L5n.
+        4. Release 5 loop.
     - :notation: mizz
       :definition: |
         1. 1,s
@@ -88,7 +156,22 @@
         3. R2bd,2a/
 
 - :canonical_name: Osage Diamonds
-  :aliases: "Jacob's Ladder"
+  :aliases:
+    - name: "Jacob's Ladder"
+    - name: "Ma-ka-lii, Pu-kau-la"
+      locations: [ "the Hawaiian Islands" ]
+    - name: "The Ladder, the Fence"
+      locations: [ "Ireland" ]
+    - name: Fish Net
+      locations: [ "Australia" ]
+  :sources:
+    - :source: :cfj
+      :info:
+        :pages: Pgs. 24-27
+    - :source: :alysion
+      :info:
+        :url: "http://www.alysion.org/figures/fairlyeasy.htm"
+        :article: "Fairly Easy String Figures"
   :constructions:
     - :notation: isfa
       :definition: |
@@ -122,4 +205,14 @@
         11 5 (auto-off 2 old)
         12 2bd,2.6b (auto-off 2.6)
         13 caroline
-
+    - :notation: sfn
+      :definition: |
+        1 {make:OA}
+        2 re T
+        3 T mu S pu fLS
+        4 T mo nFS pu fFS
+        5 re L
+        6 L mo nFS pu fTS
+        7 re T
+        8 T mo FN pu nLS
+        9 OE

@@ -19,9 +19,14 @@ if Rails.env.development?
       entry[:key], entry[:source] = entry[:source], sources[entry[:source]]
     end
 
-    Figure.create(data).tap do |figure|
-      refmap = {}
+    aliases = Array(data.delete(:aliases))
 
+    Figure.create(data).tap do |figure|
+      aliases.each do |data|
+        figure.aliases.create(data)
+      end
+
+      refmap = {}
       source_data.inject({}) do |map, entry|
         key = entry.delete(:key)
         refmap[key] = figure.figure_sources.create(entry)

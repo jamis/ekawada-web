@@ -12,6 +12,9 @@ class Construction < ActiveRecord::Base
     return c if c
 
     figures = Figure.find_all_by_canonical_name(name, :include => :constructions)
+    aliases = Alias.find_all_by_name(name, :include => { :figure => :constructions })
+    figures += aliases.map(&:figure)
+
     figures.each do |figure|
       c = figure.constructions.detect { |c| c.notation == notation }
       return c if c

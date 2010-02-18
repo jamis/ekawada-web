@@ -1,6 +1,7 @@
 class Figure < ActiveRecord::Base
+  has_many :aliases, :dependent => :destroy
   has_many :constructions, :dependent => :destroy
-  has_many :figure_sources
+  has_many :figure_sources, :dependent => :destroy
   has_many :sources, :through => :figure_sources
 
   scope :openings, where(:opening => true)

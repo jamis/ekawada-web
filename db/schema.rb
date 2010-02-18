@@ -11,6 +11,16 @@
 
 ActiveRecord::Schema.define(:version => 20100207232836) do
 
+  create_table "aliases", :force => true do |t|
+    t.integer  "figure_id",                        :null => false
+    t.string   "name",                             :null => false
+    t.text     "locations",  :default => "--- []", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "aliases", ["figure_id"], :name => "index_aliases_on_figure_id"
+
   create_table "constructions", :force => true do |t|
     t.string   "name"
     t.integer  "figure_id",    :null => false
@@ -40,7 +50,6 @@ ActiveRecord::Schema.define(:version => 20100207232836) do
 
   create_table "figures", :force => true do |t|
     t.string   "canonical_name", :null => false
-    t.string   "aliases"
     t.boolean  "opening"
     t.boolean  "ending"
     t.boolean  "maneuver"
