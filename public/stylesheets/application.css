@@ -52,6 +52,7 @@ body {
   visibility: hidden;
   font-weight: normal;
   color: #777;
+  padding-right: 3px;
 }
 
 #content h2.aliases .preposition {
