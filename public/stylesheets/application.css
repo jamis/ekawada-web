@@ -91,6 +91,10 @@ tr.step td {
   padding-bottom: 5px;
 }
 
+.step td, .step th, .step td *, .step th * {
+  font-size: 16px;
+}
+
 th.number {
   text-align: right;
   color: #999;
@@ -109,6 +113,7 @@ ul.tabs {
 
 ul.tabs li {
   display: inline;
+  font-size: 14px;
 }
 
 ul.tabs li a {
@@ -130,6 +135,8 @@ ul.tabs li.selected a {
 
 ul.tabs li.new {
   float: right;
+  position: relative;
+  top: 2px;
 }
 
 .tab-body {
@@ -152,4 +159,12 @@ ul.tabs li.new {
 .tab-body .meta p {
   margin: 0;
   margin-top: 3px;
+}
+
+#footer {
+  margin-top: 20px;
+  padding: 5px 10px;
+  border-top: 1px solid #ccc;
+  font-size: 10px;
+  opacity: 0.5;
 }
