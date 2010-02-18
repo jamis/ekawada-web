@@ -1,22 +1,41 @@
 if Rails.env.development?
+  def seeds(which)
+    YAML.load_file(File.join(File.dirname(__FILE__), "seeds", "#{which}.yml"))
+  end
+
   user = User.create!(:name => "Test", :login => "test", :email => "test@example.com",
     :password => "test")
 
-  # arctic = Source.create(:name => "Arctic String Figure Project",
-  #   :info => "An ISFA project to standardize the instructions of all Arctic figures previously collected by ethnographers. Hosted at http://www.isfa.org/arctic.")
+  sources = seeds(:sources).inject({}) do |map, (id, data)|
+    type = data[:type]
+    map.merge(id => type.classify.constantize.create(data))
+  end
 
-  # mizz = Source.create(:name => "String Figure Mizz Code Explained",
-  #   :info => "The basics of Mizz code in picture form, including over a hundred tutorials. Hosted at http://home.p07.itscom.net/nenemei/v2/index.html.")
-
-  # kwakiutl = Source.create(:name => "Kwakiutl String Figures",
-  #   :info => "Julia Averkieva and Mark A. Sherman, 1992, American Museum of Natural History")
-
-  figures = YAML.load_file(File.join(File.dirname(__FILE__), "seeds.yml"))
-  figures.each do |data|
+  seeds(:figures).each do |data|
     constructions = data.delete(:constructions)
+
+    source_data = Array(data.delete(:sources))
+    source_data.each do |entry|
+      entry[:key], entry[:source] = entry[:source], sources[entry[:source]]
+    end
+
     Figure.create(data).tap do |figure|
+      refmap = {}
+
+      source_data.inject({}) do |map, entry|
+        key = entry.delete(:key)
+        refmap[key] = figure.figure_sources.create(entry)
+      end
+
       constructions.each do |data|
-        figure.create_construction_from(data.merge(:submitter => user))
+        references = Array(data.delete(:references))
+        figure.create_construction_from(data.merge(:submitter => user)).tap do |c|
+          references.each do |ref|
+            source = ref.delete(:source)
+            ref[:figure_source] = refmap[source]
+            c.references.create(ref)
+          end
+        end
       end
     end
   end

@@ -1,11 +1,36 @@
 - :common_name: Position 1
-  :opening: true
   :aliases: First Position
+  :opening: true
+  :sources:
+    - :source: :cfj
+      :info:
+        :pages: Pg. 10
+    - :source: :kwakiutl
+      :info:
+        :pages: Pg. xxxi
+    - :source: :arctic
+      :info:
+        :url: "http://www.isfa.org/arctic/n.htm"
+        :article: Nomenclature
+    - :source: :mizz
+      :info:
+        :url: "http://home.p07.itscom.net/nenemei/v2/sf_string_flying04.png"
+        :article: "String Flying Code 1-5,s"
   :constructions:
     - :notation: isfa
-      :definition: "Place untwisted loop on 1 and 5."
+      :references:
+        - :source: :arctic
+      :definition: "Place an untwisted loop on 1 and 5."
     - :notation: mizz
+      :references:
+        - :source: :mizz
       :definition: "1-5,s"
+    - :notation: rivers-haddon
+      :references:
+        - :source: :kwakiutl
+      :definition: |
+        1. Place loop on thumbs.
+        2. Insert little fingers proximally into thumb loop and return with ulnar thumb string.
 
 - :common_name: Opening A
   :opening: true
@@ -41,6 +66,10 @@
 
 - :common_name: Kwakiutl Opening B
   :opening: true
+  :sources:
+    - :source: :kwakiutl
+      :info:
+        :pages: Pg. xxxi
   :constructions:
     - :notation: rivers-haddon
       :definition: |

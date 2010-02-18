@@ -1,0 +1,27 @@
+:arctic:
+  :type: OnlineSource
+  :site: Arctic String Figure Project
+  :access_date: 2010-02-17
+  :url: "http://www.isfa.org/arctic.htm"
+
+:mizz:
+  :type: OnlineSource
+  :site: String Figure Mizz Code Explained
+  :access_date: 2010-02-17
+  :url: "http://home.p07.itscom.net/nenemei/v2/index.html"
+
+:kwakiutl:
+  :type: BookSource
+  :authors: Averkieva, Julia and Mark A. Sherman
+  :title: Kwakiutl String Figures
+  :location: New York
+  :company: American Museum of National History and University of Washington Press
+  :date: 1992
+
+:cfj:
+  :type: BookSource
+  :authors: Jayne, Caroline Furness
+  :title: "String Figures and How to Make Them, A Study of Cat's Cradle in Many Lands"
+  :location: New York
+  :company: "Charles Scribner's Sons"
+  :date: 1906
