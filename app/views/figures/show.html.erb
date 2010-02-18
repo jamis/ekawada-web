@@ -1,4 +1,4 @@
-<% @title = @figure.common_name %>
+<% @title = @figure.canonical_name %>
 
 <% content_for :header do %>
   <%= csrf_meta_tag %>
@@ -35,9 +35,9 @@
           <th class="number"><%= number %></th>
           <td class="step">
             <% if step.range? %>
-              steps <%= step.duplicate_from %> to <%= step.duplicate_to %> of <%= link_to(step.duplicate.common_name, construction_path(step.duplicate)) %>
+              steps <%= step.duplicate_from %> to <%= step.duplicate_to %> of <%= link_to(step.duplicate.figure_name, construction_path(step.duplicate)) %>
             <% elsif step.make? %>
-              <%= link_to(step.duplicate.common_name, construction_path(step.duplicate)) %>
+              <%= link_to(step.duplicate.figure_name, construction_path(step.duplicate)) %>
             <% else %>
               <%= step.instruction %>
               <% if step.comment.present? %>
@@ -65,7 +65,7 @@
 <% end %>
   <div class="tab-body" id="new_construction">
     <div class="meta">
-      <p>Add new instructions to <strong><%= @figure.common_name %></strong>.</p>
+      <p>Add new instructions to <strong><%= @figure.canonical_name %></strong>.</p>
     </div>
 
     <% form_for([@figure, @figure.constructions.build]) do |f| %>
@@ -75,7 +75,7 @@
         <%= f.text_area :definition, :class => "instructions" %>
       </p>
 
-      <p><%= f.submit "Add these instructions to #{@figure.common_name}" %></p>
+      <p><%= f.submit "Add these instructions to #{@figure.canonical_name}" %></p>
     <% end %>
   </div>
 </div>

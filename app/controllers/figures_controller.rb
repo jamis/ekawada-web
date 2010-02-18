@@ -1,6 +1,6 @@
 class FiguresController < ApplicationController
   def index
-    @figures = Figure.order("updated_at DESC").limit(11).sort_by(&:common_name)
+    @figures = Figure.order("updated_at DESC").limit(11).sort_by(&:canonical_name)
     @figures, @more = @figures[0,10], @figures[10]
   end
 

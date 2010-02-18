@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20100207232836) do
   add_index "figure_sources", ["source_id"], :name => "index_figure_sources_on_source_id"
 
   create_table "figures", :force => true do |t|
-    t.string   "common_name", :null => false
+    t.string   "canonical_name", :null => false
     t.string   "aliases"
     t.boolean  "opening"
     t.boolean  "ending"

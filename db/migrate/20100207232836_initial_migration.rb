@@ -19,7 +19,7 @@ class InitialMigration < ActiveRecord::Migration
     end
 
     create_table :figures do |t|
-      t.string :common_name, :null => false
+      t.string :canonical_name, :null => false
       t.string :aliases
       t.boolean :opening
       t.boolean :ending

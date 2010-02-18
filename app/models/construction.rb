@@ -11,7 +11,7 @@ class Construction < ActiveRecord::Base
     c = Construction.find_by_name_and_notation(name, notation)
     return c if c
 
-    figures = Figure.find_all_by_common_name(name, :include => :constructions)
+    figures = Figure.find_all_by_canonical_name(name, :include => :constructions)
     figures.each do |figure|
       c = figure.constructions.detect { |c| c.notation == notation }
       return c if c
@@ -20,8 +20,8 @@ class Construction < ActiveRecord::Base
     raise ActiveRecord::RecordNotFound, "no match for #{name.inspect} in #{notation.inspect}"
   end
 
-  def common_name
-    name.present? ? name : figure.common_name
+  def figure_name
+    name.present? ? name : figure.canonical_name
   end
 
   def meta

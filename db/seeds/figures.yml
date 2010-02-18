@@ -1,4 +1,4 @@
-- :common_name: Position 1
+- :canonical_name: Position 1
   :aliases: First Position
   :opening: true
   :sources:
@@ -32,7 +32,7 @@
         1. Place loop on thumbs.
         2. Insert little fingers proximally into thumb loop and return with ulnar thumb string.
 
-- :common_name: Opening A
+- :canonical_name: Opening A
   :opening: true
   :constructions:
     - :notation: isfa
@@ -48,7 +48,7 @@
         2 R2,p/
         3 L2,2p/
 
-- :common_name: Opening B
+- :canonical_name: Opening B
   :opening: true
   :constructions:
     - :notation: isfa
@@ -64,7 +64,7 @@
         2 L2,p/
         3 R2,2p/
 
-- :common_name: Kwakiutl Opening B
+- :canonical_name: Kwakiutl Opening B
   :opening: true
   :sources:
     - :source: :kwakiutl
@@ -87,7 +87,7 @@
         2. L2,1b
         3. R2bd,2a/
 
-- :common_name: Osage Diamonds
+- :canonical_name: Osage Diamonds
   :aliases: "Jacob's Ladder"
   :constructions:
     - :notation: isfa

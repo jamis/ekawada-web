@@ -27,7 +27,7 @@ class Step < ActiveRecord::Base
     if name.present? 
       name
     elsif figure
-      figure.common_name
+      figure.canonical_name
     end
   end
 end
