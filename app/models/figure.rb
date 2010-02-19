@@ -3,6 +3,7 @@ class Figure < ActiveRecord::Base
   has_many :constructions, :dependent => :destroy
   has_many :figure_sources, :dependent => :destroy
   has_many :sources, :through => :figure_sources
+  has_many :illustrations, :as => :parent, :order => "position"
 
   scope :openings, where(:opening => true)
   scope :endings, where(:ending => true)

@@ -4,6 +4,7 @@ class Construction < ActiveRecord::Base
   has_many   :steps, :order => "position", :dependent => :destroy
   has_many   :references, :dependent => :destroy
   has_many   :sources, :through => :references
+  has_many   :illustrations, :as => :parent, :order => "position"
 
   scope :for, lambda { |notation| where(:notation => notation) }
 

@@ -95,6 +95,21 @@ class InitialMigration < ActiveRecord::Migration
 
     add_index :steps, %w(construction_id position)
     add_index :steps, :figure_id
+
+    create_table :illustrations do |t|
+      t.string   :parent_type, :null => false
+      t.integer  :parent_id, :null => false
+      t.integer  :position, :null => false
+      t.string   :name, :null => false
+      t.text     :caption
+      t.string   :image_file_name, :null => false
+      t.string   :image_content_type
+      t.integer  :image_file_size
+      t.datetime :image_updated_at
+      t.timestamps
+    end
+
+    add_index :illustrations, %w(parent_type parent_id position)
   end
 
   def self.down
