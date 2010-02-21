@@ -13,6 +13,10 @@ class Notation
     rescue NameError
       self
     end
+
+    def types
+      @types ||= INFO.keys.map { |id| new(id) }.sort
+    end
   end
 
   attr_reader :id

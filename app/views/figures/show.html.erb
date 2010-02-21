@@ -16,7 +16,7 @@
 <ul class="tabs">
   <li id="tab_new_construction" class="new"><%= link_to("New instructions", { :anchor => "new_construction" }, "data-tab" => "new_construction") %></li>
   <% @figure.constructions.each do |cons| %>
-    <li id="<%= dom_id(cons, :tab) %>"><%= link_to(cons.notation_info.name(:short), { :anchor => dom_id(cons) }, "data-tab" => dom_id(cons)) %></li>
+    <li id="<%= dom_id(cons, :tab) %>"><%= link_to(cons.notation.name(:short), { :anchor => dom_id(cons) }, "data-tab" => dom_id(cons)) %></li>
   <% end %>
 </ul>
 
@@ -25,9 +25,9 @@
   <div class="tab-body" id="<%= dom_id(cons) %>">
     <div class="meta">
       <p>
-        These instructions are in <%= link_to(cons.notation_info.name, notation_path(cons.notation_info)) %>.
+        These instructions are in <%= link_to(cons.notation.name, notation_path(cons.notation)) %>.
         <% if cons.name %>
-          <%= cons.notation_info.name(:short) %> specifically calls this figure "<strong><%= cons.name %></strong>".
+          <%= cons.notation.name(:short) %> specifically calls this figure "<strong><%= cons.name %></strong>".
         <% end %>
       </p>
 

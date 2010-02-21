@@ -36,6 +36,10 @@ class Construction < ActiveRecord::Base
     self.reviewed_at = self.reviewed_by = nil
   end
 
+  def start_at
+    notation.start_at(:construction => self)
+  end
+
   private # --------------------------------------------------------------
 
   def parse_definition

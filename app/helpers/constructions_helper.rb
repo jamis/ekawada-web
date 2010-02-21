@@ -1,12 +1,12 @@
 module ConstructionsHelper
   def each_step(construction, &block)
-    start_at = construction.meta.start_at
+    start_at = construction.start_at
     n = 0
     construction.steps.each do |step|
       if step.silent?
         number = ""
       else
-        number = construction.meta.format_step_number(start_at + n)
+        number = construction.notation.format_step_number(start_at + n)
         n += 1
       end
 
@@ -15,6 +15,6 @@ module ConstructionsHelper
   end
 
   def notation_options
-    Notation::TYPES.map { |type| [type.name, type.id] }
+    Notation.types.map { |type| [type.name, type.id] }
   end
 end
