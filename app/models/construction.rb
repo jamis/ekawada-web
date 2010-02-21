@@ -4,12 +4,16 @@ class Construction < ActiveRecord::Base
   has_many   :steps, :order => "position", :dependent => :destroy
   has_many   :references, :dependent => :destroy
   has_many   :sources, :through => :references
-  has_many   :illustrations, :as => :parent, :order => "position"
+  has_many   :illustrations, :as => :parent, :order => "position", :dependent => :destroy
 
-  scope :for, lambda { |notation| where(:notation => notation) }
+  composed_of :notation, :mapping => %w(notation_id id)
 
-  def self.find_best_match(name, notation)
-    c = Construction.find_by_name_and_notation(name, notation)
+  before_save :parse_definition
+
+  scope :for, lambda { |notation_id| where(:notation_id => notation_id) }
+
+  def self.find_best_match(name, notation_id)
+    c = Construction.find_by_name_and_notation_id(name, notation_id)
     return c if c
 
     figures = Figure.find_all_by_canonical_name(name, :include => :constructions)
@@ -17,29 +21,30 @@ class Construction < ActiveRecord::Base
     figures += aliases.map(&:figure)
 
     figures.each do |figure|
-      c = figure.constructions.detect { |c| c.notation == notation }
+      c = figure.constructions.detect { |c| c.notation_id == notation_id }
       return c if c
     end
 
-    raise ActiveRecord::RecordNotFound, "no match for #{name.inspect} in #{notation.inspect}"
+    raise ActiveRecord::RecordNotFound, "no match for #{name.inspect} in #{notation_id.inspect}"
   end
 
   def figure_name
     name.present? ? name : figure.canonical_name
   end
 
-  def meta
-    @meta ||= Notation.behavior_for(notation).new(figure, :construction => self)
+  def flag_for_review
+    self.reviewed_at = self.reviewed_by = nil
   end
 
-  def notation_info
-    @notation_info ||= Notation.for(notation)
-  end
+  private # --------------------------------------------------------------
 
-  def update_with_definition(options={})
-    transaction do
-      meta.parse(options[:definition])
-      save!
+  def parse_definition
+    if definition_changed?
+      steps.clear
+      flag_for_review
+      notation.parse(definition) do |position, data|
+        steps.build(data.merge(:position => position))
+      end
     end
   end
 end

@@ -87,6 +87,12 @@ textarea.instructions {
   height: 300px;
 }
 
+textarea.caption {
+  font-size: 12px;
+  width: 600px;
+  height: 60px;
+}
+
 .step .comment {
   color: #999;
 }

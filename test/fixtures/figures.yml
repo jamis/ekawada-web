@@ -1,6 +1,5 @@
 openinga:
-  common_name: Opening A
-  aliases: base
+  canonical_name: Opening A
   opening: true
   ending: false
   maneuver: false

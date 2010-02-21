@@ -34,7 +34,7 @@ if Rails.env.development?
 
       constructions.each do |data|
         references = Array(data.delete(:references))
-        figure.create_construction_from(data.merge(:submitter => user)).tap do |c|
+        figure.constructions.create(data.merge(:submitter => user)).tap do |c|
           references.each do |ref|
             source = ref.delete(:source)
             ref[:figure_source] = refmap[source]

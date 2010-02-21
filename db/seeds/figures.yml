@@ -22,22 +22,22 @@
         :url: "http://www.alysion.org/figures/openings.htm"
         :article: "Openings, Moves, and Endings"
   :constructions:
-    - :notation: isfa
+    - :notation_id: isfa
       :references:
         - :source: :arctic
       :definition: "Place an untwisted loop on 1 and 5."
-    - :notation: mizz
+    - :notation_id: mizz
       :references:
         - :source: :mizz
       :definition: "1-5,s"
-    - :notation: sfn
+    - :notation_id: sfn
       :name: P1
       :references:
         - :source: :alysion
       :definition: |
         1 T pu SN:ex
         2 L pu fTS:ex
-    - :notation: rivers-haddon
+    - :notation_id: rivers-haddon
       :references:
         - :source: :kwakiutl
       :definition: |
@@ -66,7 +66,7 @@
         :url: "http://www.alysion.org/figures/openings.htm"
         :article: "Openings, Moves, and Endings"
   :constructions:
-    - :notation: isfa
+    - :notation_id: isfa
       :references:
         - :source: :arctic
       :definition: |
@@ -74,7 +74,7 @@
         2. R2 picks up L palmar string.
         3. Pass L2 distally through R2 loop and pick up R palmar string.
         4. Extend.
-    - :notation: mizz
+    - :notation_id: mizz
       :name: base
       :references:
         - :source: :mizz
@@ -82,7 +82,7 @@
         1 1-5,s
         2 R2,p/
         3 L2,2p/
-    - :notation: sfn
+    - :notation_id: sfn
       :name: OA
       :references:
         - :source: :alysion
@@ -99,19 +99,19 @@
         :url: "http://www.alysion.org/figures/openings.htm"
         :article: "Openings, Moves, and Endings"
   :constructions:
-    - :notation: isfa
+    - :notation_id: isfa
       :definition: |
         1. {make:Position 1}
         2. L2 picks up R palmar string.
         3. Pass R2 distally through L2 loop and pick up L palmar string.
         4. Extend.
-    - :notation: mizz
+    - :notation_id: mizz
       :name: L base
       :definition: |
         1 1-5,s
         2 L2,p/
         3 R2,2p/
-    - :notation: sfn
+    - :notation_id: sfn
       :name: OB
       :references:
         - :source: :alysion
@@ -131,17 +131,17 @@
         :url: "http://www.isfa.org/arctic/n.htm"
         :article: Nomenclature
   :constructions:
-    - :notation: rivers-haddon
+    - :notation_id: rivers-haddon
       :definition: |
         1. Place loop on thumbs.
         2. Insert left index proximally into thumb loop and return with left ulnar thumb string. You now have a short string passing between the left thumb and index.
         3. Bring hands together and pass right index distal to the short string described above. Hook back this string with the right index. Rotate the right index half a turn in the ulnar direction in order to place the string on the back of the finger.
-    - :notation: isfa
+    - :notation_id: isfa
       :definition: |
         1. Place loop on 1.
         2. L2 picks up 1f.
         3. R2 hooks down L2a and returns to position, rotating away and up.
-    - :notation: isfa
+    - :notation_id: isfa
       :references:
         - :source: :arctic
       :definition: |
@@ -149,7 +149,7 @@
         2. R2. hooks up L palmar string; rotate R2 away from the body and up.
         3. L2 picks up L5n.
         4. Release 5 loop.
-    - :notation: mizz
+    - :notation_id: mizz
       :definition: |
         1. 1,s
         2. L2,1b
@@ -173,7 +173,7 @@
         :url: "http://www.alysion.org/figures/fairlyeasy.htm"
         :article: "Fairly Easy String Figures"
   :constructions:
-    - :notation: isfa
+    - :notation_id: isfa
       :definition: |
         1. {make:Opening A}
         2. Release 1.
@@ -189,7 +189,7 @@
         12. Release 5.
         13. 2 rotates away and up, allowing original 2 loop to slip over knuckle.
         14. Display with palms facing out, 1 and 2 spread far apart.
-    - :notation: mizz
+    - :notation_id: mizz
       :definition: |
         0 {make:base}
         1 1
@@ -205,7 +205,7 @@
         11 5 (auto-off 2 old)
         12 2bd,2.6b (auto-off 2.6)
         13 caroline
-    - :notation: sfn
+    - :notation_id: sfn
       :definition: |
         1 {make:OA}
         2 re T

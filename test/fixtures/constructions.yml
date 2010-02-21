@@ -1,6 +1,10 @@
 base:
   figure: openinga
-  notation: mizz
+  notation_id: mizz
   submitter: jamis
   created_at: <%= 12.days.ago.utc.to_s(:db) %>
   updated_at: <%= 12.days.ago.utc.to_s(:db) %>
+  definition: |
+    1 1-5,s
+    2 R2,p/
+    3 L2,2p/

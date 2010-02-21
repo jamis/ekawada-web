@@ -50,7 +50,7 @@ class InitialMigration < ActiveRecord::Migration
     create_table :constructions do |t|
       t.string :name
       t.integer :figure_id, :null => false
-      t.string :notation, :null => false
+      t.string :notation_id, :null => false
       t.integer :submitter_id, :null => false
       t.text :definition, :null => false
 
@@ -61,7 +61,7 @@ class InitialMigration < ActiveRecord::Migration
     end
 
     add_index :constructions, :figure_id
-    add_index :constructions, :notation
+    add_index :constructions, :notation_id
     add_index :constructions, :submitter_id
 
     create_table :references do |t|

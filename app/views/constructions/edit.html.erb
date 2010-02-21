@@ -1,11 +1,35 @@
 <% @title = "Edit this construction" %>
 
-<% form_for(@construction) do |f| %>
+<% form_for(@construction, :html => { :multipart => true }) do |f| %>
   <fieldset>
     <legend>Instructions</legend>
 
     Notation: <%= @construction.notation %><br />
     <%= f.text_area :definition, :class => "instructions" %>
+  </fieldset>
+
+  <% @construction.illustrations.each do |illustration| %>
+    <% f.fields_for("illustration[]", illustration) do |i| %>
+      <fieldset>
+        <legend>Illustration</legend>
+        <strong><%= illustration.image.file_name %></strong><br />
+        <%= i.hidden_field :id %>
+        Name this illustration: <%= i.text_field :name %> (e.g., "Fig. 1")<br />
+        Caption (optional):<br />
+        <%= i.text_area :caption, :class => "caption" %>
+      </fieldset>
+    <% end %>
+  <% end %>
+
+  <fieldset>
+    <legend>Illustration</legend>
+
+    <% f.fields_for("illustration[]", Illustration.new) do |i| %>
+      <%= i.file_field :image %><br />
+      Name this illustration: <%= i.text_field :name %> (e.g., "Fig. 1")<br />
+      Caption (optional):<br />
+      <%= i.text_area :caption, :class => "caption" %>
+    <% end %>
   </fieldset>
 
   <%= f.submit "Save changes" %>
