@@ -9,11 +9,13 @@
   </fieldset>
 
   <% @construction.illustrations.each do |illustration| %>
-    <% f.fields_for("illustration[]", illustration) do |i| %>
+    <% f.fields_for("illustrations[]", illustration) do |i| %>
       <fieldset>
         <legend>Illustration</legend>
-        <strong><%= illustration.image.file_name %></strong><br />
+        <strong><%= illustration.image.original_filename %></strong><br />
         <%= i.hidden_field :id %>
+        <%= i.hidden_field :position %>
+        <%= i.hidden_field :delete, :value => "0" %>
         Name this illustration: <%= i.text_field :name %> (e.g., "Fig. 1")<br />
         Caption (optional):<br />
         <%= i.text_area :caption, :class => "caption" %>
@@ -24,11 +26,12 @@
   <fieldset>
     <legend>Illustration</legend>
 
-    <% f.fields_for("illustration[]", Illustration.new) do |i| %>
+    <% f.fields_for("illustrations[]", Illustration.new(:position => @construction.illustrations.length)) do |i| %>
       <%= i.file_field :image %><br />
       Name this illustration: <%= i.text_field :name %> (e.g., "Fig. 1")<br />
       Caption (optional):<br />
       <%= i.text_area :caption, :class => "caption" %>
+      <%= i.hidden_field :position %>
     <% end %>
   </fieldset>
 

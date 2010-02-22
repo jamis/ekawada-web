@@ -7,7 +7,7 @@ class ConstructionsController < ApplicationController
   end
 
   def create
-    @construction = @figure.create_construction_from(params[:construction].merge(:submitter_id => current_user))
+    @construction = @figure.constructions.create(params[:construction].merge(:submitter_id => current_user))
     redirect_to(@construction)
   end
 
@@ -19,7 +19,7 @@ class ConstructionsController < ApplicationController
   end
 
   def update
-    @construction.update_with_definition(params[:construction])
+    @construction.update_attributes(params[:construction])
     redirect_to(@construction)
   end
 

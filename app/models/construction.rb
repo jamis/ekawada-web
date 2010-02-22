@@ -9,6 +9,7 @@ class Construction < ActiveRecord::Base
   composed_of :notation, :mapping => %w(notation_id id)
 
   before_save :parse_definition
+  after_save :update_illustrations
 
   scope :for, lambda { |notation_id| where(:notation_id => notation_id) }
 
@@ -26,6 +27,10 @@ class Construction < ActiveRecord::Base
     end
 
     raise ActiveRecord::RecordNotFound, "no match for #{name.inspect} in #{notation_id.inspect}"
+  end
+
+  def illustrations=(data)
+    @illustrations = data
   end
 
   def figure_name
@@ -50,5 +55,22 @@ class Construction < ActiveRecord::Base
         steps.build(data.merge(:position => position))
       end
     end
+  end
+
+  def update_illustrations
+    Array(@illustrations).each do |hash|
+      if hash[:id]
+        i = illustrations.find(hash[:id])
+        if hash[:delete].to_i == 1
+          i.destroy
+        else
+          i.update_attributes(hash)
+        end
+      else
+        illustrations.create(hash)
+      end
+    end
+
+    @illustrations = nil
   end
 end
