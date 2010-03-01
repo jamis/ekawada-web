@@ -180,3 +180,7 @@ ul.tabs li.new {
   font-size: 10px;
   opacity: 0.5;
 }
+
+fieldset .section {
+  margin: 10px 0px;
+}

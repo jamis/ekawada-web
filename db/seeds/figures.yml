@@ -159,11 +159,11 @@
   :aliases:
     - name: "Jacob's Ladder"
     - name: "Ma-ka-lii, Pu-kau-la"
-      locations: [ "the Hawaiian Islands" ]
+      location: "the Hawaiian Islands"
     - name: "The Ladder, the Fence"
-      locations: [ "Ireland" ]
+      location: "Ireland"
     - name: Fish Net
-      locations: [ "Australia" ]
+      location: "Australia"
   :sources:
     - :source: :cfj
       :info:

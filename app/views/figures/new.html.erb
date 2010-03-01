@@ -4,25 +4,37 @@
   <fieldset>
     <legend>General information</legend>
 
-    <p>
+    <div class="section">
       <%= f.label :canonical_name, nil, :class => "text" %><br />
       <%= f.text_field :canonical_name, :class => "text" %>
-    </p>
+      <div>
+        <ul style="display: none" id="aliases">
+          <li style="display: none" id="alias_template">
+            <% f.fields_for("new_aliases[]", @figure.aliases.build) do |a| %>
+              Also known as <%= a.text_field :name %>
+              in <%= a.text_field :location %>
+              <%= link_to "[x]", "#", "behaves-like" => "remove-alias" %>
+            <% end %>
+          </li>
+        </ul>
+        + <%= link_to "Add an alias", "#", "behaves-like" => "add-alias" %>
+      </div>
+    </div>
 
-    <p>
+    <div class="section">
       This is an
       <%= f.check_box :opening %> <%= f.label :opening %> |
       <%= f.check_box :ending %> <%= f.label :ending %> |
       <%= f.check_box :maneuver %> <%= f.label :maneuver %>
       (check all that apply)
-    </p>
+    </div>
   </fieldset>
 
   <fieldset>
     <legend>Instructions</legend>
 
     <% f.fields_for :construction do |c| %>
-      Notation: <%= c.select :notation, notation_options %><br />
+      Notation: <%= c.select :notation_id, notation_options %><br />
       <%= c.text_area :definition, :class => "instructions" %>
     <% end %>
   </fieldset>

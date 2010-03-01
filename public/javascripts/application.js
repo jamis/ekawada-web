@@ -12,39 +12,33 @@ function selectTab(id) {
 }
 
 document.observe("dom:loaded", function() {
-  if(window.location.hash) {
-    var id = window.location.hash.substr(1);
-    selectTab(id);
-  } else {
-    var id = $('pages').down('.tab-body').id;
-    selectTab(id);
+  if($('pages')) {
+    if(window.location.hash) {
+      var id = window.location.hash.substr(1);
+      selectTab(id);
+    } else {
+      var id = $('pages').down('.tab-body').id;
+      selectTab(id);
+    }
   }
 
-  $(document.body).observe("change", function(event) {
-    var element = event.element();
-    var group = element.readAttribute("data-tab-group")
-    if(group && !group.blank()) {
-      var tabs = element.readAttribute("data-tabs")
-      var container = element.up("." + group);
-      var selection = $F(element);
-      container.select('.' + tabs).invoke("hide");
-      container.select('.' + selection).invoke("show");
-    }
+  Behaviors.add("click", "tab", function(element) {
+    selectTab(element.readAttribute("data-link"));
   });
 
-  $(document.body).observe("click", function(event) {
-    var element = event.findElement("a[data-toggle]");
-    if(element) {
-      var action = element.readAttribute("data-toggle");
-      element.hide();
-      element.next().show();
-      event.stop();
-    } else {
-      var element = event.element();
-      if(!element.readAttribute("data-tab")) element = element.up("a[data-tab]")
-      if(element) {
-        selectTab(element.readAttribute("data-tab"));
-      }
+  Behaviors.add("click", "add-alias", function(element) {
+    $('aliases').show();
+    var template = $('alias_template');
+    var row = template.clone(true);
+    row.writeAttribute('id', false);
+    template.insert({before: row});
+    row.show();
+  });
+
+  Behaviors.add("click", "remove-alias", function(element) {
+    element.up('li').remove();
+    if($$('#aliases li').length < 2) {
+      $('aliases').hide();
     }
   });
 });

@@ -10,8 +10,9 @@ class Figure < ActiveRecord::Base
   scope :maneuvers, where(:maneuver => true)
 
   attr_writer :construction
-  attr_accessor :submitter_id
-  after_create :create_construction
+  attr_accessor :submitter_id, :new_aliases
+
+  after_create :create_construction, :create_aliases
 
   private
 
@@ -19,5 +20,11 @@ class Figure < ActiveRecord::Base
       return unless @construction
       constructions.create(@construction.merge(:submitter_id => submitter_id))
       @construction = nil
+    end
+
+    def create_aliases
+      return unless @new_aliases
+      @new_aliases.each { |data| aliases.create!(data) if data[:name].present? }
+      @new_aliases = nil
     end
 end

@@ -41,7 +41,7 @@ class InitialMigration < ActiveRecord::Migration
     create_table :aliases do |t|
       t.integer :figure_id, :null => false
       t.string  :name, :null => false
-      t.text    :locations, :null => false, :default => "--- []"
+      t.text    :location
       t.timestamps
     end
 

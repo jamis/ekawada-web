@@ -12,9 +12,9 @@
 ActiveRecord::Schema.define(:version => 20100207232836) do
 
   create_table "aliases", :force => true do |t|
-    t.integer  "figure_id",                        :null => false
-    t.string   "name",                             :null => false
-    t.text     "locations",  :default => "--- []", :null => false
+    t.integer  "figure_id",  :null => false
+    t.string   "name",       :null => false
+    t.text     "location"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
