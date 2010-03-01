@@ -36,16 +36,4 @@ var Behaviors = {
       }
     }
   },
-
-  // as of 2010/02/28, latest prototype.js causes an error when
-  // findElement is called with a pattern that does not match
-  // any element in the chain of ancestors. As soon as this bug
-  // is fixed, this workaround can go away.
-  safeFindElement: function(event, pattern) {
-    try {
-      return event.findElement(pattern);
-    } catch(e) {
-      return null;
-    }
-  }
 };
