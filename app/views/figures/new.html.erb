@@ -9,7 +9,7 @@
       <%= f.text_field :canonical_name, :class => "text" %>
       <div>
         <ul style="display: none" id="aliases">
-          <li style="display: none" id="alias_template">
+          <li style="display: none">
             <% f.fields_for("new_aliases[]", @figure.aliases.build) do |a| %>
               Also known as <%= a.text_field :name %>
               in <%= a.text_field :location %>

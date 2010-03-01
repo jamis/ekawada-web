@@ -28,11 +28,11 @@ document.observe("dom:loaded", function() {
 
   Behaviors.add("click", "add-alias", function(element) {
     $('aliases').show();
-    var template = $('alias_template');
+    var template = $$('#aliases li:last').first();
     var row = template.clone(true);
-    row.writeAttribute('id', false);
     template.insert({before: row});
     row.show();
+    row.down('input').focus();
   });
 
   Behaviors.add("click", "remove-alias", function(element) {
