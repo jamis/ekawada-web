@@ -19,10 +19,10 @@ var Behaviors = {
   },
 
   onTrigger: function(event) {
-    var element = this.safeFindElement(event, "[behaves-like]");
+    var element = event.findElement("*[data-behaviors]");
     if(!element) return;
 
-    var behavesLike = element.readAttribute('behaves-like').split(",");
+    var behavesLike = element.readAttribute('data-behaviors').split(",");
     if(behavesLike.length < 1) return;
 
     var definedBehaviors = this.observers[event.type] || {};

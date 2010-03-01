@@ -13,11 +13,11 @@
             <% f.fields_for("new_aliases[]", @figure.aliases.build) do |a| %>
               Also known as <%= a.text_field :name %>
               in <%= a.text_field :location %>
-              <%= link_to "[x]", "#", "behaves-like" => "remove-alias" %>
+              <%= link_to "[x]", "#", "data-behaviors" => "remove-alias" %>
             <% end %>
           </li>
         </ul>
-        + <%= link_to "Add an alias", "#", "behaves-like" => "add-alias" %>
+        + <%= link_to "Add an alias", "#", "data-behaviors" => "add-alias" %>
       </div>
     </div>
 

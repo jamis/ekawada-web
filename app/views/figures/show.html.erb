@@ -14,9 +14,9 @@
 <% end %>
 
 <ul class="tabs">
-  <li id="tab_new_construction" class="new"><%= link_to("New instructions", { :anchor => "new_construction" }, "behaves-like" => "tab", "data-link" => "new_construction") %></li>
+  <li id="tab_new_construction" class="new"><%= link_to("New instructions", { :anchor => "new_construction" }, "data-behaviors" => "tab", "data-link" => "new_construction") %></li>
   <% @figure.constructions.each do |cons| %>
-    <li id="<%= dom_id(cons, :tab) %>"><%= link_to(cons.notation.name(:short), { :anchor => dom_id(cons) }, "behaves-like" => "tab", "data-link" => dom_id(cons)) %></li>
+    <li id="<%= dom_id(cons, :tab) %>"><%= link_to(cons.notation.name(:short), { :anchor => dom_id(cons) }, "data-behaviors" => "tab", "data-link" => dom_id(cons)) %></li>
   <% end %>
 </ul>
 
