@@ -24,7 +24,7 @@ class Step < ActiveRecord::Base
   end
 
   def wants_paragraphs?
-    instruction.include?("\n")
+    instruction && instruction.include?("\n")
   end
 
   def display_name

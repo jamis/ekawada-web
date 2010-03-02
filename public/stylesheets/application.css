@@ -184,3 +184,8 @@ ul.tabs li.new {
 fieldset .section {
   margin: 10px 0px;
 }
+
+.step p {
+  margin-top: 0px;
+  margin-bottom: 6px;
+}
