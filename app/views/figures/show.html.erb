@@ -74,7 +74,18 @@
     </div>
 
     <% form_for([@figure, @figure.constructions.build]) do |f| %>
-      <p>Notation: <%= f.select :notation_id, notation_options %><br />
+      <p>
+        <%= f.label :notation_id, "Notation:", :class => "text" %><br />
+        <%= f.select :notation_id, notation_options %><br />
+      </p>
+
+      <p>
+        <%= f.label :name, "Notation-specific name:", :class => "text" %><br />
+        <%= f.text_field :name, :class => "text2" %><br />
+        <small>Optional: only specify if this particular construction has a specific name.</small></p>
+
+      <p>
+        <%= f.label :definition, "Instructions:", :class => "text" %><br />
         <%= f.text_area :definition, :class => "instructions" %>
       </p>
 

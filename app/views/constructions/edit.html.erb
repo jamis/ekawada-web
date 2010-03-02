@@ -2,9 +2,23 @@
 
 <% form_for(@construction) do |f| %>
   <fieldset>
+    <legend>General Information</legend>
+
+    <p>
+      <%= f.label :notation_id, "Notation:", :class => "text" %><br />
+      <%= f.select :notation_id, notation_options %>
+    </p>
+
+    <p>
+      <%= f.label :name, "Notation-specific name for #{@construction.figure.canonical_name}:", :class => "text" %><br />
+      <%= f.text_field :name, :class => "text2" %><br />
+      <small>Optional: only specify if this particular construction has a specific name.</small>
+    </p>
+  </fieldset>
+
+  <fieldset>
     <legend>Instructions</legend>
 
-    Notation: <%= f.select :notation_id, notation_options %><br />
     <%= f.text_area :definition, :class => "instructions" %>
   </fieldset>
 
