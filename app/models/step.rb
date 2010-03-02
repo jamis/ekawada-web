@@ -23,6 +23,10 @@ class Step < ActiveRecord::Base
     name.present? || figure
   end
 
+  def wants_paragraphs?
+    instruction.include?("\n")
+  end
+
   def display_name
     if name.present? 
       name

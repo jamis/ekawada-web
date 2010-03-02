@@ -4,9 +4,9 @@
   <fieldset>
     <legend>Instructions</legend>
 
-    Notation: <%= @construction.notation %><br />
+    Notation: <%= f.select :notation_id, notation_options %><br />
     <%= f.text_area :definition, :class => "instructions" %>
   </fieldset>
 
-  <%= f.submit "Save changes" %>
+  <%= f.submit "Save changes" %> or <%= link_to("cancel", @construction) %>
 <% end %>

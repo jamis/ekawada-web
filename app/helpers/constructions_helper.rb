@@ -17,4 +17,14 @@ module ConstructionsHelper
   def notation_options
     Notation.types.map { |type| [type.name, type.id] }
   end
+
+  def format_instruction(step)
+    if step.wants_paragraphs?
+      step.instruction.split(/\n/).map do |line|
+        content_tag(:p, line)
+      end.join("\n").html_safe
+    else
+      step.instruction
+    end
+  end
 end

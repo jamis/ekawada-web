@@ -21,24 +21,24 @@ document.observe("dom:loaded", function() {
       selectTab(id);
     }
   }
+});
 
-  Behaviors.add("click", "tab", function(element) {
-    selectTab(element.readAttribute("data-link"));
-  });
+Behaviors.add("click", "tab", function(element) {
+  selectTab(element.readAttribute("data-link"));
+});
 
-  Behaviors.add("click", "add-alias", function(element) {
-    $('aliases').show();
-    var template = $$('#aliases li:last').first();
-    var row = template.clone(true);
-    template.insert({before: row});
-    row.show();
-    row.down('input').focus();
-  });
+Behaviors.add("click", "add-alias", function(element) {
+  $('aliases').show();
+  var template = $$('#aliases li:last').first();
+  var row = template.clone(true);
+  template.insert({before: row});
+  row.show();
+  row.down('input').focus();
+});
 
-  Behaviors.add("click", "remove-alias", function(element) {
-    element.up('li').remove();
-    if($$('#aliases li').length < 2) {
-      $('aliases').hide();
-    }
-  });
+Behaviors.add("click", "remove-alias", function(element) {
+  element.up('li').remove();
+  if($$('#aliases li').length < 2) {
+    $('aliases').hide();
+  }
 });

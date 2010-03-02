@@ -44,7 +44,7 @@
             <% elsif step.make? %>
               <%= link_to(step.duplicate.figure_name, construction_path(step.duplicate)) %>
             <% else %>
-              <%= step.instruction %>
+              <%= format_instruction(step) %>
               <% if step.comment.present? %>
                 <span class="comment">(<%= step.comment %>)</span>
               <% end %>
@@ -74,9 +74,7 @@
     </div>
 
     <% form_for([@figure, @figure.constructions.build]) do |f| %>
-      <p>Notation: <%= f.select :notation, notation_options %></p>
-
-      <p>Instructions:<br />
+      <p>Notation: <%= f.select :notation_id, notation_options %><br />
         <%= f.text_area :definition, :class => "instructions" %>
       </p>
 
