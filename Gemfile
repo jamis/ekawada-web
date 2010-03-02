@@ -2,7 +2,6 @@ source 'http://gemcutter.org'
 
 gem "rails", :path => "../rails"
 gem "sqlite3-ruby", :require => "sqlite3"
-gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git", :ref => "rails3"
 
 # Bundle the extra gems:
 # gem "bj"
