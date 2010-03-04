@@ -26,7 +26,7 @@
     <div class="meta">
       <p>
         These instructions are in <%= link_to(cons.notation.name, notation_path(cons.notation)) %>.
-        <% if cons.name %>
+        <% if cons.name.present? %>
           <%= cons.notation.name(:short) %> specifically calls this figure "<strong><%= cons.name %></strong>".
         <% end %>
       </p>
