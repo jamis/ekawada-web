@@ -34,22 +34,8 @@
     <legend>Instructions</legend>
 
     <% f.fields_for :construction do |c| %>
-      <p>
-        <%= c.label :notation_id, "Notation:", :class => "text" %><br />
-        <%= c.select :notation_id, notation_options %>
-      </p>
-
-      <p>
-        <%= c.label :name, "Notation-specific name:", :class => "text" %><br />
-        <%= c.text_field :name, :class => "text2" %><br />
-        <small>e.g. "base", "OA", "First Position". Optional, only specify if this particular construction has a specific name.</small>
-      </p>
-
-      <p>
-        <%= c.label :definition, "Instructions:", :class => "text" %><br />
-        <%= c.text_area :definition, :class => "instructions" %>
-      </p>
-    <% end %>
+      <%= render :partial => "constructions/form", :object => c %>
+    <% end%>
   </fieldset>
 
   <%= f.submit "Add this figure" %>

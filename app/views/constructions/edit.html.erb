@@ -1,26 +1,9 @@
 <% @title = "Edit this construction" %>
 
 <% form_for(@construction) do |f| %>
-  <fieldset>
-    <legend>General Information</legend>
+  <h2>Edit instructions for <%= @construction.figure.canonical_name %></h2>
 
-    <p>
-      <%= f.label :notation_id, "Notation:", :class => "text" %><br />
-      <%= f.select :notation_id, notation_options %>
-    </p>
-
-    <p>
-      <%= f.label :name, "Notation-specific name for #{@construction.figure.canonical_name}:", :class => "text" %><br />
-      <%= f.text_field :name, :class => "text2" %><br />
-      <small>Optional: only specify if this particular construction has a specific name.</small>
-    </p>
-  </fieldset>
-
-  <fieldset>
-    <legend>Instructions</legend>
-
-    <%= f.text_area :definition, :class => "instructions" %>
-  </fieldset>
+  <%= render :partial => "form", :object => f %>
 
   <%= f.submit "Save changes" %> or <%= link_to("cancel", @construction) %>
 <% end %>

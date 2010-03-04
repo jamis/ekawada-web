@@ -1,0 +1,15 @@
+<p>
+  <%= form.label :notation_id, "Notation:", :class => "text" %><br />
+  <%= form.select :notation_id, notation_options %><br />
+</p>
+
+<p>
+  <%= form.label :name, "Notation-specific name:", :class => "text" %><br />
+  <%= form.text_field :name, :class => "text2" %><br />
+  <small>Optional: only specify if this particular construction has a specific name.</small>
+</p>
+
+<p>
+  <%= form.label :definition, "Instructions:", :class => "text" %><br />
+  <%= form.text_area :definition, :class => "instructions" %>
+</p>
