@@ -22,7 +22,7 @@
 
 <div id="pages">
 <% @figure.constructions.each do |cons| %>
-  <div class="tab-body" id="<%= dom_id(cons) %>">
+  <div class="tab-body construction" id="<%= dom_id(cons) %>">
     <div class="meta">
       <p>
         These instructions are in <%= link_to(cons.notation.name, notation_path(cons.notation)) %>.
@@ -33,6 +33,12 @@
 
       <p>You may <%= link_to("edit these instructions", edit_construction_path(cons)) %>, or <%= link_to("delete them", construction_path(cons), :method => :delete, :confirm => "Are you sure you want to delete these instructions? This is permanent!") %>.</p>
     </div>
+
+    <% if cons.illustrations.any? %>
+      <div class="illustrations">
+        <%= render :partial => "illustrations/small", :collection => cons.illustrations %>
+      </div>
+    <% end %>
 
     <table>
       <% each_step(cons) do |number, step| %>

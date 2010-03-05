@@ -179,6 +179,7 @@ ul.tabs li.new {
   border-top: 1px solid #ccc;
   font-size: 10px;
   opacity: 0.5;
+  clear: both;
 }
 
 fieldset .section {
@@ -205,4 +206,26 @@ fieldset .section {
 #add_illustration {
   padding-top: 10px;
   clear: both;
+}
+
+.construction .illustrations {
+  float: right;
+  background: white;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.construction .illustrations .illustration {
+  text-align: center;
+  border-top: 1px solid #ccc;
+  padding: 5px;
+}
+
+.construction .illustrations .illustration:first-child {
+  border-top: none;
+}
+
+.construction .illustrations .illustration .caption {
+  font-style: italic;
+  font-size: 12px;
 }
