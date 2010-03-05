@@ -1,20 +1,15 @@
 class Construction < ActiveRecord::Base
+  include Illustrated
+
   belongs_to :figure
   belongs_to :submitter, :class_name => "User"
   has_many   :steps, :order => "position", :dependent => :destroy
   has_many   :references, :dependent => :destroy
   has_many   :sources, :through => :references
 
-  has_many :illustrations, :as => :parent, :order => "number", :dependent => :destroy do
-    def next_number
-      (map(&:number).max || 0) + 1
-    end
-  end
-
   composed_of :notation, :mapping => %w(notation_id id)
 
   before_save :parse_definition
-  after_save :update_illustrations
 
   scope :for, lambda { |notation_id| where(:notation_id => notation_id) }
 
@@ -34,10 +29,6 @@ class Construction < ActiveRecord::Base
     raise ActiveRecord::RecordNotFound, "no match for #{name.inspect} in #{notation_id.inspect}"
   end
 
-  def illustrations=(data)
-    @illustrations = data
-  end
-
   def figure_name
     name.present? ? name : figure.canonical_name
   end
@@ -50,6 +41,10 @@ class Construction < ActiveRecord::Base
     notation.start_at(:construction => self)
   end
 
+  def illustration_path
+    File.join(figure.illustration_path, "constructions", id.to_s)
+  end
+
   private # --------------------------------------------------------------
 
   def parse_definition
@@ -60,22 +55,5 @@ class Construction < ActiveRecord::Base
         steps.build(data.merge(:position => position))
       end
     end
-  end
-
-  def update_illustrations
-    Array(@illustrations).each do |hash|
-      if hash[:id]
-        i = illustrations.find(hash[:id])
-        if hash[:delete].to_i == 1
-          i.destroy
-        else
-          i.update_attributes(hash)
-        end
-      else
-        illustrations.create(hash)
-      end
-    end
-
-    @illustrations = nil
   end
 end

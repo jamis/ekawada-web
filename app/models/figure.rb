@@ -1,9 +1,10 @@
 class Figure < ActiveRecord::Base
+  include Illustrated
+
   has_many :aliases, :dependent => :destroy
   has_many :constructions, :dependent => :destroy
   has_many :figure_sources, :dependent => :destroy
   has_many :sources, :through => :figure_sources
-  has_many :illustrations, :as => :parent, :order => "position", :dependent => :destroy
 
   scope :openings, where(:opening => true)
   scope :endings, where(:ending => true)
@@ -14,17 +15,22 @@ class Figure < ActiveRecord::Base
 
   after_create :create_construction, :create_aliases
 
-  private
+  def illustration_path
+    hi, lo = id.divmod(100)
+    File.join(hi.to_s, lo.to_s)
+  end
 
-    def create_construction
-      return unless @construction
-      constructions.create(@construction.merge(:submitter_id => submitter_id))
-      @construction = nil
-    end
+  private # --------------------------------------------------------------
 
-    def create_aliases
-      return unless @new_aliases
-      @new_aliases.each { |data| aliases.create!(data) if data[:name].present? }
-      @new_aliases = nil
-    end
+  def create_construction
+    return unless @construction
+    constructions.create(@construction.merge(:submitter_id => submitter_id))
+    @construction = nil
+  end
+
+  def create_aliases
+    return unless @new_aliases
+    @new_aliases.each { |data| aliases.create!(data) if data[:name].present? }
+    @new_aliases = nil
+  end
 end

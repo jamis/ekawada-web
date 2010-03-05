@@ -68,16 +68,23 @@ Behaviors.add("change", "add-illustration", function(element) {
   var original_action = form.action;
   var original_target = form.target;
   var original_enctype = form.enctype;
+  var method_field = form.down("input[name=_method]");
+
+  if (method_field) {
+    var original_method = $F(method_field);
+  }
 
   try {
     $('add_illustration').addClassName("busy");
     form.action = url;
     form.target = "invisible";
     form.enctype = "multipart/form-data";
+    if (method_field) method_field.value = "POST"
     form.submit();
   } finally {
     form.action = original_action;
     form.target = original_target;
     form.enctype = original_enctype;
+    if (method_field) method_field.value = original_method;
   }
 });

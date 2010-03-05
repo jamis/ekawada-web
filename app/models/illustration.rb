@@ -1,6 +1,8 @@
 class Illustration < ActiveRecord::Base
   belongs_to :parent, :polymorphic => true
 
+  after_create :move_from_holding_location
+
   def self.generate_location
     "%f.%d.%s%s" %
       [Time.now, $$, rand(0xFFFFFFFF).to_s(36), rand(0xFFFFFFFF).to_s(36)]
@@ -62,5 +64,18 @@ class Illustration < ActiveRecord::Base
     else
       "/illustrations/#{location}/#{which}.#{extension}"
     end
+  end
+
+  private
+
+  def move_from_holding_location
+    final_location = File.join(parent.illustration_path, id.to_s)
+    holding = File.join(Rails.root, "public", "illustrations", "tmp", location)
+    final = File.join(Rails.root, "public", "illustrations", final_location)
+
+    update_attribute :location, final_location
+
+    FileUtils.mkdir_p(File.dirname(final))
+    FileUtils.mv(holding, final)
   end
 end
