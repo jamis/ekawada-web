@@ -5,9 +5,9 @@ class Construction < ActiveRecord::Base
   has_many   :references, :dependent => :destroy
   has_many   :sources, :through => :references
 
-  has_many :illustrations, :as => :parent, :order => "position", :dependent => :destroy do
+  has_many :illustrations, :as => :parent, :order => "number", :dependent => :destroy do
     def next_number
-      map(&:number).max + 1
+      (map(&:number).max || 0) + 1
     end
   end
 
