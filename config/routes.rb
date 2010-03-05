@@ -6,6 +6,7 @@ Ekawada::Application.routes.draw do |map|
   resources :constructions
   resources :notations
   resources :sources
+  resources :illustrations
 
   root :to => "figures#index"
 

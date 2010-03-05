@@ -97,19 +97,19 @@ class InitialMigration < ActiveRecord::Migration
     add_index :steps, :figure_id
 
     create_table :illustrations do |t|
-      t.string   :parent_type, :null => false
-      t.integer  :parent_id, :null => false
-      t.integer  :position, :null => false
-      t.string   :name, :null => false
-      t.text     :caption
-      t.string   :image_file_name, :null => false
-      t.string   :image_content_type
-      t.integer  :image_file_size
-      t.datetime :image_updated_at
+      t.string  :parent_type, :null => false
+      t.integer :parent_id, :null => false
+      t.string  :caption     # brief description
+      t.integer :width       # width of original, in pixels
+      t.integer :height      # height of original, in pixels
+      t.string  :extension   # file extension
+      t.integer :file_size   # size (in bytes) of all versions of this file combined
+      t.integer :number      # the per-parent number identifying this illustration
+      t.string  :location    # the location of this illustration
       t.timestamps
     end
 
-    add_index :illustrations, %w(parent_type parent_id position)
+    add_index :illustrations, %w(parent_type parent_id number), :unique => true
   end
 
   def self.down

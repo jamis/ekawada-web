@@ -60,20 +60,20 @@ ActiveRecord::Schema.define(:version => 20100207232836) do
   add_index "figures", ["updated_at"], :name => "index_figures_on_updated_at"
 
   create_table "illustrations", :force => true do |t|
-    t.string   "parent_type",        :null => false
-    t.integer  "parent_id",          :null => false
-    t.integer  "position",           :null => false
-    t.string   "name",               :null => false
-    t.text     "caption"
-    t.string   "image_file_name",    :null => false
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
+    t.string   "parent_type", :null => false
+    t.integer  "parent_id",   :null => false
+    t.string   "caption"
+    t.integer  "width"
+    t.integer  "height"
+    t.string   "extension"
+    t.integer  "file_size"
+    t.integer  "number"
+    t.string   "location"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "illustrations", ["parent_type", "parent_id", "position"], :name => "index_illustrations_on_parent_type_and_parent_id_and_position"
+  add_index "illustrations", ["parent_type", "parent_id", "number"], :name => "index_illustrations_on_parent_type_and_parent_id_and_number", :unique => true
 
   create_table "references", :force => true do |t|
     t.integer  "construction_id",  :null => false

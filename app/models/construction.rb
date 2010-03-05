@@ -4,7 +4,12 @@ class Construction < ActiveRecord::Base
   has_many   :steps, :order => "position", :dependent => :destroy
   has_many   :references, :dependent => :destroy
   has_many   :sources, :through => :references
-  has_many   :illustrations, :as => :parent, :order => "position", :dependent => :destroy
+
+  has_many :illustrations, :as => :parent, :order => "position", :dependent => :destroy do
+    def next_number
+      map(&:number).max + 1
+    end
+  end
 
   composed_of :notation, :mapping => %w(notation_id id)
 

@@ -23,6 +23,24 @@ document.observe("dom:loaded", function() {
   }
 });
 
+document.observe("upload:complete", function(event) {
+  $('add_illustration').removeClassName("busy");
+
+  var location = event.memo.location;
+  var thumbnail = event.memo.thumbnail;
+
+  var next_number = parseInt($('thumbnails').readAttribute('data-next-number'));
+  var prefix = $('thumbnails').readAttribute('data-prefix');
+
+  $('thumbnails').writeAttribute('data-next-number', next_number+1);
+
+  thumbnail = thumbnail.gsub("name=\"prefix." + location, "name=\"" + prefix);
+  $('thumbnails').insert(thumbnail);
+
+  var newid = "thumb." + location;
+  $(newid).down('.number').innerHTML = next_number;
+});
+
 Behaviors.add("click", "tab", function(element) {
   selectTab(element.readAttribute("data-link"));
 });
@@ -40,5 +58,26 @@ Behaviors.add("click", "remove-alias", function(element) {
   element.up('li').remove();
   if($$('#aliases li').length < 2) {
     $('aliases').hide();
+  }
+});
+
+Behaviors.add("change", "add-illustration", function(element) {
+  var form = element.up('form');
+  var url = element.readAttribute("data-url");
+
+  var original_action = form.action;
+  var original_target = form.target;
+  var original_enctype = form.enctype;
+
+  try {
+    $('add_illustration').addClassName("busy");
+    form.action = url;
+    form.target = "invisible";
+    form.enctype = "multipart/form-data";
+    form.submit();
+  } finally {
+    form.action = original_action;
+    form.target = original_target;
+    form.enctype = original_enctype;
   }
 });

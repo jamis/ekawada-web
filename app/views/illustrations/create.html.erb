@@ -1,0 +1,15 @@
+<html>
+<head>
+</head>
+<body onload="parent.document.fire('upload:complete', {location: <%= @illustration.location.to_json %>, thumbnail: window.thumbnail})">
+<p><em>This page intentionally left blank</em></p>
+
+<div style="display: none">
+  <% form_for("prefix.#{@illustration.location}") do |form| %>
+    <script type="text/javascript">
+      window.thumbnail = <%= render("thumbnail", :form => form, :collection => "illustrations").to_json.html_safe %>;
+    </script>
+  <% end %>
+</div>
+</body>
+</html>

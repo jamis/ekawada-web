@@ -13,3 +13,15 @@
   <%= form.label :definition, "Instructions:", :class => "text" %><br />
   <%= form.text_area :definition, :class => "instructions" %>
 </p>
+
+<div id="thumbnails" data-next-number="<%= (form.object.nil? || form.object.new_record?) ? 1 : form.object.illustrations.next_number %>" data-prefix="<%= form.object_name %>">
+</div>
+
+<p id="add_illustration">
+  <% fields_for :illustration do |i| %>
+    <%= i.label :file, "Add an illustration:", :class => "text" %>
+    <span><%= i.file_field :file, "data-behaviors" => "add-illustration", "data-url" => illustrations_url %></span>
+  <% end %>
+</p>
+
+<iframe id="invisible" style="display: none"></iframe>
