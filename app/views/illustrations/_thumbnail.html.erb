@@ -1,16 +1,18 @@
-<div class="thumbnail" id="thumb.<%= @illustration.location %>">
-  <% form.fields_for "#{collection}[]", @illustration do |i| %>
-    <%= image_tag(@illustration.url(:thumb), :size => "80x80", :alt => @illustration.caption) %><br />
+<div class="thumbnail" id="<%= illustration_dom_id(thumbnail) %>">
+  <% form.fields_for "#{name}[]", thumbnail do |i| %>
+    <%= image_tag(thumbnail.url(:thumb), :size => "80x80", :alt => thumbnail.caption) %><br />
     <%= i.text_field :caption %><br />
-    <span class="number"><%= @illustration.number %></span>
-    <% if @illustration.new_record? %>
+    <span class="number"><%= thumbnail.number %></span>
+    <% if thumbnail.new_record? %>
       <%= i.hidden_field :width %>
       <%= i.hidden_field :height %>
       <%= i.hidden_field :location %>
       <%= i.hidden_field :extension %>
       <%= i.hidden_field :file_size %>
+      <%= i.hidden_field :number, :class => "number" %>
     <% else %>
       <%= i.hidden_field :id %>
+      <%= i.hidden_field :delete, :value => "0" %>
     <% end %>
   <% end %>
 </div>

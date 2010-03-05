@@ -14,7 +14,8 @@
   <%= form.text_area :definition, :class => "instructions" %>
 </p>
 
-<div id="thumbnails" data-next-number="<%= (form.object.nil? || form.object.new_record?) ? 1 : form.object.illustrations.next_number %>" data-prefix="<%= form.object_name %>">
+<div id="thumbnails" data-next-number="<%= form.object.illustrations.next_number %>" data-prefix="<%= form.object_name %>">
+  <%= render :partial => "illustrations/thumbnail", :locals => { :form => form, :name => "old_illustrations" }, :collection => form.object.illustrations %>
 </div>
 
 <p id="add_illustration">

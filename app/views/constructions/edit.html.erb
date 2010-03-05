@@ -3,7 +3,7 @@
 <% form_for(@construction) do |f| %>
   <h2>Edit instructions for <%= @construction.figure.canonical_name %></h2>
 
-  <%= render :partial => "form", :object => f %>
+  <%= render "form", :form => f %>
 
   <%= f.submit "Save changes" %> or <%= link_to("cancel", @construction) %>
 <% end %>

@@ -27,4 +27,12 @@ module ConstructionsHelper
       step.instruction
     end
   end
+
+  def illustration_dom_id(illustration)
+    if illustration.new_record?
+      "thumb." + illustration.location
+    else
+      dom_id(illustration)
+    end
+  end
 end

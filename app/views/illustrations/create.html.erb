@@ -7,7 +7,7 @@
 <div style="display: none">
   <% form_for("prefix.#{@illustration.location}") do |form| %>
     <script type="text/javascript">
-      window.thumbnail = <%= render("thumbnail", :form => form, :collection => "illustrations").to_json.html_safe %>;
+      window.thumbnail = <%= render("thumbnail", :form => form, :thumbnail => @illustration, :name => "new_illustrations").to_json.html_safe %>;
     </script>
   <% end %>
 </div>

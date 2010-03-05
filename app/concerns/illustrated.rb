@@ -2,21 +2,33 @@ module Illustrated
   def self.included(base)
     base.has_many :illustrations, :as => :parent, :order => "number", :dependent => :destroy do
       def next_number
-        (map(&:number).max || 0) + 1
+        (map(&:number).compact.max || 0) + 1
       end
     end
 
     base.after_save :update_illustrations
-    base.send :attr_writer, :illustrations
+  end
+
+  attr_writer :old_illustrations, :new_illustrations
+
+  def old_illustrations
+    @old_illustrations || {}
+  end
+
+  def new_illustrations
+    @new_illustrations || []
   end
 
   private # --------------------------------------------------------------
 
   def update_illustrations
-    Array(@illustrations).each do |hash|
+    list = old_illustrations.values + new_illustrations
+    self.old_illustrations = self.new_illustrations = nil
+
+    list.each do |hash|
       if hash[:id]
         i = illustrations.find(hash[:id])
-        if hash[:delete].to_i == 1
+        if hash.delete(:delete).to_i == 1
           i.destroy
         else
           i.update_attributes(hash)
@@ -25,7 +37,5 @@ module Illustrated
         illustrations.create(hash)
       end
     end
-
-    @illustrations = nil
   end
 end

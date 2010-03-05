@@ -33,7 +33,7 @@
   <fieldset>
     <legend>Instructions</legend>
 
-    <% f.fields_for :construction do |c| %>
+    <% f.fields_for(@figure.constructions.build) do |c| %>
       <%= render :partial => "constructions/form", :object => c %>
     <% end%>
   </fieldset>

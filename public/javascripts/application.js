@@ -39,6 +39,7 @@ document.observe("upload:complete", function(event) {
 
   var newid = "thumb." + location;
   $(newid).down('.number').innerHTML = next_number;
+  $(newid).down('input.number').value = next_number;
 });
 
 Behaviors.add("click", "tab", function(element) {
