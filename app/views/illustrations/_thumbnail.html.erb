@@ -3,11 +3,14 @@
     <%= image_tag(@illustration.url(:thumb), :size => "80x80", :alt => @illustration.caption) %><br />
     <%= i.text_field :caption %><br />
     <span class="number"><%= @illustration.number %></span>
-    <%= i.hidden_field :id unless @illustration.new_record? %>
-    <%= i.hidden_field :width %>
-    <%= i.hidden_field :height %>
-    <%= i.hidden_field :location %>
-    <%= i.hidden_field :extension %>
-    <%= i.hidden_field :file_size %>
+    <% if @illustration.new_record? %>
+      <%= i.hidden_field :width %>
+      <%= i.hidden_field :height %>
+      <%= i.hidden_field :location %>
+      <%= i.hidden_field :extension %>
+      <%= i.hidden_field :file_size %>
+    <% else %>
+      <%= i.hidden_field :id %>
+    <% end %>
   <% end %>
 </div>
