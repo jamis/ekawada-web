@@ -114,9 +114,10 @@ Behaviors.add("click", "zoom-illustration", function(element, event) {
 
   box.style.right = "20px";
   var top = event.pointerY() - box.getHeight() / 2
-  if (top + box.getHeight() > document.body.getHeight() - 5) {
+  if (top + box.getHeight() > document.body.getHeight() - 5)
     top = document.body.getHeight() - box.getHeight() - 5;
-  }
+  if (top < 5) top = 5;
+
   box.style.top = top + "px";
 
   box.down('.caption').innerHTML = caption;
