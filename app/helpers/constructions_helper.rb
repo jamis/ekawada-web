@@ -21,10 +21,22 @@ module ConstructionsHelper
   def format_instruction(step)
     if step.wants_paragraphs?
       step.instruction.split(/\n/).map do |line|
-        content_tag(:p, line)
+        content_tag(:p, format_line(step, line).html_safe)
       end.join("\n").html_safe
     else
-      step.instruction
+      format_line(step, step.instruction).html_safe
+    end
+  end
+
+  def format_line(step, line)
+    line.gsub(/\{i:(\d+)(?::(.*?))?\}/) do |m|
+      number = $1.to_i
+      caption = $2
+
+      illustration = step.construction.illustrations.at(number)
+      caption = illustration.caption unless caption.present?
+
+      link_to(caption, "#", "data-behaviors" => "zoom-illustration", "data-illustration" => dom_id(illustration))
     end
   end
 

@@ -4,6 +4,11 @@ module Illustrated
       def next_number
         (map(&:number).compact.max || 0) + 1
       end
+
+      def at(number)
+        @mapping ||= inject({}) { |h, i| h.update(i.number => i) }
+        @mapping[number]
+      end
     end
 
     base.after_save :update_illustrations

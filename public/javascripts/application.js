@@ -89,3 +89,33 @@ Behaviors.add("change", "add-illustration", function(element) {
     if (method_field) method_field.value = original_method;
   }
 });
+
+Behaviors.add("click", "zoom-illustration", function(element, event) {
+  var illustration = $(element.readAttribute('data-illustration'));
+
+  var alt_src = illustration.readAttribute('data-alt-src');
+  var alt_size = illustration.readAttribute('data-alt-dimensions');
+  var alt_dims = alt_size.split("x");
+  var alt_width = alt_dims[0];
+  var alt_height = alt_dims[1];
+
+  var bg = $('background');
+  bg.show();
+  bg.style.height = $(document.body).getHeight() + "px";
+
+  var box = $('lightbox');
+  var img = box.down('img');
+  img.src = alt_src;
+  img.width = alt_width;
+  img.height = alt_height;
+
+  box.style.right = "20px";
+  box.style.top = (illustration.cumulativeOffset().top - (box.getHeight() - illustration.getHeight()) / 2) + "px";
+
+  box.show();
+});
+
+Behaviors.add("click", "lightbox:close", function(element) {
+  $('background').hide();
+  $('lightbox').hide();
+});

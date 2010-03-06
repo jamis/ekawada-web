@@ -210,9 +210,9 @@ fieldset .section {
 
 .construction .illustrations {
   float: right;
-  background: white;
   border: 1px solid #ccc;
   margin-bottom: 10px;
+  text-align: right;
 }
 
 .construction .illustrations .illustration {
@@ -228,4 +228,21 @@ fieldset .section {
 .construction .illustrations .illustration .caption {
   font-style: italic;
   font-size: 12px;
+}
+
+/* --- LIGHTBOX-ISH STUFF ---------- */
+
+#background {
+  zIndex: 1000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+}
+
+#lightbox {
+  zIndex: 1001;
+  position: absolute;
+  border: 1px solid #ccc;
 }

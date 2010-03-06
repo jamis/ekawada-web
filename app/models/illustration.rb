@@ -66,6 +66,29 @@ class Illustration < ActiveRecord::Base
     end
   end
 
+  def aspect_ratio
+    @aspect_ratio ||= width / height.to_f
+  end
+
+  def dimensions(which)
+    case which
+    when :thumb then "80x80"
+    when :small then "160x160"
+    when :large then
+      if width > height
+        x = 600
+        y = 600/aspect_ratio
+      else
+        y = 600
+        x = y*aspect_ratio
+      end
+      "#{x.to_i}x#{y.to_i}"
+    when :original
+      "#{width}x#{height}"
+    else raise ArgumentError, "unknown image type: #{which.inspect}"
+    end
+  end
+
   private
 
   def move_from_holding_location
