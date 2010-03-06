@@ -15,8 +15,11 @@ class InitialMigration < ActiveRecord::Migration
     create_table :sources do |t|
       t.string :type
       t.text :info, :null => false, :default => "--- {}"
+      t.string :sorting
       t.timestamps
     end
+
+    add_index :sources, :sorting 
 
     create_table :figures do |t|
       t.string :canonical_name, :null => false

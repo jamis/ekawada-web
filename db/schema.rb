@@ -89,9 +89,12 @@ ActiveRecord::Schema.define(:version => 20100207232836) do
   create_table "sources", :force => true do |t|
     t.string   "type"
     t.text     "info",       :default => "--- {}", :null => false
+    t.string   "sorting"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "sources", ["sorting"], :name => "index_sources_on_sorting"
 
   create_table "steps", :force => true do |t|
     t.integer  "construction_id", :null => false
