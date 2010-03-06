@@ -111,7 +111,11 @@ Behaviors.add("click", "zoom-illustration", function(element, event) {
   img.height = alt_height;
 
   box.style.right = "20px";
-  box.style.top = (illustration.cumulativeOffset().top - (box.getHeight() - illustration.getHeight()) / 2) + "px";
+  var top = event.pointerY() - box.getHeight() / 2
+  if (top + box.getHeight() > document.body.getHeight()) {
+    top = document.body.getHeight() - box.getHeight();
+  }
+  box.style.top = top + "px";
 
   box.show();
 });
