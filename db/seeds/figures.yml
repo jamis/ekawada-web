@@ -22,6 +22,18 @@
         :url: "http://www.alysion.org/figures/openings.htm"
         :article: "Openings, Moves, and Endings"
   :constructions:
+    - :notation_id: cfj
+      :references:
+        - :source: :cfj
+      :illustrations:
+        - :file: p1-01.png
+          :caption: Fig. 11
+          :number: 1
+      :definition: |
+        Put the little fingers into the loop of string, and separate the hands.
+        You now have a single loop on each little finger passing directly and uncrossed to the opposite little finger.
+
+        Turning the hands with the palms away from you, put each thumb into the little finger loop from below, and pick up on the back of the thumb the near little finger string; then, allowing the far little finger string to remain on the little finger, turn the hands with the palms facing each other, return the thumbs to their extended position, and draw the strings tight ({i:1}).
     - :notation_id: isfa
       :references:
         - :source: :arctic
@@ -41,8 +53,9 @@
       :references:
         - :source: :kwakiutl
       :definition: |
-        1. Place loop on thumbs.
-        2. Insert little fingers proximally into thumb loop and return with ulnar thumb string.
+        Place loop on thumbs.
+
+        Insert little fingers proximally into thumb loop and return with ulnar thumb string.
 
 - :canonical_name: Opening A
   :opening: true
@@ -66,6 +79,26 @@
         :url: "http://www.alysion.org/figures/openings.htm"
         :article: "Openings, Moves, and Endings"
   :constructions:
+    - :notation_id: cfj
+      :references:
+        - :source: :cfj
+      :illustrations:
+        - :file: oa-01.png
+          :caption: Fig. 12
+          :number: 1
+        - :file: oa-02.png
+          :caption: Fig. 13
+          :number: 2
+        - :file: oa-03.png
+          :caption: Fig. 14
+          :number: 3
+      :definition: |
+        Put the loop on the hands in the {ref:First Position}.
+
+        Bring the hands together, and put the right index up under the string which crosses the left palm ({i:1}), and draw the loop out on the back of the finger by separating the hands.
+ 
+        Bring the hands together again, and put the left index up under that part of the string crossing the palm of the right hand which is between the strings on the right index ({i:2}), and draw the loop out on the back of the left index by separating the hands.
+        You now have a loop on each thumb, index, and little finger ({i:3}). There is a near thumb string and a far little finger string passing directly from one hand to the other, and two crosses formed between them by the near little finger string of one hand becoming the far index string of the other hand, and the far thumb string of one hand becoming the near index string of the other hand.
     - :notation_id: isfa
       :references:
         - :source: :arctic
@@ -134,7 +167,9 @@
     - :notation_id: rivers-haddon
       :definition: |
         1. Place loop on thumbs.
+
         2. Insert left index proximally into thumb loop and return with left ulnar thumb string. You now have a short string passing between the left thumb and index.
+
         3. Bring hands together and pass right index distal to the short string described above. Hook back this string with the right index. Rotate the right index half a turn in the ulnar direction in order to place the string on the back of the finger.
     - :notation_id: isfa
       :definition: |
