@@ -249,4 +249,19 @@ fieldset .section {
   zIndex: 1001;
   position: absolute;
   border: 1px solid #ccc;
+  background: white;
+}
+
+#lightbox img {
+  margin: 5px;
+}
+
+#lightbox .caption {
+  margin-top: 5px;
+  border-top: 1px solid #ccc;
+  background: #eee;
+  text-align: center;
+  font-size: 24px;
+  padding: 3px;
+  font-style: italic;
 }

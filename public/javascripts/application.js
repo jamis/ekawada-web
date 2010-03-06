@@ -100,6 +100,8 @@ Behaviors.add("click", "zoom-illustration", function(element, event) {
   var alt_width = alt_dims[0];
   var alt_height = alt_dims[1];
 
+  var caption = illustration.down('.caption').innerHTML;
+
   var bg = $('background');
   bg.show();
   bg.style.height = $(document.body).getHeight() + "px";
@@ -112,11 +114,12 @@ Behaviors.add("click", "zoom-illustration", function(element, event) {
 
   box.style.right = "20px";
   var top = event.pointerY() - box.getHeight() / 2
-  if (top + box.getHeight() > document.body.getHeight()) {
-    top = document.body.getHeight() - box.getHeight();
+  if (top + box.getHeight() > document.body.getHeight() - 5) {
+    top = document.body.getHeight() - box.getHeight() - 5;
   }
   box.style.top = top + "px";
 
+  box.down('.caption').innerHTML = caption;
   box.show();
 });
 
