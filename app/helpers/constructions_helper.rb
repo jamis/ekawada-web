@@ -34,9 +34,12 @@ module ConstructionsHelper
       caption = $2
 
       illustration = step.construction.illustrations.at(number)
-      caption = illustration.caption unless caption.present?
-
-      link_to(caption, "#", "data-behaviors" => "zoom-illustration", "data-illustration" => dom_id(illustration))
+      if illustration
+        caption = illustration.caption unless caption.present?
+        link_to(caption, "#", "data-behaviors" => "zoom-illustration", "data-illustration" => dom_id(illustration))
+      else
+        content_tag(:span, "no such illustration ##{number}", :class => "error")
+      end
     end
   end
 

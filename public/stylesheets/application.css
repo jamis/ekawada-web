@@ -230,6 +230,10 @@ fieldset .section {
   font-size: 12px;
 }
 
+.error {
+  color: red;
+}
+
 /* --- LIGHTBOX-ISH STUFF ---------- */
 
 #background {

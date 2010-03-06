@@ -1,4 +1,4 @@
 <div class="illustration" id="<%= dom_id(small) %>" data-alt-src="<%= small.url(:large) %>" data-alt-dimensions="<%= small.dimensions(:large) %>">
-  <%= link_to(image_tag(small.url(:small), :size => "160x160", :alt => small.caption), "#", "data-behaviors" => "zoom-illustration", "data-illustration" => dom_id(small)) %><br />
+  <%= link_to(image_tag(small.url(:small), :size => small.dimensions(:small), :alt => small.caption), "#", "data-behaviors" => "zoom-illustration", "data-illustration" => dom_id(small)) %><br />
   <span class="caption"><%= small.caption %></span>
 </div>

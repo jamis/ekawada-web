@@ -2,6 +2,7 @@ class Illustration < ActiveRecord::Base
   belongs_to :parent, :polymorphic => true
 
   after_create :move_from_holding_location
+  before_destroy :remove_assets
 
   def self.generate_location
     "%f.%d.%s%s" %
@@ -48,8 +49,8 @@ class Illustration < ActiveRecord::Base
 
     crop = "#{x}x#{y}+#{dx}+#{dy}"
 
-    system "/opt/local/bin/convert #{original} -crop #{crop} -resize 80x80 #{thumb}"
-    system "/opt/local/bin/convert #{original} -crop #{crop} -resize 160x160 #{small}"
+    system "/opt/local/bin/convert #{original} -resize 80x80 #{thumb}"
+    system "/opt/local/bin/convert #{original} -resize 160x160 #{small}"
     system "/opt/local/bin/convert #{original} -resize 600x600 #{large}"
 
     size = File.size(original) + File.size(thumb) + File.size(small) + File.size(large)
@@ -66,30 +67,36 @@ class Illustration < ActiveRecord::Base
     end
   end
 
+  def path(which)
+    File.join(Rails.root, "public", url(which))
+  end
+
   def aspect_ratio
     @aspect_ratio ||= width / height.to_f
   end
 
   def dimensions(which)
-    case which
-    when :thumb then "80x80"
-    when :small then "160x160"
-    when :large then
-      if width > height
-        x = 600
-        y = 600/aspect_ratio
-      else
-        y = 600
-        x = y*aspect_ratio
+    return "#{width}x#{height}" if which == :original
+
+    max = case which
+      when :thumb then 80
+      when :small then 160
+      when :large then 600
+      else raise ArgumentError, "unknown image type: #{which.inspect}"
       end
-      "#{x.to_i}x#{y.to_i}"
-    when :original
-      "#{width}x#{height}"
-    else raise ArgumentError, "unknown image type: #{which.inspect}"
+
+    if width > height
+      x = max
+      y = max/aspect_ratio
+    else
+      y = max
+      x = y*aspect_ratio
     end
+
+    "#{x.to_i}x#{y.to_i}"
   end
 
-  private
+  private # --------------------------------------------------------------
 
   def move_from_holding_location
     final_location = File.join(parent.illustration_path, id.to_s)
@@ -100,5 +107,11 @@ class Illustration < ActiveRecord::Base
 
     FileUtils.mkdir_p(File.dirname(final))
     FileUtils.mv(holding, final)
+  end
+
+  def remove_assets
+    [:thumb, :small, :large, :original].each do |which|
+      FileUtils.rm_f(path(which))
+    end
   end
 end
