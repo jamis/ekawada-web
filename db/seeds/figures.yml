@@ -23,6 +23,7 @@
         :article: "Openings, Moves, and Endings"
   :constructions:
     - :notation_id: cfj
+      :name: First Position
       :references:
         - :source: :cfj
       :illustrations:
@@ -93,7 +94,7 @@
           :caption: Fig. 14
           :number: 3
       :definition: |
-        Put the loop on the hands in the {ref:First Position}.
+        Put the loop on the hands in the {make:First Position}.
 
         Bring the hands together, and put the right index up under the string which crosses the left palm ({i:1}), and draw the loop out on the back of the finger by separating the hands.
  
@@ -103,7 +104,7 @@
       :references:
         - :source: :arctic
       :definition: |
-        1. {make:Position 1}
+        1. {make:Position 1}.
         2. R2 picks up L palmar string.
         3. Pass L2 distally through R2 loop and pick up R palmar string.
         4. Extend.
@@ -134,7 +135,7 @@
   :constructions:
     - :notation_id: isfa
       :definition: |
-        1. {make:Position 1}
+        1. {make:Position 1}.
         2. L2 picks up R palmar string.
         3. Pass R2 distally through L2 loop and pick up L palmar string.
         4. Extend.
@@ -180,7 +181,7 @@
       :references:
         - :source: :arctic
       :definition: |
-        1. {make:Position 1}
+        1. {make:Position 1}.
         2. R2. hooks up L palmar string; rotate R2 away from the body and up.
         3. L2 picks up L5n.
         4. Release 5 loop.
@@ -210,7 +211,7 @@
   :constructions:
     - :notation_id: isfa
       :definition: |
-        1. {make:Opening A}
+        1. {make:Opening A}.
         2. Release 1.
         3. 1, under 2 and 5n, picks up 5f.
         4. 1 picks up 2f.

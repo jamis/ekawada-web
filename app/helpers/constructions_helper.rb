@@ -29,7 +29,27 @@ module ConstructionsHelper
   end
 
   def format_line(step, line)
-    line.gsub(/\{i:(\d+)(?::(.*?))?\}/) do |m|
+logger.debug(line.inspect)
+    (line || "").gsub(/\{(.*?)\}/) do |m|
+      case $1
+      when /^i:(.*)$/
+        format_illustration(step, $1)
+      when "make"
+        if step.range?
+          "steps #{step.duplicate_from} to #{step.duplicate_to} of #{link_to(step.duplicate.figure_name, construction_path(step.duplicate))}"
+        elsif step.make?
+          link_to(step.duplicate.figure_name, construction_path(step.duplicate))
+        else
+          content_tag(:span, "\"make\" directive present, but step has no referenced construction", :class => "error")
+        end
+      else
+        content_tag(:span, "unrecognized directive \"#{$1}\"", :class => "error")
+      end
+    end
+  end
+
+  def format_illustration(step, definition)
+    if definition =~ /^(\d+)(?::(.*?))?$/
       number = $1.to_i
       caption = $2
 
@@ -40,6 +60,8 @@ module ConstructionsHelper
       else
         content_tag(:span, "no such illustration ##{number}", :class => "error")
       end
+    else
+      content_tag(:span, "incorrect format for illustration", :class => "error")
     end
   end
 

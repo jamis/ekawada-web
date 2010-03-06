@@ -85,20 +85,34 @@ class Notation
   end
 
   def interpret_step_data(data)
-    if data[:instruction] && data[:instruction] =~ /^\{(.*)\}$/
-      directive = $1
-      data[:instruction] = nil
+    if data[:instruction]
+      data[:instruction].gsub!(/\{(.*?)\}/) do |m|
+        directive = $1
 
-      case directive
-      when /^make:(.*?):(\d+):(\d+)$/
-        data[:duplicate_type] = "range"
-        data[:duplicate_from] = $2.to_i
-        data[:duplicate_to] = $3.to_i
-        data[:duplicate] = Construction.find_best_match($1, id)
-      when /^make:(.*)$/
-        data[:duplicate_type] = "make"
-        data[:duplicate] = Construction.find_best_match($1, id)
-      else raise ArgumentError, "unknown directive: #{directive.inspect}"
+        case directive
+        when /^make:/
+          if data[:duplicate]
+            raise ArgumentError, "cannot provide more than a single \"make\" directive per step"
+          end
+
+          case directive
+          when /^make:(.*?):(\d+):(\d+)$/
+            data[:duplicate_type] = "range"
+            data[:duplicate_from] = $2.to_i
+            data[:duplicate_to] = $3.to_i
+            data[:duplicate] = Construction.find_best_match($1, id)
+          when /^make:(.*)$/
+            data[:duplicate_type] = "make"
+            data[:duplicate] = Construction.find_best_match($1, id)
+          else raise ArgumentError, "unknown make directive: #{directive.inspect}"
+          end
+
+          "{make}"
+        when /^i:/
+          # processed at render-time
+          "{#{directive}}"
+        else raise ArgumentError, "unknown directive: #{directive.inspect}"
+        end
       end
     end
 

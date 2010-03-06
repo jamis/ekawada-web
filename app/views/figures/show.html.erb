@@ -45,15 +45,9 @@
         <tr class="step<%= " named" if step.named? %>">
           <th class="number"><%= number %></th>
           <td class="step">
-            <% if step.range? %>
-              steps <%= step.duplicate_from %> to <%= step.duplicate_to %> of <%= link_to(step.duplicate.figure_name, construction_path(step.duplicate)) %>
-            <% elsif step.make? %>
-              <%= link_to(step.duplicate.figure_name, construction_path(step.duplicate)) %>
-            <% else %>
-              <%= format_instruction(step) %>
-              <% if step.comment.present? %>
-                <span class="comment">(<%= step.comment %>)</span>
-              <% end %>
+            <%= format_instruction(step) %>
+            <% if step.comment.present? %>
+              <span class="comment">(<%= step.comment %>)</span>
             <% end %>
 
             <% if step.named? %>
