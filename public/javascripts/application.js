@@ -87,6 +87,7 @@ Behaviors.add("change", "add-illustration", function(element) {
     form.target = original_target;
     form.enctype = original_enctype;
     if (method_field) method_field.value = original_method;
+    element.value = "";
   }
 });
 
