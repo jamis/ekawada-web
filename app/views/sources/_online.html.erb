@@ -1,0 +1,7 @@
+<% if source.authors.present? %><%= source.authors %>.<% end %>
+<% if source.article.present? %>"<%= source.article %>."<% end %>
+<% if source.site.present? %><em><%= source.site %></em>.<% end %>
+<% if source.editor.present? %>Ed. <%= source.editor %>.<% end %>
+<% if source.publication_info.present? %><%= source.publication_info %>.<% end %>
+<% if source.access_date.present? %><%= source.access_date %><% end %>
+<% if source.url.present? %><%= link_to(source.url) %>.<% end %>

@@ -234,6 +234,14 @@ fieldset .section {
   color: red;
 }
 
+/* --- SOURCES --------------------- */
+
+.source {
+  padding-left: 0.5in;
+  text-indent: -0.5in;
+  margin-bottom: 10px;
+}
+
 /* --- LIGHTBOX-ISH STUFF ---------- */
 
 #background {
