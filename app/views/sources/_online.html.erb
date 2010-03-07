@@ -4,4 +4,4 @@
 <% if source.editor.present? %>Ed. <%= source.editor %>.<% end %>
 <% if source.publication_info.present? %><%= source.publication_info %>.<% end %>
 <% if source.access_date.present? %><%= source.access_date %><% end %>
-<% if source.url.present? %><%= link_to(source.url) %>.<% end %>
+<% if source.url.present? %><%= link_to(source.url, source.url) %>.<% end %>
