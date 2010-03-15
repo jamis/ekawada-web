@@ -35,7 +35,7 @@
 
     <%= f.fields_for(@figure.constructions.build) do |c| %>
       <%= render :partial => "constructions/form", :object => c %>
-    <% end%>
+    <% end %>
   </fieldset>
 
   <%= f.submit "Add this figure" %>
