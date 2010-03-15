@@ -4,7 +4,7 @@
   <%= csrf_meta_tag %>
 <% end %>
 
-<h1><%= @figure.canonical_name %></h1>
+<h1><%= @figure.canonical_name %> <%= link_to("edit", edit_figure_path(@figure)) %></h1>
 <% if @figure.aliases.any? %>
 <h2 class="aliases">
   <% @figure.aliases.each_with_index do |alt, index| %>
