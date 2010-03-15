@@ -1,0 +1,4 @@
+<div id="<%= dom_id(source) %>" class="source">
+  <%= source.id %>.
+  <%= Bibliographer.format(source.kind, source.data).html_safe %>
+</div>

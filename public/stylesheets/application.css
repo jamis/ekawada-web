@@ -224,6 +224,7 @@ fieldset .section {
   text-align: center;
   border-top: 1px solid #ccc;
   padding: 5px;
+  background: white;
 }
 
 .construction .illustrations .illustration:first-child {
@@ -240,6 +241,11 @@ fieldset .section {
 }
 
 /* --- SOURCES --------------------- */
+
+#sources {
+  border-top: 1px solid #ccc;
+  margin-top: 10px;
+}
 
 .source {
   padding-left: 0.5in;

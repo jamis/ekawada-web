@@ -1,7 +1,3 @@
 <h2>Sources</h2>
 
-<% @sources.each do |source| %>
-  <div id="<%= dom_id(source) %>" class="source">
-    <%= render(source_template_for(source), :source => source) %>
-  </div>
-<% end %>
+<%= render :partial => "source", :collection => @sources %>

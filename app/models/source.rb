@@ -16,6 +16,14 @@ class Source < ActiveRecord::Base
     end
   end
 
+  def kind
+    @kind ||= self.class.name.underscore.sub(/_source/, "").to_sym
+  end
+
+  def data
+    info
+  end
+
   def rebuild_sorting
     if changed?
       fields = field_order.map { |f| info[f] }.reject { |f| f.blank? }
