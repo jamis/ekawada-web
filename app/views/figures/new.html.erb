@@ -1,6 +1,6 @@
 <% @title = "Add a new figure" %>
 
-<% form_for(@figure) do |f| %>
+<%= form_for(@figure) do |f| %>
   <fieldset>
     <legend>General information</legend>
 
@@ -10,7 +10,7 @@
       <div>
         <ul style="display: none" id="aliases">
           <li style="display: none">
-            <% f.fields_for("new_aliases[]", @figure.aliases.build) do |a| %>
+            <%= f.fields_for("new_aliases[]", @figure.aliases.build) do |a| %>
               Also known as <%= a.text_field :name %>
               in <%= a.text_field :location %>
               <%= link_to "[x]", "#", "data-behaviors" => "remove-alias" %>
@@ -33,7 +33,7 @@
   <fieldset>
     <legend>Instructions</legend>
 
-    <% f.fields_for(@figure.constructions.build) do |c| %>
+    <%= f.fields_for(@figure.constructions.build) do |c| %>
       <%= render :partial => "constructions/form", :object => c %>
     <% end%>
   </fieldset>
