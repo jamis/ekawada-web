@@ -29,7 +29,6 @@ module ConstructionsHelper
   end
 
   def format_line(step, line)
-logger.debug(line.inspect)
     (line || "").gsub(/\{(.*?)\}/) do |m|
       case $1
       when /^i:(.*)$/
