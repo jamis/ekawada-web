@@ -128,3 +128,15 @@ Behaviors.add("click", "lightbox:close", function(element) {
   $('background').hide();
   $('lightbox').hide();
 });
+
+Behaviors.addSelector("click", "#existing_source a", function(element) {
+  event.stop();
+  $('existing_source').addClassName('hidden');
+  $('new_source').addClassName('shown');
+});
+
+Behaviors.addSelector("click", "#new_source a", function(element) {
+  event.stop();
+  $('new_source').removeClassName('shown');
+  $('existing_source').removeClassName('hidden');
+});

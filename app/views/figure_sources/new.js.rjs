@@ -1,0 +1,2 @@
+klass = Source.class_for(params[:kind]) # verify that :kind is valid
+page[:form].replace_html :partial => "form", :locals => { :klass => klass, :kind => params[:kind] }

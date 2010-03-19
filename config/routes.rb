@@ -1,6 +1,7 @@
 Ekawada::Application.routes.draw do |map|
   resources :figures do
     resources :constructions
+    resources :sources, :controller => "figure_sources"
   end
 
   resources :constructions

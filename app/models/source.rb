@@ -16,6 +16,12 @@ class Source < ActiveRecord::Base
     end
   end
 
+  def self.class_for(type)
+    klass = "#{type}_source".classify.constantize
+    raise ArgumentError, "not a source class" if klass.superclass != self
+    return klass
+  end
+
   def kind
     @kind ||= self.class.name.underscore.sub(/_source/, "").to_sym
   end

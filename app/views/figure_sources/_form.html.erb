@@ -1,0 +1,18 @@
+<%= form_for(@figure_source) do |f| %>
+  <div id="existing_source">
+    Select an existing source:
+    <%= f.select(:source_id, klass.all.map { |s| [s.brief, s.id] }) %><br />
+    or <%= link_to "define a new source", "#" %>
+  </div>
+
+  <div id="new_source">
+    <%= f.fields_for :source do |src| %>
+      <%= render "sources/form_#{kind}", :form => src %>
+    <% end %>
+    <br />or <%= link_to "choose existing source", "#" %>
+  </div>
+
+  <div class="citation">
+    <%= render "form_#{kind}", :form => f %>
+  </div>
+<% end %>

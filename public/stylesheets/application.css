@@ -11,6 +11,14 @@ body {
   margin: 0;
 }
 
+.hidden {
+  display: none !important;
+}
+
+.shown {
+  display: block !important;
+}
+
 #header {
   padding: 5px 20px;
   border-bottom: 3px solid #99f;
@@ -245,12 +253,22 @@ fieldset .section {
 #sources {
   border-top: 1px solid #ccc;
   margin-top: 10px;
+  font-size: 12px;
+}
+
+#sources h2 {
+  font-size: 14px;
+  margin-bottom: 5px;
 }
 
 .source {
   padding-left: 0.5in;
   text-indent: -0.5in;
   margin-bottom: 10px;
+}
+
+#new_source {
+  display: none;
 }
 
 /* --- LIGHTBOX-ISH STUFF ---------- */

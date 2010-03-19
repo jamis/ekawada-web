@@ -2,4 +2,6 @@
   <h2>Sources</h2>
 
   <%= render :partial => "sources/source", :collection => @figure.figure_sources %>
+
+  &rarr; <%= link_to "Cite another source for this figure", new_figure_source_path(@figure) %>
 </div>
