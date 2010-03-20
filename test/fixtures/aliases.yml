@@ -1,0 +1,6 @@
+first_position:
+  figure: position1
+  name: First Position
+  location: ~
+  created_at: <%= 12.days.ago.utc.to_s(:db) %>
+  updated_at: <%= 12.days.ago.utc.to_s(:db) %>

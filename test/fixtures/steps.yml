@@ -1,12 +1,36 @@
+position1_isfa1:
+  construction: position1_isfa
+  position: 0
+  instruction: "Place an untwisted loop on 1 and 5."
+
 base1:
   construction: base
-  position: 1
+  position: 0
   instruction: "1-5,s"
 base2:
   construction: base
-  position: 2
+  position: 1
   instruction: "R2,p/"
 base3:
   construction: base
-  position: 3
+  position: 2
   instruction: "L2,2p/"
+
+openinga_isfa1:
+  construction: openinga_isfa
+  position: 0
+  duplicate_type: make
+  duplicate_id: position1_isfa (Construction)
+  instruction: "{make}."
+openinga_isfa2:
+  construction: openinga_isfa
+  position: 1
+  instruction: "R2 picks up L palmar string."
+openinga_isfa3:
+  construction: openinga_isfa
+  position: 2
+  instruction: "Pass L2 distally through R2 loop and pick up R palmar string."
+openinga_isfa4:
+  construction: openinga_isfa
+  position: 3
+  instruction: "Extend."

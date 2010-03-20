@@ -15,6 +15,22 @@ class Figure < ActiveRecord::Base
 
   after_create :create_construction, :create_aliases
 
+  def self.find_by_name(name)
+    # prefer canonical name
+    figure = find_by_canonical_name(name)
+    return figure if figure
+
+    # then, look for the first matching alias
+    a = Alias.find_by_name(name)
+    return a.figure if a
+
+    # finally, look for the first matching construction name
+    c = Construction.find_by_name(name)
+    return c.figure if c
+
+    nil
+  end
+
   def illustration_path
     hi, lo = id.divmod(100)
     File.join(hi.to_s, lo.to_s)

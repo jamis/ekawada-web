@@ -1,5 +1,14 @@
+position1_isfa:
+  figure: position1
+  notation_id: isfa
+  submitter: jamis
+  created_at: <%= 12.days.ago.utc.to_s(:db) %>
+  updated_at: <%= 12.days.ago.utc.to_s(:db) %>
+  definition: "Place an untwisted loop on 1 and 5."
+
 base:
   figure: openinga
+  name: base
   notation_id: mizz
   submitter: jamis
   created_at: <%= 12.days.ago.utc.to_s(:db) %>
@@ -8,3 +17,15 @@ base:
     1 1-5,s
     2 R2,p/
     3 L2,2p/
+
+openinga_isfa:
+  figure: openinga
+  notation_id: isfa
+  submitter: jamis
+  created_at: <%= 12.days.ago.utc.to_s(:db) %>
+  updated_at: <%= 12.days.ago.utc.to_s(:db) %>
+  definition: |
+    1. {make:Position 1}.
+    2. R2 picks up L palmar string.
+    3. Pass L2 distally through R2 loop and pick up R palmar string.
+    4. Extend.

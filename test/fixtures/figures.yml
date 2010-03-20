@@ -1,3 +1,11 @@
+position1:
+  canonical_name: Position 1
+  opening: true
+  ending: false
+  maneuver: false
+  created_at: <%= 12.days.ago.utc.to_s(:db) %>
+  updated_at: <%= 12.days.ago.utc.to_s(:db) %>
+
 openinga:
   canonical_name: Opening A
   opening: true

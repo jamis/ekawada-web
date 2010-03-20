@@ -118,7 +118,7 @@ class Notation
 
     if data[:name] && data[:name] =~ /^\{(.*)\}$/
       data[:name] = nil
-      data[:figure] = Figure.find_by_canonical_name($1)
+      data[:figure] = Figure.find_by_name($1)
     end
 
     data
