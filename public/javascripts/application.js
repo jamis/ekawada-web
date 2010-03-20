@@ -129,6 +129,11 @@ Behaviors.add("click", "lightbox:close", function(element) {
   $('lightbox').hide();
 });
 
+Behaviors.addSelector("ajax:before", "#source_type a", function(element) {
+  $$("#source_type a").invoke("removeClassName", "selected");
+  element.addClassName('selected');
+});
+
 Behaviors.addSelector("click", "#existing_source a", function(element) {
   event.stop();
   $('existing_source').addClassName('hidden');

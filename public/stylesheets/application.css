@@ -271,6 +271,33 @@ fieldset .section {
   display: none;
 }
 
+#source_type {
+  margin-bottom: 10px;
+}
+
+#source_type a {
+  padding: 5px;
+  border: 1px solid #ccc;
+  background: #eee;
+  text-decoration: none;
+  color: #777;
+}
+
+#source_type a:hover {
+  background: #77f;
+  color: white;
+}
+
+#source_type a:active {
+  background: #447;
+  color: white;
+}
+
+#source_type a.selected {
+  background: #ff7;
+  color: black;
+}
+
 /* --- LIGHTBOX-ISH STUFF ---------- */
 
 #background {
