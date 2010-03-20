@@ -8,6 +8,11 @@ class FigureSourcesController < ApplicationController
     respond_with(@figure_source)
   end
 
+  def create
+    @figure_source = @figure.figure_sources.create(params[:figure_source])
+    redirect_to(@figure)
+  end
+
   private
 
   def find_figure

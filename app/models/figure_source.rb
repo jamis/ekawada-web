@@ -6,12 +6,15 @@ class FigureSource < ActiveRecord::Base
 
   delegate :kind, :to => :source
 
+  attr_writer :new_source, :which_source, :kind
+  before_create :process_new_source
+
   def data
     source.info.merge(info)
   end
 
   def method_missing(sym, *args, &block)
-    if sym.to_s =~ /^info_(.*\w)[=?]?$/
+    if sym.to_s =~ /^info_(.*\w)([=?])?$/
       name = $1
       action = $2
 
@@ -22,6 +25,19 @@ class FigureSource < ActiveRecord::Base
       end
     else
       super
+    end
+  end
+
+  def respond_to?(sym, *args)
+    sym.to_s =~ /^info_(.*\w)[=?]?$/ || super
+  end
+
+  private
+
+  def process_new_source
+    if @new_source && @which_source == "new"
+      klass = Source.class_for(@kind)
+      self.source = klass.create(@new_source)
     end
   end
 end

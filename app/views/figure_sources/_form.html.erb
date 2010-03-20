@@ -1,4 +1,7 @@
 <%= form_for(@figure_source) do |f| %>
+  <%= f.hidden_field :which_source, :value => "existing", :class => "which" %>
+  <%= f.hidden_field :kind, :value => kind %>
+
   <div id="existing_source">
     Select an existing source:
     <%= f.select(:source_id, klass.all.map { |s| [s.brief, s.id] }) %><br />
@@ -6,7 +9,7 @@
   </div>
 
   <div id="new_source">
-    <%= f.fields_for :source do |src| %>
+    <%= f.fields_for :new_source do |src| %>
       <%= render "sources/form_#{kind}", :form => src %>
     <% end %>
     <br />or <%= link_to "choose existing source", "#" %>
@@ -15,4 +18,6 @@
   <div class="citation">
     <%= render "form_#{kind}", :form => f %>
   </div>
+
+  <%= submit_tag "Add this citation to #{@figure.canonical_name}" %>
 <% end %>
