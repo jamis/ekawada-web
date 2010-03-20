@@ -73,7 +73,7 @@
       <p>Add new instructions to <strong><%= @figure.canonical_name %></strong>.</p>
     </div>
 
-    <% form_for([@figure, @figure.constructions.build]) do |f| %>
+    <%= form_for([@figure, @figure.constructions.build]) do |f| %>
       <%= render :partial => "constructions/form", :object => f %>
 
       <p><%= f.submit "Add these instructions to #{@figure.canonical_name}" %></p>
