@@ -1,3 +1,5 @@
+<h1>Add a citation to <%= @figure.canonical_name %></h1>
+
 <div id="source_type">
   This citation refers to a
   <%= link_to "Book", new_figure_source_path(@figure, :kind => "book"), "data-remote" => "1", "data-method" => "get" %>
@@ -7,3 +9,5 @@
 
 <div id="form">
 </div>
+
+<%= link_to("Cancel", figure_path(@figure)) %> and go back to <%= @figure.canonical_name %>

@@ -267,12 +267,20 @@ fieldset .section {
   margin-bottom: 10px;
 }
 
-#new_source {
-  display: none;
+#form form {
+  border-top: 1px solid #ccc;
+}
+
+#form fieldset {
+  margin: 15px 0;
+}
+
+.else {
+  font-size: 12px;
 }
 
 #source_type {
-  margin-bottom: 10px;
+  margin: 15px 0;
 }
 
 #source_type a {
@@ -296,6 +304,16 @@ fieldset .section {
 #source_type a.selected {
   background: #ff7;
   color: black;
+}
+
+#new_source {
+  display: none;
+}
+
+#new_source input,
+#existing_source input,
+.citation input {
+  width: 400px;
 }
 
 /* --- LIGHTBOX-ISH STUFF ---------- */

@@ -2,22 +2,24 @@
   <%= f.hidden_field :which_source, :value => "existing", :class => "which" %>
   <%= f.hidden_field :kind, :value => kind %>
 
-  <div id="existing_source">
-    Select an existing source:
-    <%= f.select(:source_id, klass.all.map { |s| [s.brief, s.id] }) %><br />
-    or <%= link_to "define a new source", "#" %>
-  </div>
+  <fieldset id="existing_source">
+    <legend>Select an existing <%= source_type(kind) %></legend>
+    <%= f.select(:source_id, klass.all.map { |s| [s.brief, s.id] }) %>
+    <br /><span class="else">&rarr; or <%= link_to "define a new #{source_type(kind)}", "#" %></span>
+  </fieldset>
 
-  <div id="new_source">
+  <fieldset id="new_source">
+    <legend>Define a new <%= source_type(kind) %></legend>
     <%= f.fields_for :new_source do |src| %>
       <%= render "sources/form_#{kind}", :form => src %>
     <% end %>
-    <br />or <%= link_to "choose existing source", "#" %>
-  </div>
+    <br /><span class="else">&rarr; or <%= link_to "choose existing #{source_type(kind)}", "#" %></span>
+  </fieldset>
 
-  <div class="citation">
+  <fieldset class="citation">
+    <legend>Describe this citation</legend>
     <%= render "form_#{kind}", :form => f %>
-  </div>
+  </fieldset>
 
   <%= submit_tag "Add this citation to #{@figure.canonical_name}" %>
 <% end %>
