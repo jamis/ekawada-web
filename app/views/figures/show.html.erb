@@ -4,7 +4,7 @@
   <%= csrf_meta_tag %>
 <% end %>
 
-<h1><%= @figure.canonical_name %> <%= link_to("edit", edit_figure_path(@figure)) %></h1>
+<h1><%= @figure.canonical_name %> <span><%= link_to("edit", edit_figure_path(@figure)) %> or <%= link_to("delete", figure_path(@figure), "data-method" => "delete", "data-confirm" => "Are you sure you want to delete this figure? This cannot be undone!") %></span></h1>
 <% if @figure.aliases.any? %>
 <h2 class="aliases">
   <% @figure.aliases.each_with_index do |alt, index| %>

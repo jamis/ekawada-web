@@ -1,5 +1,5 @@
 class FiguresController < ApplicationController
-  before_filter :find_figure, :only => %w(show edit update)
+  before_filter :find_figure, :only => %w(show edit update destroy)
 
   def index
     @figures = Figure.order("updated_at DESC").limit(11).sort_by(&:canonical_name)
@@ -24,6 +24,11 @@ class FiguresController < ApplicationController
   def update
     @figure.update_attributes(params[:figure])
     redirect_to(@figure)
+  end
+
+  def destroy
+    @figure.destroy
+    redirect_to(root_url)
   end
 
   private

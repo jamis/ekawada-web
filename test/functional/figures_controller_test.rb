@@ -47,4 +47,11 @@ class FiguresControllerTest < ActionController::TestCase
 
     assert_redirected_to figure_url(assigns(:figure))
   end
+
+  test "destroy should respond correctly" do
+    assert_difference "Figure.count", -1 do
+      delete :destroy, :id => figures(:openinga).id
+      assert_redirected_to root_url
+    end
+  end
 end
