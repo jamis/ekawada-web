@@ -6,7 +6,13 @@
 <p>
   <%= form.label :name, "Notation-specific name:", :class => "text" %><br />
   <%= form.text_field :name, :class => "text2" %><br />
-  <small>Optional: only specify if this particular construction has a specific name.</small>
+  <small>Optional: only specify if this notation gives these instructions a specific name.</small>
+</p>
+
+<p>
+  <%= form.label :description, "Description:", :class => "text" %><br />
+  <%= form.text_area :description, :class => "description" %><br />
+  <small>Use <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> for formatting</small>
 </p>
 
 <p>

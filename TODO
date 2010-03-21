@@ -8,5 +8,8 @@
 - delete references
 - remove illustrations
 - perma pages for each notation
-- add descriptions for figures and constructions
 - add/edit/delete illustrations for figures
+- notation parser for FSFN
+- user permissions
+- unauthenticated views ("public-facing")
+- login/logout

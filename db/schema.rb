@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100207232836) do
+ActiveRecord::Schema.define(:version => 20100321144234) do
 
   create_table "aliases", :force => true do |t|
     t.integer  "figure_id",  :null => false
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20100207232836) do
     t.integer  "reviewed_by"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
   end
 
   add_index "constructions", ["figure_id"], :name => "index_constructions_on_figure_id"
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20100207232836) do
     t.boolean  "maneuver"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
   end
 
   add_index "figures", ["updated_at"], :name => "index_figures_on_updated_at"

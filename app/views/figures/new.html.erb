@@ -19,6 +19,12 @@
         </ul>
         + <%= link_to "Add an alias", "#", "data-behaviors" => "add-alias" %>
       </div>
+
+      <p>
+        <%= f.label :description, "General description:", :class => "text" %><br />
+        <%= f.text_area :description, :class => "description" %><br />
+        <small>Use <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> for formatting</small>
+      </p>
     </div>
 
     <div class="section">

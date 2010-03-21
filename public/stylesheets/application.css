@@ -77,6 +77,14 @@ body {
   visibility: visible;
 }
 
+div.description {
+  margin-bottom: 20px;
+}
+
+.construction div.description {
+  border-bottom: 1px solid #ccc;
+}
+
 input.text {
   font-size: 30px;
   font-weight: bold;
@@ -92,6 +100,12 @@ input.text2 {
 label.text {
   font-size: 14px;
   color: #555;
+}
+
+textarea.description {
+  font-size: 16px;
+  width: 600px;
+  height: 100px;
 }
 
 textarea.instructions {

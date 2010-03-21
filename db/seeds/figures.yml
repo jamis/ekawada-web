@@ -21,6 +21,10 @@
       :info:
         :url: "http://www.alysion.org/figures/openings.htm"
         :article: "Openings, Moves, and Endings"
+  :description: |
+    First Position is one of the most ubiquitous of all openings, largely because
+    of its simplicity. Some notations (e.g. Mizz Code) do not even treat First Position
+    as a named opening, because it can be described in a single step.
   :constructions:
     - :notation_id: cfj
       :name: First Position
@@ -30,6 +34,13 @@
         - :file: p1-01.png
           :caption: Fig. 11
           :number: 1
+      :description: |
+        From _String Figures and How to Make Them_, page 10:
+
+        > The following movements put the loop on the hands in what for convenience
+        > may be called the First Position. Very many string games begin in this way;
+        > and the movements should be learned now, as we shall not repeat the description
+        > with every figure.
       :definition: |
         Put the little fingers into the loop of string, and separate the hands.
         You now have a single loop on each little finger passing directly and uncrossed to the opposite little finger.

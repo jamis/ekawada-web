@@ -2,6 +2,7 @@ source 'http://gemcutter.org'
 
 gem "rails", :path => "../rails"
 gem "sqlite3-ruby", :require => "sqlite3"
+gem "bluecloth"
 
 # Bundle the extra gems:
 # gem "bj"
