@@ -5,7 +5,7 @@
 <p><em>This page intentionally left blank</em></p>
 
 <div style="display: none">
-  <% form_for("prefix.#{@illustration.location}") do |form| %>
+  <%= form_for("prefix.#{@illustration.location}") do |form| %>
     <script type="text/javascript">
       window.thumbnail = <%= render("thumbnail", :form => form, :thumbnail => @illustration, :name => "new_illustrations").to_json.html_safe %>;
     </script>

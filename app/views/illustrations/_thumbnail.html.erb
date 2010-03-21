@@ -1,5 +1,5 @@
 <div class="thumbnail" id="<%= illustration_dom_id(thumbnail) %>">
-  <% form.fields_for "#{name}[]", thumbnail do |i| %>
+  <%= form.fields_for "#{name}[]", thumbnail do |i| %>
     <%= image_tag(thumbnail.url(:thumb), :size => thumbnail.dimensions(:thumb), :alt => thumbnail.caption) %><br />
     <%= i.text_field :caption %><br />
     <span class="number"><%= thumbnail.number %></span>

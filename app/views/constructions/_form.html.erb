@@ -19,7 +19,7 @@
 </div>
 
 <p id="add_illustration">
-  <% fields_for :illustration do |i| %>
+  <%= fields_for :illustration do |i| %>
     <%= i.label :file, "Add an illustration:", :class => "text" %>
     <span><%= i.file_field :file, "data-behaviors" => "add-illustration", "data-url" => illustrations_path %></span>
   <% end %>
