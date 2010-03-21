@@ -1,5 +1,6 @@
 <div class="thumbnail" id="<%= illustration_dom_id(thumbnail) %>">
   <%= form.fields_for "#{name}[]", thumbnail do |i| %>
+    <%= link_to "(x)", "#" %>
     <%= image_tag(thumbnail.url(:thumb), :size => thumbnail.dimensions(:thumb), :alt => thumbnail.caption) %><br />
     <%= i.text_field :caption %><br />
     <span class="number"><%= thumbnail.number %></span>
@@ -11,8 +12,8 @@
       <%= i.hidden_field :file_size %>
       <%= i.hidden_field :number, :class => "number" %>
     <% else %>
-      <%= i.hidden_field :id %>
-      <%= i.hidden_field :delete, :value => "0" %>
+      <%= i.hidden_field :id, :class => "id" %>
+      <%= i.hidden_field :deleted, :value => "0", :class => "deleted" %>
     <% end %>
   <% end %>
 </div>

@@ -33,7 +33,7 @@ module Illustrated
     list.each do |hash|
       if hash[:id]
         i = illustrations.find(hash[:id])
-        if hash.delete(:delete).to_i == 1
+        if hash.delete(:deleted).to_i == 1
           i.destroy
         else
           i.update_attributes(hash)

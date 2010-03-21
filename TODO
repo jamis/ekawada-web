@@ -1,4 +1,5 @@
-- remove illustrations
+- display references
+- add references
 - real README
 - perma pages for each notation
 - add/edit/delete illustrations for figures
@@ -11,8 +12,8 @@
 - delete sources
 - edit figure_sources
 - delete figure_sources
-- add references
 - edit references
 - delete references
 - disallow figure deletion if it or any of its constructions are referenced in another figure
 - disallow construction deletion if it is referenced in another figure
+- reorder illustrations

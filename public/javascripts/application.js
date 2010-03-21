@@ -139,6 +139,22 @@ Behaviors.add("click", "lightbox:close", function(element) {
   $('lightbox').hide();
 });
 
+Behaviors.addSelector("click", "div.thumbnail a", function(element) {
+  var div = element.up('div.thumbnail');
+  var id = div.down('input.id');
+
+  if(id) {
+    if(confirm("Are you sure you want to remove this illustration?")) {
+      div.hide();
+      div.down('input.deleted').value = "1";
+    }
+  } else {
+    div.remove();
+  }
+
+  event.stop();
+});
+
 Behaviors.addSelector("ajax:before", "#source_type a", function(element) {
   $$("#source_type a").invoke("removeClassName", "selected");
   element.addClassName('selected');

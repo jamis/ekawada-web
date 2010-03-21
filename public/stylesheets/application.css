@@ -224,6 +224,16 @@ fieldset .section {
   margin: 5px;
   padding: 2px;
   text-align: center;
+  position: relative;
+}
+
+.thumbnail a {
+  color: red;
+  text-decoration: none;
+  position: absolute;
+  font-size: 10px;
+  top: 0;
+  right: 0;
 }
 
 .thumbnail input {
