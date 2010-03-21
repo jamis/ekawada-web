@@ -1,0 +1,9 @@
+<% @title = "Edit this figure" %>
+
+<%= form_for(@figure) do |f| %>
+  <h2>Edit <%= @figure.canonical_name %></h2>
+
+  <%= render "form", :form => f %>
+
+  <%= f.submit "Save changes" %> or <%= link_to("cancel", @figure) %>
+<% end %>

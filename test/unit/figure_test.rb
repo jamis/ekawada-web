@@ -43,4 +43,29 @@ STEPS
   test "find_by_name should return nil if no figure can be found with that name" do
     assert_nil Figure.find_by_name("bogus name")
   end
+
+  test "update with old alias data should update existing aliases" do
+    id = aliases(:first_position).id
+    figures(:position1).update_attributes(
+      :old_aliases => { id => { :id => id,
+          :deleted => "0",
+          :name => "1st position",
+          :location => "everywhere" } }
+      )
+
+    assert_equal "1st position", aliases(:first_position, :reload).name
+    assert_equal "everywhere", aliases(:first_position).location
+  end
+
+  test "update with old alias data should delete marked aliases" do
+    id = aliases(:first_position).id
+    figures(:position1).update_attributes(
+      :old_aliases => { id => { :id => id,
+          :deleted => "1",
+          :name => "1st position",
+          :location => "everywhere" } }
+      )
+
+    assert !Alias.exists?(id)
+  end
 end

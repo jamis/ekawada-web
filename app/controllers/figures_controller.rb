@@ -1,11 +1,12 @@
 class FiguresController < ApplicationController
+  before_filter :find_figure, :only => %w(show edit update)
+
   def index
     @figures = Figure.order("updated_at DESC").limit(11).sort_by(&:canonical_name)
     @figures, @more = @figures[0,10], @figures[10]
   end
 
   def show
-    @figure = Figure.find(params[:id])
   end
 
   def new
@@ -15,5 +16,19 @@ class FiguresController < ApplicationController
   def create
     @figure = Figure.create((params[:figure] || {}).merge(:submitter_id => current_user))
     redirect_to(@figure)
+  end
+
+  def edit
+  end
+
+  def update
+    @figure.update_attributes(params[:figure])
+    redirect_to(@figure)
+  end
+
+  private
+
+  def find_figure
+    @figure = Figure.find(params[:id])
   end
 end

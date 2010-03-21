@@ -56,8 +56,18 @@ Behaviors.add("click", "add-alias", function(element) {
 });
 
 Behaviors.add("click", "remove-alias", function(element) {
-  element.up('li').remove();
-  if($$('#aliases li').length < 2) {
+  var li = element.up('li');
+  var id = li.down('input.id');
+
+  if(id) {
+    li.hide();
+    li.down('input.deleted').value = "1";
+  } else {
+    li.remove();
+  }
+
+  var visible_items = $$('#aliases li').select(function(e) { return e.visible(); });
+  if(visible_items.length < 1) {
     $('aliases').hide();
   }
 });

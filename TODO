@@ -1,3 +1,12 @@
+- delete figures
+- remove illustrations
+- real README
+- perma pages for each notation
+- add/edit/delete illustrations for figures
+- notation parser for FSFN
+- user permissions
+- unauthenticated views ("public-facing")
+- login/logout
 - allow "make" references in constructions to be expanded
 - edit sources
 - delete sources
@@ -6,10 +15,3 @@
 - add references
 - edit references
 - delete references
-- remove illustrations
-- perma pages for each notation
-- add/edit/delete illustrations for figures
-- notation parser for FSFN
-- user permissions
-- unauthenticated views ("public-facing")
-- login/logout

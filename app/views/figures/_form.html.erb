@@ -1,0 +1,29 @@
+<div class="section">
+  <%= form.label :canonical_name, nil, :class => "text" %><br />
+  <%= form.text_field :canonical_name, :class => "text" %>
+  <div>
+    <ul <%= @figure.aliases.empty? && 'style="display: none"' %> id="aliases">
+      <% @figure.aliases.each do |alias_object| %>
+        <li><%= render "alias_form", :alias_object => alias_object, :form => form %></li>
+      <% end %>
+      <li style="display: none">
+        <%= render "alias_form", :alias_object => @figure.aliases.build, :form => form %>
+      </li>
+    </ul>
+    + <%= link_to "Add an alias", "#", "data-behaviors" => "add-alias" %>
+  </div>
+
+  <p>
+    <%= form.label :description, "General description:", :class => "text" %><br />
+    <%= form.text_area :description, :class => "description" %><br />
+    <small>Use <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> for formatting</small>
+  </p>
+</div>
+
+<div class="section">
+  This is an
+  <%= form.check_box :opening %> <%= form.label :opening %> |
+  <%= form.check_box :ending %> <%= form.label :ending %> |
+  <%= form.check_box :maneuver %> <%= form.label :maneuver %>
+  (check all that apply)
+</div>

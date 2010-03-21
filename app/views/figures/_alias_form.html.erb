@@ -1,0 +1,7 @@
+<%= form.fields_for(alias_object.new_record? ? "new_aliases[]" : "old_aliases[]", alias_object) do |a| %>
+  <%= a.hidden_field :id, :class => "id" unless alias_object.new_record? %>
+  <%= a.hidden_field :deleted, :class => "deleted", :value => "0" unless alias_object.new_record? %>
+  Also known as <%= a.text_field :name %>
+  in <%= a.text_field :location %>
+  <%= link_to "[x]", "#", "data-behaviors" => "remove-alias" %>
+<% end %>

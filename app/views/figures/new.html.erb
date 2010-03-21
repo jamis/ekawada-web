@@ -4,36 +4,7 @@
   <fieldset>
     <legend>General information</legend>
 
-    <div class="section">
-      <%= f.label :canonical_name, nil, :class => "text" %><br />
-      <%= f.text_field :canonical_name, :class => "text" %>
-      <div>
-        <ul style="display: none" id="aliases">
-          <li style="display: none">
-            <%= f.fields_for("new_aliases[]", @figure.aliases.build) do |a| %>
-              Also known as <%= a.text_field :name %>
-              in <%= a.text_field :location %>
-              <%= link_to "[x]", "#", "data-behaviors" => "remove-alias" %>
-            <% end %>
-          </li>
-        </ul>
-        + <%= link_to "Add an alias", "#", "data-behaviors" => "add-alias" %>
-      </div>
-
-      <p>
-        <%= f.label :description, "General description:", :class => "text" %><br />
-        <%= f.text_area :description, :class => "description" %><br />
-        <small>Use <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> for formatting</small>
-      </p>
-    </div>
-
-    <div class="section">
-      This is an
-      <%= f.check_box :opening %> <%= f.label :opening %> |
-      <%= f.check_box :ending %> <%= f.label :ending %> |
-      <%= f.check_box :maneuver %> <%= f.label :maneuver %>
-      (check all that apply)
-    </div>
+    <%= render "form", :form => f %>
   </fieldset>
 
   <fieldset>

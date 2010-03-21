@@ -11,9 +11,10 @@ class Figure < ActiveRecord::Base
   scope :maneuvers, where(:maneuver => true)
 
   attr_writer :construction
-  attr_accessor :submitter_id, :new_aliases
+  attr_accessor :submitter_id, :new_aliases, :old_aliases
 
-  after_create :create_construction, :create_aliases
+  after_create :create_construction
+  after_save :create_aliases, :update_aliases
 
   def self.find_by_name(name)
     # prefer canonical name
@@ -48,5 +49,20 @@ class Figure < ActiveRecord::Base
     return unless @new_aliases
     @new_aliases.each { |data| aliases.create!(data) if data[:name].present? }
     @new_aliases = nil
+  end
+
+  def update_aliases
+    return unless @old_aliases
+    @old_aliases.each do |id, data|
+      deleted = data.delete(:deleted).to_i
+      if deleted.to_i == 0
+        record = aliases.find(data[:id])
+        record.update_attributes(data)
+      else
+        aliases.destroy(data[:id])
+      end
+    end
+    aliases.reset
+    @old_aliases = nil
   end
 end
