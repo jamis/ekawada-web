@@ -78,7 +78,7 @@ class Illustration < ActiveRecord::Base
 
   def url(which)
     relative = new_record? ? self.class.relative_tmp : self.class.relative_final
-    File.join(relative, location, "#{which}.#{extension}")
+    File.join("", relative, location, "#{which}.#{extension}")
   end
 
   def path(which)
