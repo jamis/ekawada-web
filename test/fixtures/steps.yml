@@ -20,7 +20,7 @@ openinga_isfa1:
   construction: openinga_isfa
   position: 0
   duplicate_type: make
-  duplicate_id: position1_isfa (Construction)
+  duplicate: position1_isfa
   instruction: "{make}."
 openinga_isfa2:
   construction: openinga_isfa

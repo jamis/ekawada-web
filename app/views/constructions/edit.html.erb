@@ -1,6 +1,6 @@
 <% @title = "Edit this construction" %>
 
-<% form_for(@construction) do |f| %>
+<%= form_for(@construction) do |f| %>
   <h2>Edit instructions for <%= @construction.figure.canonical_name %></h2>
 
   <%= render "form", :form => f %>
