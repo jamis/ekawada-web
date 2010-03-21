@@ -1,0 +1,12 @@
+cfj:
+  type: BookSource
+  info: |
+    ---
+    :authors: Jayne, Caroline Furness
+    :title: "String Figures and How to Make Them, A Study of Cat's Cradle in Many Lands"
+    :location: New York
+    :company: "Charles Scribner's Sons"
+    :date: 1906
+  sorting: "String Figures and How to Make Them, A Study of Cat's Cradle in Many Lands"
+  created_at: <%= 12.days.ago.utc.to_s(:db) %>
+  updated_at: <%= 12.days.ago.utc.to_s(:db) %>

@@ -4,6 +4,23 @@ class Illustration < ActiveRecord::Base
   after_create :move_from_holding_location
   before_destroy :remove_assets
 
+  
+  def self.relative_tmp
+    "illustrations/tmp"
+  end
+
+  def self.relative_final
+    "illustrations"
+  end
+
+  def self.tmp_root
+    File.join(Ekawada::Application::PUBLIC, relative_tmp)
+  end
+
+  def self.final_root
+    File.join(Ekawada::Application::PUBLIC, relative_final)
+  end
+
   def self.generate_location
     "%f.%d.%s%s" %
       [Time.now, $$, rand(0xFFFFFFFF).to_s(36), rand(0xFFFFFFFF).to_s(36)]
@@ -17,8 +34,8 @@ class Illustration < ActiveRecord::Base
 
     location = generate_location
 
-    relative_dir = File.join("illustrations", "tmp", location)
-    dir = File.join(Rails.root, "public", relative_dir)
+    relative_dir = File.join(relative_tmp, location)
+    dir = File.join(tmp_root, location)
 
     FileUtils.mkdir_p(dir)
 
@@ -60,15 +77,12 @@ class Illustration < ActiveRecord::Base
   end
 
   def url(which)
-    if new_record?
-      "/illustrations/tmp/#{location}/#{which}.#{extension}"
-    else
-      "/illustrations/#{location}/#{which}.#{extension}"
-    end
+    relative = new_record? ? self.class.relative_tmp : self.class.relative_final
+    File.join(relative, location, "#{which}.#{extension}")
   end
 
   def path(which)
-    File.join(Rails.root, "public", url(which))
+    File.join(Ekawada::Application::PUBLIC, url(which))
   end
 
   def aspect_ratio
@@ -100,8 +114,8 @@ class Illustration < ActiveRecord::Base
 
   def move_from_holding_location
     final_location = File.join(parent.illustration_path, id.to_s)
-    holding = File.join(Rails.root, "public", "illustrations", "tmp", location)
-    final = File.join(Rails.root, "public", "illustrations", final_location)
+    holding = File.join(self.class.tmp_root, location)
+    final = File.join(self.class.final_root, final_location)
 
     update_attribute :location, final_location
 
