@@ -1,0 +1,15 @@
+cfj_position1:
+  source: cfj
+  figure: position1
+  info: |
+    ---
+    :section: Chapter 2
+    :pages: Pg. 11
+
+cfj_openinga:
+  source: cfj
+  figure: openinga
+  info: |
+    ---
+    :section: Chapter 2
+    :pages: Pgs. 12-13

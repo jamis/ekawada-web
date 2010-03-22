@@ -20,6 +20,22 @@
   <%= form.text_area :definition, :class => "instructions" %>
 </p>
 
+<% if form.object.figure && form.object.figure.figure_sources.any? %>
+<p class="text">Which sources reference these specific instructions?</p>
+<ul class="references">
+  <%= form.fields_for :referenced_sources do |refs| %>
+    <% form.object.figure.figure_sources.each do |source| %>
+      <li>
+        <%= reference_check_box(refs, form.object, source) %>
+        <%= Bibliographer.format(source.kind, source.data).html_safe %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+<% end %>
+
+<p>Illustrations:</p>
+
 <div id="thumbnails" data-next-number="<%= form.object.illustrations.next_number %>" data-prefix="<%= form.object_name %>">
   <%= render :partial => "illustrations/thumbnail", :locals => { :form => form, :name => "old_illustrations" }, :collection => form.object.illustrations %>
 </div>

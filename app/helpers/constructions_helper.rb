@@ -71,4 +71,11 @@ module ConstructionsHelper
       dom_id(illustration)
     end
   end
+
+  def reference_check_box(form, construction, figure_source)
+    name = form.object_name + "[#{figure_source.id}]"
+    hidden = hidden_field_tag(name, "0")
+    checkbox = check_box_tag(name, "1", construction.references.any? { |ref| ref.figure_source_id == figure_source.id })
+    hidden + checkbox
+  end
 end

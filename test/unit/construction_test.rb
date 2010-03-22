@@ -10,4 +10,36 @@ class ConstructionTest < ActiveSupport::TestCase
     assert_equal 3, construction.steps.length
     assert_equal %w(foo bar baz), construction.steps.map(&:instruction)
   end
+
+  test "updating a construction should add references" do
+    assert_difference "constructions(:position1_isfa).references.count" do
+      constructions(:position1_isfa).update_attributes(
+        :referenced_sources => {
+          figure_sources(:cfj_position1) => "1"
+        })
+    end
+  end
+
+  test "updating a construction should remove references" do
+    assert constructions(:openinga_isfa).references.any?
+
+    assert_difference "constructions(:openinga_isfa).references.count", -1 do
+      constructions(:openinga_isfa).update_attributes(
+        :referenced_sources => {
+          figure_sources(:cfj_openinga) => "0"
+        })
+    end
+
+    assert constructions(:openinga_isfa, :reload).references.empty?
+  end
+
+  test "updating a construction without specifying references shouldn't modify references" do
+    assert constructions(:openinga_isfa).references.any?
+
+    assert_no_difference "constructions(:openinga_isfa).references.count" do
+      constructions(:openinga_isfa).update_attributes :name => "Opening Alpha"
+    end
+
+    assert constructions(:openinga_isfa, :reload).references.any?
+  end
 end
