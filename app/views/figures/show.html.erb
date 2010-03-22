@@ -78,6 +78,15 @@
         <% end %>
       <% end %>
     </table>
+
+    <% if cons.references.any? %>
+      <p class="references">
+        Referenced in
+        <% cons.references.each do |ref| %>
+          [<%= link_to ref.figure_source.id, "#" + dom_id(ref.figure_source) %>]
+        <% end %>
+      </p>
+    <% end %>
   </div>
 <% end %>
   <div class="tab-body" id="new_construction">
