@@ -26,12 +26,20 @@ class Notation
     @attributes = attributes
   end
   
+  def has_short_name?
+    name(:short) != name
+  end
+
   def name(type=:full)
     case type
     when :full then @attributes["full"]
     when :short then @attributes["short"] || @attributes["full"]
     else raise ArgumentError, "unknown name type: #{type.inspect}"
     end
+  end
+
+  def resources
+    @attributes["resources"]
   end
 
   def <=>(notation)

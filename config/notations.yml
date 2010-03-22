@@ -3,43 +3,44 @@ isfa:
   short: ISFA
   sort: 0
   resources:
-    - "http://isfa.org/sfotm/terminology/string_figure_terminology.pdf"
-    - "http://www.isfa.org/arctic/n.htm"
+    "String Figure Terminology (PDF)": http://isfa.org/sfotm/terminology/string_figure_terminology.pdf
+    "Nomenclature": http://www.isfa.org/arctic/n.htm
 
 mizz:
   full: "Mizz Code"
   sort: 1
   resources:
-    - "http://home.p07.itscom.net/nenemei/v2/index.html"
-    - "http://stringfigures.info/mizz-quickref.html"
+    "The basics of Mizz code in picture form": http://home.p07.itscom.net/nenemei/v2/index.html
+    "Quick Reference": http://stringfigures.info/mizz-quickref.html
+    "Yahoo! Group": http://groups.yahoo.com/group/mizz-code/
 
 sfn:
-  full: "String Figure Notation (SFN)"
+  full: "String Figure Notation"
   short: "SFN"
   sort: 2
   resources:
-    - "http://www.alysion.org/figures/notation.htm"
+    "A Shorthand Notation for Recording String Figures": http://www.alysion.org/figures/notation.htm
 
 fsfn:
-  full: "Formal String Figure Notation (FSFN)"
+  full: "Formal String Figure Notation"
   short: "FSFN"
   sort: 3
   resources:
-    - "http://www.ben-daglish.net/string/"
+    "An attempt to formalise notation for String Figures": http://www.ben-daglish.net/string/
 
 cfj:
   full: "Jayne's Notation"
   short: "CFJ"
   sort: 4
   resources:
-    - "http://www.stringfigures.info/cfj/chapter-01.html"
+    "String Figures and How to Make Them, Chapter 1": http://www.stringfigures.info/cfj/chapter-01.html
 
 rivers-haddon:
   full: "Rivers-Haddon Notation"
   short: "Rivers-Haddon"
   sort: 5
   resources:
-    - "http://books.google.com/books?id=yRP0I0s8QdEC&pg=PA146"
+    "Man, Volume 2, No. 109, \"A Method of Recording String Figures and Tricks\"": http://books.google.com/books?id=yRP0I0s8QdEC&pg=PA146
 
 prose:
   full: "Other Prose Notation"

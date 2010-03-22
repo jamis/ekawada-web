@@ -1,0 +1,15 @@
+<h1><%= @notation.name %> <%= "(aka #{@notation.name(:short)})" if @notation.has_short_name? %></h1>
+
+<div class="about">
+<%= render(@notation.id) %>
+</div>
+
+<% if @notation.resources.present? %>
+  <h2>For further information:</h2>
+
+  <ul>
+    <% @notation.resources.each do |description, url| %>
+      <li><%= link_to(description, url) %></li>
+    <% end %>
+  </ul>
+<% end %>
