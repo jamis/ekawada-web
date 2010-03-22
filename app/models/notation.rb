@@ -65,7 +65,7 @@ class Notation
       line.strip!
       next if line.empty?
 
-      number, instruction = line.match(/^\s*(?:(\d+)\.?\s+)?(\S.+)$/)[1,2]
+      number, instruction = match_line(line)
       number = number.to_i if number.present?
 
       yield position, interpret_step_data(extract_step_data(line, instruction))
@@ -73,6 +73,10 @@ class Notation
     end
 
     position
+  end
+
+  def match_line(line)
+    line.match(/^\s*(?:(\d+)\.?\s+)?(\S.+)$/)[1,2]
   end
 
   def extract_step_data(line, instruction)
@@ -90,6 +94,13 @@ class Notation
   # SFN, which omit the period after the step number).
   def format_step_number(number)
     "#{number}. "
+  end
+
+  # Format the comment according to this notation's style. Most notations don't
+  # have any concept of a "comment", so subclasses ought to redefine this as
+  # necessary.
+  def format_comment(comment)
+    comment
   end
 
   def interpret_step_data(data)

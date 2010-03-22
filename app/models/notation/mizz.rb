@@ -10,6 +10,10 @@ class Notation::Mizz < Notation
     "#{number} "
   end
 
+  def format_comment(comment)
+    "(#{comment})"
+  end
+
   def extract_step_data(line, instruction)
     instruction = instruction.strip
     instruction, name = extract_enclosed_text(instruction, ?[, ?])

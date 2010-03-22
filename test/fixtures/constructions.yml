@@ -6,6 +6,17 @@ position1_isfa:
   updated_at: <%= 12.days.ago.utc.to_s(:db) %>
   definition: "Place an untwisted loop on 1 and 5."
 
+position1_fsfn:
+  figure: position1
+  name: P1
+  notation_id: fsfn
+  submitter: jamis
+  created_at: <%= 12.days.ago.utc.to_s(:db) %>
+  updated_at: <%= 12.days.ago.utc.to_s(:db) %>
+  definition: |
+    1 pu SN ex
+    5 pu 1f ex
+
 base:
   figure: openinga
   name: base

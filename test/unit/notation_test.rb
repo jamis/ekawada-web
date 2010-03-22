@@ -57,6 +57,24 @@ STEPS
     assert_step 2, :instruction => "L2,2p/", :name => nil, :figure => figures(:openinga)
   end
 
+  test "parsing fsfn should not consume initial digits" do
+    assert_equal 1, parse(:fsfn, "2 pu SN\n")
+    assert_parsed_as Notation::Fsfn
+    assert_step 0, :instruction => "2 pu SN"
+  end
+
+  test "parsing fsfn should extract comments" do
+    assert_equal 1, parse(:fsfn, "2 pu SN # vigorously\n")
+    assert_parsed_as Notation::Fsfn
+    assert_step 0, :instruction => "2 pu SN", :comment => "vigorously"
+  end
+
+  test "parsing fsfn should extract references" do
+    assert_equal 1, parse(:fsfn, "[P1]")
+    assert_parsed_as Notation::Fsfn
+    assert_step 0, :instruction => "[{make}]", :type => "make", :duplicate => constructions(:position1_fsfn)
+  end
+
   private
 
     def parse(as, definition)

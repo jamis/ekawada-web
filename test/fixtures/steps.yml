@@ -3,6 +3,15 @@ position1_isfa1:
   position: 0
   instruction: "Place an untwisted loop on 1 and 5."
 
+position1_fsfn1:
+  construction: position1_fsfn
+  position: 0
+  instruction: "1 pu SN ex"
+position1_fsfn2:
+  construction: position1_fsfn
+  position: 1
+  instruction: "5 pu 1f ex"
+
 base1:
   construction: base
   position: 0

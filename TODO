@@ -1,5 +1,4 @@
 - add/edit/delete illustrations for figures
-- notation parser for FSFN
 - user permissions
 - unauthenticated views ("public-facing")
 - login/logout
