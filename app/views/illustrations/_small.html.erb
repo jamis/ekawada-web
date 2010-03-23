@@ -1,4 +1,6 @@
 <div class="illustration" id="<%= dom_id(small) %>" data-alt-src="<%= small.url(:large) %>" data-alt-dimensions="<%= small.dimensions(:large) %>">
-  <%= link_to(image_tag(small.url(:small), :size => small.dimensions(:small), :alt => small.caption, :border => 0), "#", "data-behaviors" => "zoom-illustration", "data-illustration" => dom_id(small)) %><br />
-  <span class="caption"><%= small.caption %></span>
+  <%= link_to(image_tag(small.url(:small), :size => small.dimensions(:small), :alt => small.caption.presence || "illustration", :border => 0), "#", "data-behaviors" => "zoom-illustration", "data-illustration" => dom_id(small)) %><br />
+  <% if small.caption.present? %>
+    <span class="caption"><%= small.caption %></span>
+  <% end %>
 </div>

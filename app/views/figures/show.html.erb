@@ -4,20 +4,28 @@
   <%= csrf_meta_tag %>
 <% end %>
 
-<h1><%= @figure.canonical_name %> <span><%= link_to("edit", edit_figure_path(@figure)) %> or <%= link_to("delete", figure_path(@figure), "data-method" => "delete", "data-confirm" => "Are you sure you want to delete this figure? This cannot be undone!") %></span></h1>
-<% if @figure.aliases.any? %>
-<h2 class="aliases">
-  <% @figure.aliases.each_with_index do |alt, index| %>
-    <span class="aka aka<%= index %>">Also known as </span><%= alt.name %> <%= alias_locations_for(alt) %><br />
+<div class="figure">
+  <% if @figure.illustrations.any? %>
+    <div class="illustrations">
+      <%= render "illustrations/small", :small => @figure.illustrations.first %>
+    </div>
   <% end %>
-</h2>
-<% end %>
 
-<% if @figure.description.present? %>
-  <div class="description">
-    <%= markdown2html(@figure.description) %>
-  </div>
-<% end %>
+  <h1><%= @figure.canonical_name %> <span><%= link_to("edit", edit_figure_path(@figure)) %> or <%= link_to("delete", figure_path(@figure), "data-method" => "delete", "data-confirm" => "Are you sure you want to delete this figure? This cannot be undone!") %></span></h1>
+  <% if @figure.aliases.any? %>
+  <h2 class="aliases">
+    <% @figure.aliases.each_with_index do |alt, index| %>
+      <span class="aka aka<%= index %>">Also known as </span><%= alt.name %> <%= alias_locations_for(alt) %><br />
+    <% end %>
+  </h2>
+  <% end %>
+
+  <% if @figure.description.present? %>
+    <div class="description">
+      <%= markdown2html(@figure.description) %>
+    </div>
+  <% end %>
+</div>
 
 <ul class="tabs">
   <li id="tab_new_construction" class="new"><%= link_to("New instructions", { :anchor => "new_construction" }, "data-behaviors" => "tab", "data-link" => "new_construction") %></li>

@@ -150,6 +150,7 @@ ul.tabs {
   list-style-type: none;
   margin: 1em 0;
   padding: 3px 10px;
+  clear: both;
 }
 
 ul.tabs li {
@@ -245,25 +246,33 @@ fieldset .section {
   clear: both;
 }
 
-.construction .illustrations {
-  float: right;
+.illustrations {
   border: 1px solid #ccc;
   margin-bottom: 10px;
   text-align: right;
 }
 
-.construction .illustrations .illustration {
+.figure .illustrations {
+  float: left;
+  margin-right: 10px;
+}
+
+.construction .illustrations {
+  float: right;
+}
+
+.illustrations .illustration {
   text-align: center;
   border-top: 1px solid #ccc;
   padding: 5px;
   background: white;
 }
 
-.construction .illustrations .illustration:first-child {
+.illustrations .illustration:first-child {
   border-top: none;
 }
 
-.construction .illustrations .illustration .caption {
+.illustrations .illustration .caption {
   font-style: italic;
   font-size: 12px;
 }

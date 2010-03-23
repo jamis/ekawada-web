@@ -90,6 +90,10 @@
       :info:
         :url: "http://www.alysion.org/figures/openings.htm"
         :article: "Openings, Moves, and Endings"
+  :illustrations:
+    - :file: oa-03.png
+      :caption: Opening A
+      :number: 1
   :constructions:
     - :notation_id: cfj
       :references:

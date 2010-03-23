@@ -24,6 +24,7 @@ if Rails.env.development?
     end
 
     aliases = Array(data.delete(:aliases))
+    illustrations = Array(data.delete(:illustrations))
 
     Figure.create(data).tap do |figure|
       aliases.each do |data|
@@ -34,6 +35,16 @@ if Rails.env.development?
       source_data.inject({}) do |map, entry|
         key = entry.delete(:key)
         refmap[key] = figure.figure_sources.create(entry)
+      end
+
+      illustrations.each do |i|
+        filename = i.delete(:file)
+        File.open(File.join(File.dirname(__FILE__), "seeds", "illustrations", filename)) do |file|
+          file.extend(UploadedFile)
+          file.original_filename = filename
+          illustration = Illustration.process_to_holding(:file => file)
+          illustration.update_attributes(i.merge(:parent => figure))
+        end
       end
 
       constructions.each do |data|
