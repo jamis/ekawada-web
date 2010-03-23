@@ -103,6 +103,7 @@ Behaviors.add("change", "add-illustration", function(element) {
 
 Behaviors.add("click", "zoom-illustration", function(element, event) {
   var illustration = $(element.readAttribute('data-illustration'));
+  var figure = element.up(".figure");
 
   var alt_src = illustration.readAttribute('data-alt-src');
   var alt_size = illustration.readAttribute('data-alt-dimensions');
@@ -122,7 +123,14 @@ Behaviors.add("click", "zoom-illustration", function(element, event) {
   img.width = alt_width;
   img.height = alt_height;
 
-  box.style.right = "20px";
+  if (figure) {
+    box.style.left = "20px";
+    box.style.right = "auto";
+  } else {
+    box.style.left = "auto";
+    box.style.right = "20px";
+  }
+
   var top = event.pointerY() - box.getHeight() / 2
   if (top + box.getHeight() > document.body.getHeight() - 5)
     top = document.body.getHeight() - box.getHeight() - 5;
