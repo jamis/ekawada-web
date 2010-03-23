@@ -27,3 +27,9 @@
   <%= form.check_box :maneuver %> <%= form.label :maneuver %>
   (check all that apply)
 </div>
+
+<div class="section">
+  <p>Illustrations of this figure:</p>
+
+  <%= render "illustrations/form", :destination => "figure_thumbnails", :form => form %>
+</div>

@@ -24,18 +24,19 @@ document.observe("dom:loaded", function() {
 });
 
 document.observe("upload:complete", function(event) {
-  $('add_illustration').removeClassName("busy");
-
   var location = event.memo.location;
   var thumbnail = event.memo.thumbnail;
+  var destination = $(event.memo.destination);
 
-  var next_number = parseInt($('thumbnails').readAttribute('data-next-number'));
-  var prefix = $('thumbnails').readAttribute('data-prefix');
+  destination.next('.add_illustration').removeClassName('busy');
 
-  $('thumbnails').writeAttribute('data-next-number', next_number+1);
+  var next_number = parseInt(destination.readAttribute('data-next-number'));
+  var prefix = destination.readAttribute('data-prefix');
+
+  destination.writeAttribute('data-next-number', next_number+1);
 
   thumbnail = thumbnail.gsub("name=\"prefix." + location, "name=\"" + prefix);
-  $('thumbnails').insert(thumbnail);
+  destination.insert(thumbnail);
 
   var newid = "thumb." + location;
   $(newid).down('.number').innerHTML = next_number;
@@ -75,6 +76,8 @@ Behaviors.add("click", "remove-alias", function(element) {
 Behaviors.add("change", "add-illustration", function(element) {
   var form = element.up('form');
   var url = element.readAttribute("data-url");
+  var destination = element.readAttribute("data-destination");
+  var section = element.up('.add_illustration');
 
   var original_action = form.action;
   var original_target = form.target;
@@ -86,13 +89,23 @@ Behaviors.add("change", "add-illustration", function(element) {
   }
 
   try {
-    $('add_illustration').addClassName("busy");
+    // disable the entire form EXCEPT for the file upload being pushed; this
+    // avoids a conflict when there are two illustration forms within a single
+    // form (e.g. on figures/new).
+    form.getElements().each(function(field) {
+      if(field.name != "_method" && field.name != "authenticity_token" && field.up('.add_illustration') != section) {
+        field.disable();
+      }
+    });
+
+    section.addClassName('busy');
     form.action = url;
     form.target = "invisible";
     form.enctype = "multipart/form-data";
     if (method_field) method_field.value = "POST"
     form.submit();
   } finally {
+    form.enable();
     form.action = original_action;
     form.target = original_target;
     form.enctype = original_enctype;
@@ -111,7 +124,11 @@ Behaviors.add("click", "zoom-illustration", function(element, event) {
   var alt_width = alt_dims[0];
   var alt_height = alt_dims[1];
 
-  var caption = illustration.down('.caption').innerHTML;
+  var caption;
+
+  if (illustration.down('.caption')) {
+    caption = illustration.down('.caption').innerHTML;
+  }
 
   var bg = $('background');
   bg.show();
@@ -138,7 +155,14 @@ Behaviors.add("click", "zoom-illustration", function(element, event) {
 
   box.style.top = top + "px";
 
-  box.down('.caption').innerHTML = caption;
+  var box_caption = box.down('.caption');
+  if (caption) {
+    box_caption.innerHTML = caption;
+    box_caption.show();
+  } else {
+    box_caption.hide();
+  }
+
   box.show();
 });
 

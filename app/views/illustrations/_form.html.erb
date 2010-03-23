@@ -1,0 +1,13 @@
+<div id="<%= destination %>" data-next-number="<%= form.object.illustrations.next_number %>" data-prefix="<%= form.object_name %>">
+  <%= render :partial => "illustrations/thumbnail", :locals => { :form => form, :name => "old_illustrations" }, :collection => form.object.illustrations %>
+</div>
+
+<p class="add_illustration">
+  <%= fields_for :illustration do |i| %>
+    <%= i.hidden_field :destination, :value => destination %>
+    <%= i.label :file, "Add an illustration:", :class => "text" %>
+    <span><%= i.file_field :file, "data-behaviors" => "add-illustration", "data-url" => illustrations_path %></span>
+  <% end %>
+</p>
+
+<iframe id="invisible" style="display: none"></iframe>

@@ -1,4 +1,3 @@
-- add/edit/delete illustrations for figures
 - user permissions
 - unauthenticated views ("public-facing")
 - login/logout

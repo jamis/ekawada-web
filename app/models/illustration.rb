@@ -4,6 +4,7 @@ class Illustration < ActiveRecord::Base
   after_create :move_from_holding_location
   before_destroy :remove_assets
 
+  attr_accessor :destination
   
   def self.relative_tmp
     "illustrations/tmp"
@@ -73,7 +74,7 @@ class Illustration < ActiveRecord::Base
     size = File.size(original) + File.size(thumb) + File.size(small) + File.size(large)
 
     new(:location => location, :caption => name, :width => width, :height => height,
-      :extension => ext, :file_size => size)
+      :extension => ext, :file_size => size, :destination => data[:destination])
   end
 
   def url(which)

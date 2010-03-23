@@ -241,7 +241,7 @@ fieldset .section {
   width: 80;
 }
 
-#add_illustration {
+.add_illustration {
   padding-top: 10px;
   clear: both;
 }

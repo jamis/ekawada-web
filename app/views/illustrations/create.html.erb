@@ -1,7 +1,7 @@
 <html>
 <head>
 </head>
-<body onload="parent.document.fire('upload:complete', {location: <%= @illustration.location.to_json %>, thumbnail: window.thumbnail})">
+<body onload="parent.document.fire('upload:complete', {location: <%= @illustration.location.to_json %>, thumbnail: window.thumbnail, destination: <%= @illustration.destination.to_json %>})">
 <p><em>This page intentionally left blank</em></p>
 
 <div style="display: none">
