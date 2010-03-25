@@ -2,6 +2,7 @@ class FigureSourcesController < ApplicationController
   respond_to :html, :js
 
   before_filter :find_figure
+  before_filter :ensure_can_alter_data
 
   def new
     @figure_source = @figure.figure_sources.build
