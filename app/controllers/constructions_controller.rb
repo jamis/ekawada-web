@@ -1,6 +1,7 @@
 class ConstructionsController < ApplicationController
   before_filter :find_figure, :only => %w(new create)
   before_filter :find_construction, :except => %w(new create)
+  before_filter :ensure_can_alter_data, :only => %w(new create edit update destroy)
 
   def new
     redirect_to(figure_url(@figure, :anchor => "new_construction"))
