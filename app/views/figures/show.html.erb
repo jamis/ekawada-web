@@ -1,9 +1,5 @@
 <% @title = @figure.canonical_name %>
 
-<% content_for :header do %>
-  <%= csrf_meta_tag %>
-<% end %>
-
 <div class="figure">
   <% if @figure.illustrations.any? %>
     <div class="illustrations">

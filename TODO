@@ -1,6 +1,5 @@
 - user permissions
 - unauthenticated views ("public-facing")
-- login/logout
 - allow "make" references in constructions to be expanded
 - edit sources
 - delete sources

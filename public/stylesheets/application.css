@@ -33,6 +33,16 @@ body {
   font-size: 36px;
 }
 
+#header .actions {
+  float: right;
+  padding-top: 10px;
+  line-height: 46px;
+}
+
+#header .actions a {
+  color: white;
+}
+
 #content {
   margin: 10px 20px;
 }

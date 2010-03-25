@@ -3,8 +3,10 @@ class ApplicationController < ActionController::Base
 
   private
 
-    # FIXME!!!
     def current_user
-      User.first
+      @current_user ||= begin
+        User.find_by_id(session[:user_id]) if session[:user_id]
+      end
     end
+    helper_method :current_user
 end

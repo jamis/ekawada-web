@@ -3,10 +3,19 @@
   <title><%= @title ? "Ekawada: #{@title}" : "Ekawada!" %></title>
   <%= javascript_include_tag :defaults, "behaviors" %>
   <%= stylesheet_link_tag 'application' %>
+  <%= csrf_meta_tag %>
   <%= yield :header %>
 </head>
 <body>
   <div id="header">
+    <div class="actions">
+      <% if current_user %>
+        <%= link_to "logout", session_url, :method => "delete" %>
+      <% else %>
+        <%= link_to "login", new_session_url %>
+      <% end %>
+    </div>
+
     <h1>Ekawada!</h1>
   </div>
 
