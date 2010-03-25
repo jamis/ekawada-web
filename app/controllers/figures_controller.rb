@@ -1,5 +1,6 @@
 class FiguresController < ApplicationController
   before_filter :find_figure, :only => %w(show edit update destroy)
+  before_filter :ensure_can_alter_data, :only => %w(new create edit update destroy)
 
   def index
     @figures = Figure.order("updated_at DESC").limit(11).sort_by(&:canonical_name)
