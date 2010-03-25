@@ -7,5 +7,5 @@
 <%= form_for(User.new, :url => session_path) do |f| %>
   User name: <%= f.text_field :login %><br />
   Password: <%= f.password_field :password, :value => "" %><br />
-  <%= f.submit %>
+  <%= f.submit "Log into Ekawada!" %>
 <% end %>
