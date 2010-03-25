@@ -1,6 +1,6 @@
 source 'http://gemcutter.org'
 
-gem "rails", :path => "../rails"
+gem "rails", :git => "git://github.com/rails/rails.git", :ref => "master"
 gem "sqlite3-ruby", :require => "sqlite3"
 gem "bluecloth"
 
