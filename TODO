@@ -6,3 +6,4 @@
 - disallow figure deletion if it or any of its constructions are referenced in another figure
 - disallow construction deletion if it is referenced in another figure
 - reorder illustrations
+- allow source to be specified at figure creation
