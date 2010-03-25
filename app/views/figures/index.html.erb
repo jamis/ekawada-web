@@ -4,4 +4,6 @@
 <% end %>
 </ul>
 
-<%= link_to("Add a new figure", new_figure_path) %>
+<% if can_alter_data? %>
+  <%= link_to("Add a new figure", new_figure_path) %>
+<% end %>

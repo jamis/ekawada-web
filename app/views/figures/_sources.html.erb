@@ -3,5 +3,7 @@
 
   <%= render :partial => "sources/source", :collection => @figure.figure_sources %>
 
-  &rarr; <%= link_to "Cite another source for this figure", new_figure_source_path(@figure) %>
+  <% if can_alter_data? %>
+    &rarr; <%= link_to "Cite another source for this figure", new_figure_source_path(@figure) %>
+  <% end %>
 </div>

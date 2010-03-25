@@ -9,7 +9,7 @@
 <body>
   <div id="header">
     <div class="actions">
-      <% if current_user %>
+      <% if current_user.authenticated? %>
         <%= link_to "logout", session_url, :method => "delete" %>
       <% else %>
         <%= link_to "login", new_session_url %>

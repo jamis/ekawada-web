@@ -1,6 +1,12 @@
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
+  class Unauthenticated
+    def authenticated?
+      false
+    end
+  end
+
   attr_accessible :name, :login, :email, :password
 
   has_many :constructions, :inverse_of => :submitter, :foreign_key => :submitter_id
@@ -25,6 +31,10 @@ class User < ActiveRecord::Base
 
   def deleted?
     login.nil?
+  end
+
+  def authenticated?
+    true
   end
 
   def destroy

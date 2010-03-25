@@ -7,7 +7,16 @@
     </div>
   <% end %>
 
-  <h1><%= @figure.canonical_name %> <span><%= link_to("edit", edit_figure_path(@figure)) %> or <%= link_to("delete", figure_path(@figure), "data-method" => "delete", "data-confirm" => "Are you sure you want to delete this figure? This cannot be undone!") %></span></h1>
+  <h1>
+    <%= @figure.canonical_name %>
+    <% if can_alter_data? %>
+      <span>
+        <%= link_to("edit", edit_figure_path(@figure)) %>
+        or
+        <%= link_to("delete", figure_path(@figure), :method => "delete", :confirm => "Are you sure you want to delete this figure? This cannot be undone!") %>
+      </span>
+    <% end %>
+  </h1>
   <% if @figure.aliases.any? %>
   <h2 class="aliases">
     <% @figure.aliases.each_with_index do |alt, index| %>
@@ -24,7 +33,9 @@
 </div>
 
 <ul class="tabs">
-  <li id="tab_new_construction" class="new"><%= link_to("New instructions", { :anchor => "new_construction" }, "data-behaviors" => "tab", "data-link" => "new_construction") %></li>
+  <% if can_alter_data? %>
+    <li id="tab_new_construction" class="new"><%= link_to("New instructions", { :anchor => "new_construction" }, "data-behaviors" => "tab", "data-link" => "new_construction") %></li>
+  <% end %>
   <% @figure.constructions.each do |cons| %>
     <li id="<%= dom_id(cons, :tab) %>"><%= link_to(cons.notation.name(:short), { :anchor => dom_id(cons) }, "data-behaviors" => "tab", "data-link" => dom_id(cons)) %></li>
   <% end %>
@@ -41,7 +52,9 @@
         <% end %>
       </p>
 
-      <p>You may <%= link_to("edit these instructions", edit_construction_path(cons)) %>, or <%= link_to("delete them", construction_path(cons), :method => :delete, :confirm => "Are you sure you want to delete these instructions? This is permanent!") %>.</p>
+      <% if can_alter_data? %>
+        <p>You may <%= link_to("edit these instructions", edit_construction_path(cons)) %>, or <%= link_to("delete them", construction_path(cons), :method => :delete, :confirm => "Are you sure you want to delete these instructions? This is permanent!") %>.</p>
+      <% end %>
     </div>
 
     <% if cons.description.present? %>
@@ -93,6 +106,7 @@
     <% end %>
   </div>
 <% end %>
+<% if can_alter_data? %>
   <div class="tab-body" id="new_construction">
     <div class="meta">
       <p>Add new instructions to <strong><%= @figure.canonical_name %></strong>.</p>
@@ -104,6 +118,7 @@
       <p><%= f.submit "Add these instructions to #{@figure.canonical_name}" %></p>
     <% end %>
   </div>
+<% end %>
 </div>
 
 <%= render "sources" %>
