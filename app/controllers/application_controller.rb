@@ -4,11 +4,7 @@ class ApplicationController < ActionController::Base
   private
 
     def current_user
-      @current_user ||= begin
-        user = User.find_by_id(session[:user_id]) if session[:user_id]
-        user = nil if user && user.deleted?
-        user || User::Unauthenticated.new
-      end
+      @current_user ||= User.for(session[:user_id])
     end
     helper_method :current_user
 

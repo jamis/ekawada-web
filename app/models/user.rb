@@ -19,6 +19,15 @@ class User < ActiveRecord::Base
     user && user.password_matches?(password) ? user : nil
   end
 
+  def self.for(id)
+    user = find_by_id(id) if id
+    if user.nil? || user.deleted?
+      Unauthenticated.new
+    else
+      user
+    end
+  end
+
   def password=(password)
     return if password.blank?
     generate_salt!
