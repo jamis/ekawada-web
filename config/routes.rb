@@ -9,6 +9,8 @@ Ekawada::Application.routes.draw do |map|
   resources :sources
   resources :illustrations
 
+  resource :session
+
   root :to => "figures#index"
 
   # The priority is based upon order of creation:
