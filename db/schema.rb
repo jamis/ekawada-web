@@ -39,9 +39,9 @@ ActiveRecord::Schema.define(:version => 20100321144234) do
   add_index "constructions", ["submitter_id"], :name => "index_constructions_on_submitter_id"
 
   create_table "figure_sources", :force => true do |t|
-    t.integer  "figure_id",                        :null => false
-    t.integer  "source_id",                        :null => false
-    t.text     "info",       :default => "--- {}", :null => false
+    t.integer  "figure_id", :null => false
+    t.integer  "source_id", :null => false
+    t.text     "info"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(:version => 20100321144234) do
 
   create_table "sources", :force => true do |t|
     t.string   "type"
-    t.text     "info",       :default => "--- {}", :null => false
+    t.text     "info"
     t.string   "sorting"
     t.datetime "created_at"
     t.datetime "updated_at"

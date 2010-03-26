@@ -15,6 +15,12 @@ class FigureSource < ActiveRecord::Base
     source.info.merge(info)
   end
 
+  def info
+    value = super
+    self.info = value = {} if value.nil?
+    return value
+  end
+
   def method_missing(sym, *args, &block)
     if sym.to_s =~ /^info_(.*\w)([=?])?$/
       name = $1

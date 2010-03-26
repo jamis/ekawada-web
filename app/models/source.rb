@@ -22,6 +22,12 @@ class Source < ActiveRecord::Base
     return klass
   end
 
+  def info
+    value = super
+    self.info = value = {} if value.nil?
+    return value
+  end
+
   def kind
     @kind ||= self.class.name.underscore.sub(/_source/, "").to_sym
   end

@@ -14,7 +14,7 @@ class InitialMigration < ActiveRecord::Migration
 
     create_table :sources do |t|
       t.string :type
-      t.text :info, :null => false, :default => "--- {}"
+      t.text :info
       t.string :sorting
       t.timestamps
     end
@@ -34,7 +34,7 @@ class InitialMigration < ActiveRecord::Migration
     create_table :figure_sources do |t|
       t.integer :figure_id, :null => false
       t.integer :source_id, :null => false
-      t.text :info, :null => false, :default => "--- {}"
+      t.text :info
       t.timestamps
     end
 
