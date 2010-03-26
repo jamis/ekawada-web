@@ -55,7 +55,7 @@ class Illustration < ActiveRecord::Base
       end
     end
 
-    width, height = `#{IDENTITY} -format "%w %h" #{original}`.
+    width, height = `#{IDENTIFY} -format "%w %h" #{original}`.
       strip.split.map(&:to_i)
 
     x, y = width, height
