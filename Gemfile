@@ -1,17 +1,11 @@
 source 'http://gemcutter.org'
 
 gem "rails", :git => "git://github.com/rails/rails.git", :ref => "master"
-gem "sqlite3-ruby", :require => "sqlite3"
 gem "bluecloth"
 
-# Bundle the extra gems:
-# gem "bj"
-# gem "hpricot", "0.6"
-# gem "sqlite3-ruby", :require => "sqlite3"
-# gem "aws-s3", :require => "aws/s3"
+group :test do
+  gem "sqlite3-ruby", :require => "sqlite3"
+end
 
-# Bundle gems for certain environments:
-# gem "rspec", :group => :test
-# group :test do
-#   gem "webrat"
-# end
+custom = File.join(File.dirname(__FILE__), "config/Gemfile")
+eval(File.read(custom)) if File.exists?(custom)
