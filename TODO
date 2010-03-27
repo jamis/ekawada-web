@@ -7,7 +7,6 @@
 - disallow construction deletion if it is referenced in another figure
 - reorder illustrations
 - allow source to be specified at figure creation
-- allow a single figure step to span multiple steps (e.g. "steps 1-4 are same as 1-4 of X", and then next step starts at 5)
 - display whether a figure is an opening, ending, or maneuver
 - design a real figures index
 - filter index by notation

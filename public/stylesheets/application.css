@@ -152,6 +152,7 @@ th.number {
   font-weight: normal;
   vertical-align: top;
   padding-right: 5px;
+  white-space: nowrap;
 }
 
 ul.tabs {

@@ -72,7 +72,7 @@
     <table>
       <% each_step(cons) do |number, step| %>
         <tr class="step<%= " named" if step.named? %>">
-          <th class="number"><%= number %></th>
+          <th class="number"><%= number.html_safe %></th>
           <td class="step">
             <%= format_instruction(step) %>
             <% if step.comment.present? %>

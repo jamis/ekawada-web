@@ -6,10 +6,17 @@ module ConstructionsHelper
       if step.silent?
         number = ""
       else
-        number = construction.notation.format_step_number(start_at + n)
-        n += 1
+        if step.range?
+          size = step.duplicate_to - step.duplicate_from
+          number = "#{start_at + n}&ndash;#{start_at + n + size}"
+          n += size + 1
+        else
+          number = start_at + n
+          n += 1
+        end
       end
 
+      number = construction.notation.format_step_number(number)
       safe_concat(capture(number, step, &block))
     end
   end
@@ -42,9 +49,7 @@ module ConstructionsHelper
       when /^i:(.*)$/
         format_illustration(step, $1)
       when "make"
-        if step.range?
-          "steps #{step.duplicate_from} to #{step.duplicate_to} of #{link_to(step.duplicate.figure_name, construction_path(step.duplicate))}"
-        elsif step.make?
+        if step.make? || step.range?
           link_to(step.duplicate.figure_name, construction_path(step.duplicate))
         else
           content_tag(:span, "\"make\" directive present, but step has no referenced construction", :class => "error")
