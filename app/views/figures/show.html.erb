@@ -34,10 +34,10 @@
 
 <ul class="tabs">
   <% if can_alter_data? %>
-    <li id="tab_new_construction" class="new"><%= link_to("New instructions", { :anchor => "new_construction" }, "data-behaviors" => "tab", "data-link" => "new_construction") %></li>
+    <li id="tab_new_construction" class="new"><%= link_to("New instructions", { :anchor => "goto_new_construction" }, "data-behaviors" => "tab", "data-link" => "new_construction") %></li>
   <% end %>
   <% @figure.constructions.each do |cons| %>
-    <li id="<%= dom_id(cons, :tab) %>"><%= link_to(cons.notation.name(:short), { :anchor => dom_id(cons) }, "data-behaviors" => "tab", "data-link" => dom_id(cons)) %></li>
+    <li id="<%= dom_id(cons, :tab) %>"><%= link_to(cons.notation.name(:short), { :anchor => "goto_" + dom_id(cons) }, "data-behaviors" => "tab", "data-link" => dom_id(cons)) %></li>
   <% end %>
 </ul>
 

@@ -14,8 +14,10 @@ function selectTab(id) {
 document.observe("dom:loaded", function() {
   if($('pages')) {
     if(window.location.hash) {
-      var id = window.location.hash.substr(1);
-      selectTab(id);
+      var hash = window.location.hash.substr(1);
+      if (hash.match(/^goto_/)) {
+        selectTab(hash.substr(5));
+      }
     } else {
       var id = $('pages').down('.tab-body').id;
       selectTab(id);
