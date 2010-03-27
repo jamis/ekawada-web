@@ -14,6 +14,10 @@ class Notation::Mizz < Notation
     "(#{comment})"
   end
 
+  def rich_format?
+    false
+  end
+
   def extract_step_data(line, instruction)
     instruction = instruction.strip
     instruction, name = extract_enclosed_text(instruction, ?[, ?])

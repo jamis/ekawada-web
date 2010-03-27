@@ -8,6 +8,10 @@ class Notation::Fsfn < Notation
     "# #{comment}"
   end
 
+  def rich_format?
+    false
+  end
+
   def match_line(line)
     [nil, line.match(/^\s*(.*?)\s*$/)[1]]
   end

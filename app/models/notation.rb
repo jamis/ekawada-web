@@ -89,6 +89,12 @@ class Notation
     1
   end
 
+  # Most notations allow rich formatting in instructions. Those that do not
+  # should indicate that by overriding this method.
+  def rich_format?
+    true
+  end
+
   # Format the given number for use as a step number. Subclasses may override
   # this for notations that format the number differently (like mizz code or
   # SFN, which omit the period after the step number).

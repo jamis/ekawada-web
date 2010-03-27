@@ -3,6 +3,10 @@ class Notation::Sfn < Notation
     "(#{comment})"
   end
 
+  def rich_format?
+    false
+  end
+
   def extract_step_data(line, instruction)
     instruction = instruction.strip
 

@@ -76,7 +76,7 @@
           <td class="step">
             <%= format_instruction(step) %>
             <% if step.comment.present? %>
-              <span class="comment"><%= cons.notation.format_comment(step.comment) %></span>
+              <span class="comment"><%= cons.notation.format_comment(markdown2html(step.comment)).html_safe %></span>
             <% end %>
 
             <% if step.named? %>

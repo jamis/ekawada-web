@@ -20,11 +20,19 @@ module ConstructionsHelper
 
   def format_instruction(step)
     if step.wants_paragraphs?
-      step.instruction.split(/\n/).map do |line|
+      apply_formatting(step, step.instruction).split(/\n/).map do |line|
         content_tag(:p, format_line(step, line).html_safe)
       end.join("\n").html_safe
     else
-      format_line(step, step.instruction).html_safe
+      format_line(step, apply_formatting(step, step.instruction)).html_safe
+    end
+  end
+
+  def apply_formatting(step, text)
+    if step.construction.notation.rich_format?
+      markdown2html(text)
+    else
+      text
     end
   end
 
