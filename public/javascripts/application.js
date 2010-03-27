@@ -164,6 +164,7 @@ Behaviors.add("click", "zoom-illustration", function(element, event) {
   }
 
   box.show();
+  event.stop();
 });
 
 Behaviors.add("click", "lightbox:close", function(element) {
