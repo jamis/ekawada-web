@@ -14,9 +14,10 @@ module ConstructionsHelper
           number = start_at + n
           n += 1
         end
+
+        number = construction.notation.format_step_number(number)
       end
 
-      number = construction.notation.format_step_number(number)
       safe_concat(capture(number, step, &block))
     end
   end
