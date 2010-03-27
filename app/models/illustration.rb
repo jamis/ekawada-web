@@ -1,8 +1,4 @@
 class Illustration < ActiveRecord::Base
-  IM_PATH  = "/usr/bin"
-  IDENTIFY = File.join(IM_PATH, "identify")
-  CONVERT  = File.join(IM_PATH, "convert")
-
   belongs_to :parent, :polymorphic => true
 
   after_create :move_from_holding_location
@@ -55,7 +51,7 @@ class Illustration < ActiveRecord::Base
       end
     end
 
-    width, height = `#{IDENTIFY} -format "%w %h" #{original}`.
+    width, height = `#{PATHS[:identify]} -format "%w %h" #{original}`.
       strip.split.map(&:to_i)
 
     x, y = width, height
@@ -71,9 +67,9 @@ class Illustration < ActiveRecord::Base
 
     crop = "#{x}x#{y}+#{dx}+#{dy}"
 
-    system "#{CONVERT} #{original} -resize 80x80 #{thumb}"
-    system "#{CONVERT} #{original} -resize 160x160 #{small}"
-    system "#{CONVERT} #{original} -resize 600x600 #{large}"
+    system "#{PATHS[:convert]} #{original} -resize 80x80 #{thumb}"
+    system "#{PATHS[:convert]} #{original} -resize 160x160 #{small}"
+    system "#{PATHS[:convert]} #{original} -resize 600x600 #{large}"
 
     size = File.size(original) + File.size(thumb) + File.size(small) + File.size(large)
 
