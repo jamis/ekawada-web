@@ -35,7 +35,7 @@ namespace :data do
 
   task :backup => "data:dump" do
     cp_r "public/illustrations/", "db/dump"
-    run "tar cjvf data.tar.bz2 db/dump"
+    sh "tar cjvf data.tar.bz2 db/dump"
   end
 
 end
