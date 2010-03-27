@@ -4,7 +4,7 @@ class ConstructionsController < ApplicationController
   before_filter :ensure_can_alter_data, :only => %w(new create edit update destroy)
 
   def new
-    redirect_to(figure_url(@figure, :anchor => "new_construction"))
+    redirect_to(figure_url(@figure, :anchor => "goto_new_construction"))
   end
 
   def create
@@ -13,7 +13,7 @@ class ConstructionsController < ApplicationController
   end
 
   def show
-    redirect_to(figure_url(@construction.figure, :anchor => ActionController::RecordIdentifier.dom_id(@construction)))
+    redirect_to(figure_url(@construction.figure, :anchor => "goto_" + ActionController::RecordIdentifier.dom_id(@construction)))
   end
 
   def edit

@@ -4,7 +4,7 @@ class ConstructionsControllerTest < ActionController::TestCase
   test "new should respond correctly for authenticated user" do
     login(:jamis)
     get :new, :figure_id => figures(:openinga).id
-    assert_redirected_to figure_url(figures(:openinga), :anchor => "new_construction")
+    assert_redirected_to figure_url(figures(:openinga), :anchor => "goto_new_construction")
   end
 
   test "new should 403 for unauthenticated user" do
@@ -32,7 +32,7 @@ class ConstructionsControllerTest < ActionController::TestCase
   test "show should respond correctly" do
     cons = constructions(:position1_isfa)
     get :show, :id => cons.id
-    assert_redirected_to figure_url(cons.figure, :anchor => ActionController::RecordIdentifier.dom_id(cons))
+    assert_redirected_to figure_url(cons.figure, :anchor => "goto_" + ActionController::RecordIdentifier.dom_id(cons))
   end
 
   test "edit should respond correctly for authenticated user" do
