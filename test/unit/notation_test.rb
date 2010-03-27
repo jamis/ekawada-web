@@ -57,6 +57,11 @@ STEPS
     assert_step 2, :instruction => "L2,2p/", :name => nil, :figure => figures(:openinga)
   end
 
+  test "parsing mizz code release instruction should ignore step number" do
+    assert_equal 1, parse(:mizz, "1 1\n")
+    assert_step 0, :instruction => "1"
+  end
+
   test "parsing fsfn should not consume initial digits" do
     assert_equal 1, parse(:fsfn, "2 pu SN\n")
     assert_parsed_as Notation::Fsfn

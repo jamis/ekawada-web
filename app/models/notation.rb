@@ -76,7 +76,7 @@ class Notation
   end
 
   def match_line(line)
-    line.match(/^\s*(?:(\d+)\.?\s+)?(\S.+)$/)[1,2]
+    line.match(/^\s*(?:(\d+)\.?\s+)?(\S.*)$/)[1,2]
   end
 
   def extract_step_data(line, instruction)
