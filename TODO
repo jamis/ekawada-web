@@ -13,7 +13,6 @@
 - display whether a figure is an opening, ending, or maneuver
 - design a real figures index
 - filter index by notation
-- move illustrations up so they overlap the construction description, if any
 - when clicking an illustration link, don't scroll to the top of the page
 - when selecting a notation tab in figures/show, don't scroll to the top of the page
 - show a spinner when adding an illustration
