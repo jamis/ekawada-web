@@ -62,6 +62,12 @@ STEPS
     assert_step 0, :instruction => "1"
   end
 
+  test "parsing sfn should extract comment lines" do
+    assert_equal 1, parse(:sfn, "(this is a comment)\n")
+    assert_parsed_as Notation::Sfn
+    assert_step 0, :instruction => nil, :comment => "this is a comment"
+  end
+
   test "parsing fsfn should not consume initial digits" do
     assert_equal 1, parse(:fsfn, "2 pu SN\n")
     assert_parsed_as Notation::Fsfn
