@@ -13,5 +13,4 @@
 - allow source to be specified at figure creation
 - display whether a figure is an opening, ending, or maneuver
 - filter index by notation
-- illustration thumbnails during edit/create don't line up well on a second row (see "A Sea-Snake")
 - allow figures to be referenced/hyperlinked from within instructions and comments (but not as a "make" link) (see "A Sea-Snake", CFJ, steps 4 and 5)

@@ -239,6 +239,11 @@ fieldset .section {
   position: relative;
 }
 
+.thumbnail .image {
+  height: 80px;
+  width: 80px;
+}
+
 .thumbnail a {
   color: red;
   text-decoration: none;

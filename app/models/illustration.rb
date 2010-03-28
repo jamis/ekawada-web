@@ -90,8 +90,8 @@ class Illustration < ActiveRecord::Base
     @aspect_ratio ||= width / height.to_f
   end
 
-  def dimensions(which)
-    return "#{width}x#{height}" if which == :original
+  def size(which)
+    return { :width => width, :height => height } if which == :original
 
     max = case which
       when :thumb then 80
@@ -108,7 +108,12 @@ class Illustration < ActiveRecord::Base
       x = y*aspect_ratio
     end
 
-    "#{x.to_i}x#{y.to_i}"
+    { :width => x.to_i, :height => y.to_i }
+  end
+
+  def dimensions(which)
+    sz = size(which)
+    "#{sz[:width]}x#{sz[:height]}"
   end
 
   private # --------------------------------------------------------------

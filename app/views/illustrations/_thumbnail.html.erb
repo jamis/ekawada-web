@@ -1,7 +1,9 @@
 <div class="thumbnail" id="<%= illustration_dom_id(thumbnail) %>">
   <%= form.fields_for "#{name}[]", thumbnail do |i| %>
     <%= link_to "(x)", "#" %>
-    <%= image_tag(thumbnail.url(:thumb), :size => thumbnail.dimensions(:thumb), :alt => thumbnail.caption) %><br />
+    <div class="image">
+      <%= image_tag(thumbnail.url(:thumb), :size => thumbnail.dimensions(:thumb), :alt => thumbnail.caption, :style => "margin-top: #{(80-thumbnail.size(:thumb)[:height])/2}") %>
+    </div>
     <%= i.text_field :caption %><br />
     <span class="number"><%= thumbnail.number %></span>
     <% if thumbnail.new_record? %>
