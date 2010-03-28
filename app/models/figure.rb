@@ -13,6 +13,8 @@ class Figure < ActiveRecord::Base
   attr_writer :construction
   attr_accessor :submitter_id, :new_aliases, :old_aliases
 
+  before_save :update_sort_name
+
   after_create :create_construction
   after_save :create_aliases, :update_aliases
 
@@ -64,5 +66,15 @@ class Figure < ActiveRecord::Base
     end
     aliases.reset
     @old_aliases = nil
+  end
+
+  def update_sort_name
+    if canonical_name_changed?
+      if canonical_name =~ /^(a|an|the)\s/i
+        self.sort_name = ($' + ", " + $1).downcase
+      else
+        self.sort_name = canonical_name.downcase
+      end
+    end
   end
 end

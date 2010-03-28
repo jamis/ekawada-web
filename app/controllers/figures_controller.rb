@@ -3,7 +3,7 @@ class FiguresController < ApplicationController
   before_filter :ensure_can_alter_data, :only => %w(new create edit update destroy)
 
   def index
-    @figures = Figure.order("updated_at DESC").sort_by(&:canonical_name)
+    @figures = Figure.order(:sort_name)
   end
 
   def show

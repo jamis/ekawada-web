@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100321144234) do
+ActiveRecord::Schema.define(:version => 20100328022453) do
 
   create_table "aliases", :force => true do |t|
     t.integer  "figure_id",  :null => false
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(:version => 20100321144234) do
   add_index "constructions", ["submitter_id"], :name => "index_constructions_on_submitter_id"
 
   create_table "figure_sources", :force => true do |t|
-    t.integer  "figure_id", :null => false
-    t.integer  "source_id", :null => false
+    t.integer  "figure_id",  :null => false
+    t.integer  "source_id",  :null => false
     t.text     "info"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -57,8 +57,10 @@ ActiveRecord::Schema.define(:version => 20100321144234) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
+    t.string   "sort_name"
   end
 
+  add_index "figures", ["sort_name"], :name => "index_figures_on_sort_name"
   add_index "figures", ["updated_at"], :name => "index_figures_on_updated_at"
 
   create_table "illustrations", :force => true do |t|
