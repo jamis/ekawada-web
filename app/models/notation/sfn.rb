@@ -1,4 +1,8 @@
 class Notation::Sfn < Notation
+  def format_step_number(number)
+    "#{number} "
+  end
+
   def format_comment(comment)
     "(#{comment})"
   end
