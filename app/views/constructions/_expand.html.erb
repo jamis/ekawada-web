@@ -1,0 +1,20 @@
+<h2>
+  <%= @construction.figure_name %>
+  <% if from && to %>
+    <% if from == to %>
+      step <%= from %>
+    <% else %>
+      steps <%= from %>&ndash;<%= to %>
+    <% end %>
+  <% elsif from %>
+    from step <%= from %>
+  <% elsif to %>
+    to step <%= to %>
+  <% end %>
+  <%= link_to("&rarr;".html_safe, @construction) %>
+</h2>
+
+<%= render "constructions/construction",
+  :construction => @construction, :from => from, :to => to %>
+<%= render :partial => "illustrations/hidden", :collection => @construction.illustrations %>
+

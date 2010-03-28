@@ -1,6 +1,2 @@
-construction = render("constructions/construction",
-  :construction => @construction, :from => params[:from], :to => params[:to])
-illustrations = render(:partial => "illustrations/hidden",
-  :collection => @construction.illustrations)
-
-page.call('updateExpandedStep', params[:element], construction + illustrations)
+expansion = render("constructions/expand", :from => params[:from], :to => params[:to])
+page.call('updateExpandedStep', params[:element], expansion)
