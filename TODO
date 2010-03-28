@@ -1,6 +1,10 @@
+- SFN does not put a period after the step number
+- a range of a single step should not be displayed as n-n (see "The Sun", step 4).
+- allow figures to be referenced/hyperlinked from within instructions and comments (but not as a "make" link) (see "A Sea-Snake", CFJ, steps 4 and 5)
+- allow "make" references in constructions to be expanded
+- have mizz code autoexpand "make" instructions into a comment line + the full instructions
 - design a real figures index
 
-- allow "make" references in constructions to be expanded
 - edit sources
 - delete sources
 - edit figure_sources
@@ -11,4 +15,4 @@
 - allow source to be specified at figure creation
 - display whether a figure is an opening, ending, or maneuver
 - filter index by notation
-- allow figures to be referenced/hyperlinked from within instructions and comments (but not as a "make" link) (see "A Sea-Snake", CFJ, steps 4 and 5)
+- show all figures that use a particular opening, ending, or maneuver
