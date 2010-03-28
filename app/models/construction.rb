@@ -29,7 +29,7 @@ class Construction < ActiveRecord::Base
       return c if c
     end
 
-    raise ActiveRecord::RecordNotFound, "no match for #{name.inspect} in #{notation_id.inspect}"
+    return nil
   end
 
   def figure_name

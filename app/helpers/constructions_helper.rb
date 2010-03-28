@@ -55,6 +55,10 @@ module ConstructionsHelper
         else
           content_tag(:span, "\"make\" directive present, but step has no referenced construction", :class => "error")
         end
+      when /make:([^:]+)/
+        $1 + " " +
+          content_tag(:span, "(no figure by that name found in #{step.construction.notation})",
+            :class => "error")
       else
         content_tag(:span, "unrecognized directive \"#{$1}\"", :class => "error")
       end

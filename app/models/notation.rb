@@ -132,7 +132,7 @@ class Notation
           else raise ArgumentError, "unknown make directive: #{directive.inspect}"
           end
 
-          "{make}"
+          data[:duplicate] ? "{make}" : "{#{directive}}"
         when /^i:/
           # processed at render-time
           "{#{directive}}"

@@ -86,6 +86,14 @@ STEPS
     assert_step 0, :instruction => "[{make}]", :type => "make", :duplicate => constructions(:position1_fsfn)
   end
 
+  test "making unknown figure should not cause error" do
+    assert_nothing_raised do
+      parse :isfa, "{make:Opening K}.\nRelease 3.\n"
+    end
+
+    assert_step 0, :instruction => "{make:Opening K}."
+  end
+
   private
 
     def parse(as, definition)

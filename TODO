@@ -1,4 +1,3 @@
-- don't give a 404 when a make instruction specifies a construction that can't be found. the create should succeed, but render with error message inline in the instructions.
 - show a spinner when adding an illustration
 - design a real figures index
 
