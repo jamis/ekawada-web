@@ -3,8 +3,7 @@ class FiguresController < ApplicationController
   before_filter :ensure_can_alter_data, :only => %w(new create edit update destroy)
 
   def index
-    @figures = Figure.order("updated_at DESC").limit(11).sort_by(&:canonical_name)
-    @figures, @more = @figures[0,10], @figures[10]
+    @figures = Figure.order("updated_at DESC").sort_by(&:canonical_name)
   end
 
   def show
