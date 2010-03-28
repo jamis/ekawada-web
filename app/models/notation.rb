@@ -102,6 +102,13 @@ class Notation
     false
   end
 
+  # When a figure refers to another figure inline, most notations prefer to let
+  # the reference remain collapsed. If a notation wants inline references to
+  # always auto-expand, it should override this method.
+  def autoexpand?
+    false
+  end
+
   # Format the given number for use as a step number. Subclasses may override
   # this for notations that format the number differently (like mizz code or
   # SFN, which omit the period after the step number).

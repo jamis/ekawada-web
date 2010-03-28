@@ -18,6 +18,10 @@ class Notation::Mizz < Notation
     false
   end
 
+  def autoexpand?
+    true
+  end
+
   def extract_step_data(line, instruction)
     instruction = instruction.strip
     instruction, name = extract_enclosed_text(instruction, ?[, ?])

@@ -1,7 +1,7 @@
 <table>
-  <% each_step(construction, from, to) do |number, step| %>
+  <% each_step(construction, from, to) do |number, formatted_number, step| %>
     <tr class="step<%= " named" if step.named? %>">
-      <th class="number"><%= number.html_safe %></th>
+      <th class="number"><%= formatted_number.html_safe %></th>
       <td class="step" id="<%= dom_id(step) %>">
         <%= format_instruction(step) %>
         <% if step.comment.present? %>
@@ -18,8 +18,14 @@
           </span>
         <% end %>
 
-        <% if step.make? || step.range? %>
-          <div class="expanded" style="display: none;"></div>
+        <% if (step.make? || step.range?) && step.duplicate %>
+          <% if autoexpand?(construction, number) %>
+            <div class="expanded loaded">
+              <%= render "constructions/expand", :construction => step.duplicate, :from => step.duplicate_from, :to => step.duplicate_to %>
+            </div>
+          <% else %>
+            <div class="expanded" style="display: none;"></div>
+          <% end %>
         <% end %>
       </td>
     </tr>

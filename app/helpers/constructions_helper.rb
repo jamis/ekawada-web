@@ -31,7 +31,7 @@ module ConstructionsHelper
       end
 
       next unless (start_at + current).between?(from, to)
-      safe_concat(capture(number, step, &block))
+      safe_concat(capture(current, number, step, &block))
     end
   end
 
@@ -64,6 +64,10 @@ module ConstructionsHelper
     else
       dom_id(illustration)
     end
+  end
+
+  def autoexpand?(construction, number)
+    construction.notation.autoexpand? && number > 0
   end
 
   def reference_check_box(form, construction, figure_source)

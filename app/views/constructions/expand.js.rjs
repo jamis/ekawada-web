@@ -1,2 +1,2 @@
-expansion = render("constructions/expand", :from => params[:from], :to => params[:to])
+expansion = render("constructions/expand", :from => params[:from], :to => params[:to], :construction => @construction)
 page.call('updateExpandedStep', params[:element], expansion)
