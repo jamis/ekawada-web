@@ -1,3 +1,8 @@
+- don't give a 404 when a make instruction specifies a construction that can't be found. the create should succeed, but render with error message inline in the instructions.
+- show a spinner when adding an illustration
+- sorting figures should ignore articles at the start of a figure's name (e.g. "A Fish-Spear")
+- design a real figures index
+
 - allow "make" references in constructions to be expanded
 - edit sources
 - delete sources
@@ -8,6 +13,6 @@
 - reorder illustrations
 - allow source to be specified at figure creation
 - display whether a figure is an opening, ending, or maneuver
-- design a real figures index
 - filter index by notation
-- show a spinner when adding an illustration
+- illustration thumbnails during edit/create don't line up well on a second row (see "A Sea-Snake")
+- allow figures to be referenced/hyperlinked from within instructions and comments (but not as a "make" link) (see "A Sea-Snake", CFJ, steps 4 and 5)
