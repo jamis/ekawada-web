@@ -11,6 +11,15 @@ function selectTab(id) {
   tab_page.addClassName("selected");
 }
 
+function updateExpandedStep(element, expansion) {
+  element = $(element);
+  var expanded = element.down('.expanded');
+
+  expanded.removeClassName('busy');
+  expanded.addClassName('loaded');
+  expanded.innerHTML = expansion;
+}
+
 document.observe("dom:loaded", function() {
   if($('pages')) {
     if(window.location.hash) {
@@ -172,6 +181,36 @@ Behaviors.add("click", "zoom-illustration", function(element, event) {
 Behaviors.add("click", "lightbox:close", function(element) {
   $('background').hide();
   $('lightbox').hide();
+});
+
+Behaviors.add("click", "toggle-expand", function(element, event) {
+  event.stop();
+
+  var expansion = element.up('td').down('.expanded');
+
+  if(expansion.visible()) {
+    expansion.hide();
+  } else if(expansion.hasClassName('loaded')) {
+    expansion.show();
+  } else {
+    expansion.addClassName('busy');
+    expansion.show();
+
+    var action = element.readAttribute('href');
+    var from = element.readAttribute('data-from');
+    var to = element.readAttribute('data-to');
+    var params = { element: element.up('td').id };
+
+    if (from) params.from = from;
+    if (to) params.to = to;
+
+    new Ajax.Request(action, {
+      method: "get",
+      parameters: params,
+      asynchronous: true,
+      evalScripts: true
+    });
+  }
 });
 
 Behaviors.addSelector("click", "div.thumbnail a", function(element) {

@@ -4,7 +4,12 @@ Ekawada::Application.routes.draw do |map|
     resources :sources, :controller => "figure_sources"
   end
 
-  resources :constructions
+  resources :constructions do
+    member do
+      get :expand
+    end
+  end
+
   resources :notations
   resources :sources
   resources :illustrations

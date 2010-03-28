@@ -3,6 +3,8 @@ class ConstructionsController < ApplicationController
   before_filter :find_construction, :except => %w(new create)
   before_filter :ensure_can_alter_data, :only => %w(new create edit update destroy)
 
+  respond_to :html, :js, :only => :expand
+
   def new
     redirect_to(figure_url(@figure, :anchor => "goto_new_construction"))
   end
@@ -27,6 +29,12 @@ class ConstructionsController < ApplicationController
   def destroy
     @construction.destroy
     redirect_to(@construction.figure)
+  end
+
+  def expand
+    respond_with(@construction) do |format|
+      format.html { redirect_to(@construction) }
+    end
   end
 
   private

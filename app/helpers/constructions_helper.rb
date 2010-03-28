@@ -1,8 +1,14 @@
 module ConstructionsHelper
-  def each_step(construction, &block)
+  def each_step(construction, from, to, &block)
+    from = (from || 0).to_i
+    to = (to || 9999).to_i
+
     start_at = construction.start_at
     n = 0
+
     construction.steps.each do |step|
+      current = n
+
       if step.silent?
         number = ""
       else
@@ -24,6 +30,7 @@ module ConstructionsHelper
         number = construction.notation.format_step_number(number)
       end
 
+      next unless (start_at + current).between?(from, to)
       safe_concat(capture(number, step, &block))
     end
   end

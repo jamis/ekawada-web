@@ -230,6 +230,22 @@ fieldset .section {
   margin-bottom: 6px;
 }
 
+.expanded {
+  margin-top: 5px;
+}
+
+.expanded.busy {
+  background-image: url('/images/loading.gif');
+  background-repeat: no-repeat;
+  height: 11px;
+}
+
+.expanded.loaded {
+  background: #eee;
+  padding: 3px;
+  border: 1px solid #ccc;
+}
+
 .thumbnail {
   float: left;
   border: 1px solid #ccc;

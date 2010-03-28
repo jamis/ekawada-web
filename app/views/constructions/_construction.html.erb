@@ -1,0 +1,30 @@
+<table>
+  <% each_step(construction, from, to) do |number, step| %>
+    <tr class="step<%= " named" if step.named? %>">
+      <th class="number"><%= number.html_safe %></th>
+      <td class="step" id="<%= dom_id(step) %>">
+        <%= format_instruction(step) %>
+        <% if step.comment.present? %>
+          <span class="comment"><%= format_comment(step) %></span>
+        <% end %>
+
+        <% if step.named? %>
+          <span class="name">
+            <% if step.figure %>
+              [<%= link_to(step.display_name, figure_path(step.figure)) %>]
+            <% else %>
+              [<%= step.display_name %>]
+            <% end %>
+          </span>
+        <% end %>
+
+        <% if step.make? || step.range? %>
+          <div class="expanded" style="display: none;"></div>
+        <% end %>
+      </td>
+    </tr>
+    <% if step.named? %>
+      <tr class="spacer"><td colspan="2"></td></tr>
+    <% end %>
+  <% end %>
+</table>

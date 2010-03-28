@@ -47,7 +47,13 @@ module FormattingHelper
     step = opts[:step]
 
     if step && (step.make? || step.range?)
-      link_to(step.duplicate.figure_name, construction_path(step.duplicate))
+      opts = { "data-behaviors" => "toggle-expand" }
+      if step.range?
+        opts["data-from"] = step.duplicate_from
+        opts["data-to"] = step.duplicate_to
+      end
+
+      link_to(step.duplicate.figure_name, expand_construction_path(step.duplicate), opts)
     elsif step.nil?
       content_tag(:span, "\"make\" directive present, but no step information available")
     else

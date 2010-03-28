@@ -1,0 +1,3 @@
+page.call('updateExpandedStep', params[:element],
+  render("constructions/construction",
+    :construction => @construction, :from => params[:from], :to => params[:to]))

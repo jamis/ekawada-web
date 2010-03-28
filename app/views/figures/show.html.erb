@@ -69,32 +69,7 @@
       </div>
     <% end %>
 
-    <table>
-      <% each_step(cons) do |number, step| %>
-        <tr class="step<%= " named" if step.named? %>">
-          <th class="number"><%= number.html_safe %></th>
-          <td class="step">
-            <%= format_instruction(step) %>
-            <% if step.comment.present? %>
-              <span class="comment"><%= format_comment(step) %></span>
-            <% end %>
-
-            <% if step.named? %>
-              <span class="name">
-                <% if step.figure %>
-                  [<%= link_to(step.display_name, figure_path(step.figure)) %>]
-                <% else %>
-                  [<%= step.display_name %>]
-                <% end %>
-              </span>
-            <% end %>
-          </td>
-        </tr>
-        <% if step.named? %>
-          <tr class="spacer"><td colspan="2"></td></tr>
-        <% end %>
-      <% end %>
-    </table>
+    <%= render "constructions/construction", :construction => cons, :from => nil, :to => nil %>
 
     <% if cons.references.any? %>
       <p class="references">
