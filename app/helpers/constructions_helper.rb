@@ -8,7 +8,13 @@ module ConstructionsHelper
       else
         if step.range?
           size = step.duplicate_to - step.duplicate_from
-          number = "#{start_at + n}&ndash;#{start_at + n + size}"
+
+          if size == 0
+            number = start_at + n
+          else
+            number = "#{start_at + n}&ndash;#{start_at + n + size}"
+          end
+
           n += size + 1
         else
           number = start_at + n
