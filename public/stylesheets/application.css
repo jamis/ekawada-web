@@ -262,6 +262,16 @@ fieldset .section {
   clear: both;
 }
 
+.add_illustration.busy span {
+  background-image: url('/images/loading.gif');
+  background-repeat: no-repeat;
+  background-position: 0px 3px;
+}
+
+.add_illustration.busy span * {
+  visibility: hidden;
+}
+
 .illustrations {
   border: 1px solid #ccc;
   margin-bottom: 10px;
