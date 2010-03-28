@@ -1,4 +1,3 @@
-- allow figures to be referenced/hyperlinked from within instructions and comments (but not as a "make" link) (see "A Sea-Snake", CFJ, steps 4 and 5)
 - allow "make" references in constructions to be expanded
 - have mizz code autoexpand "make" instructions into a comment line + the full instructions
 - design a real figures index

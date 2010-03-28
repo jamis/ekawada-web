@@ -95,6 +95,13 @@ class Notation
     true
   end
 
+  # Most notations do not contain multiple paragraphs of text per step. Those
+  # that do should override this method to return +true+, so that the instructions
+  # can be formatted properly.
+  def paragraphs?
+    false
+  end
+
   # Format the given number for use as a step number. Subclasses may override
   # this for notations that format the number differently (like mizz code or
   # SFN, which omit the period after the step number).

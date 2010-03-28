@@ -1,4 +1,8 @@
 class Notation::Prose < Notation
+  def paragraphs?
+    true
+  end
+
   def parse(definition)
     position = 0
     instruction = []

@@ -27,7 +27,7 @@
 
   <% if @figure.description.present? %>
     <div class="description">
-      <%= markdown2html(@figure.description) %>
+      <%= format_text(@figure.description, :figure => @figure, :paragraphs => true, :rich => true) %>
     </div>
   <% end %>
 </div>
@@ -65,7 +65,7 @@
 
     <% if cons.description.present? %>
       <div class="description">
-        <%= markdown2html(cons.description, true) %>
+        <%= format_text(cons.description, :construction => cons, :paragraphs => true, :rich => true) %>
       </div>
     <% end %>
 
@@ -76,7 +76,7 @@
           <td class="step">
             <%= format_instruction(step) %>
             <% if step.comment.present? %>
-              <span class="comment"><%= cons.notation.format_comment(markdown2html(step.comment)).html_safe %></span>
+              <span class="comment"><%= format_comment(step) %></span>
             <% end %>
 
             <% if step.named? %>

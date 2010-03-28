@@ -33,59 +33,22 @@ module ConstructionsHelper
   end
 
   def format_instruction(step)
-    if step.wants_paragraphs?
-      apply_formatting(step, step.instruction).split(/\n/).map do |line|
-        content_tag(:p, format_line(step, line).html_safe)
-      end.join("\n").html_safe
-    else
-      format_line(step, apply_formatting(step, step.instruction)).html_safe
-    end
+    notation = step.construction.notation
+    lines = notation.paragraphs? ? step.instruction.split("\n") : [step.instruction]
+
+    lines.map do |line|
+      line = format_text(line,
+        :step => step, :rich => notation.rich_format?, :paragraphs => false
+      ).html_safe
+
+      line = content_tag(:p, line) if notation.paragraphs?
+      line
+    end.join("\n").html_safe
   end
 
-  def apply_formatting(step, text)
-    if step.construction.notation.rich_format?
-      markdown2html(text)
-    else
-      text
-    end
-  end
-
-  def format_line(step, line)
-    (line || "").gsub(/\{(.*?)\}/) do |m|
-      case $1
-      when /^i:(.*)$/
-        format_illustration(step, $1)
-      when "make"
-        if step.make? || step.range?
-          link_to(step.duplicate.figure_name, construction_path(step.duplicate))
-        else
-          content_tag(:span, "\"make\" directive present, but step has no referenced construction", :class => "error")
-        end
-      when /make:([^:]+)/
-        $1 + " " +
-          content_tag(:span, "(no figure by that name found in #{step.construction.notation})",
-            :class => "error")
-      else
-        content_tag(:span, "unrecognized directive \"#{$1}\"", :class => "error")
-      end
-    end
-  end
-
-  def format_illustration(step, definition)
-    if definition =~ /^(\d+)(?::(.*?))?$/
-      number = $1.to_i
-      caption = $2
-
-      illustration = step.construction.illustrations.at(number)
-      if illustration
-        caption = illustration.caption unless caption.present?
-        link_to(caption, "#", "data-behaviors" => "zoom-illustration", "data-illustration" => dom_id(illustration))
-      else
-        content_tag(:span, "no such illustration ##{number}", :class => "error")
-      end
-    else
-      content_tag(:span, "incorrect format for illustration", :class => "error")
-    end
+  def format_comment(step)
+    step.construction.notation.format_comment(
+      format_text(step.comment, :step => step, :rich => true, :paragraphs => false)).html_safe
   end
 
   def illustration_dom_id(illustration)
