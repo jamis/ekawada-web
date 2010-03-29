@@ -1,3 +1,4 @@
+- use a 'loading' indicator in the lightbox to show the image is loading (especially noticable in firefox)
 - design a real figures index
 
 - edit sources
