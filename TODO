@@ -1,4 +1,3 @@
-- use a 'loading' indicator in the lightbox to show the image is loading (especially noticable in firefox)
 - design a real figures index
 
 - edit sources
@@ -12,3 +11,4 @@
 - display whether a figure is an opening, ending, or maneuver
 - filter index by notation
 - show all figures that use a particular opening, ending, or maneuver
+- visually differentiate between "expand" links and normal hyperlinks

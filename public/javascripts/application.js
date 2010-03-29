@@ -126,6 +126,9 @@ Behaviors.add("change", "add-illustration", function(element) {
 });
 
 Behaviors.add("click", "zoom-illustration", function(element, event) {
+  var box = $('lightbox');
+  var img = box.down('img.illustration');
+
   var illustration = $(element.readAttribute('data-illustration'));
   var figure = element.up(".figure");
 
@@ -134,6 +137,9 @@ Behaviors.add("click", "zoom-illustration", function(element, event) {
   var alt_dims = alt_size.split("x");
   var alt_width = alt_dims[0];
   var alt_height = alt_dims[1];
+
+  box.down('.loading').show();
+  box.down('.loading').style.width = alt_width + "px";
 
   var caption;
 
@@ -145,9 +151,10 @@ Behaviors.add("click", "zoom-illustration", function(element, event) {
   bg.show();
   bg.style.height = $(document.body).getHeight() + "px";
 
-  var box = $('lightbox');
-  var img = box.down('img');
+  img.hide();
   img.src = alt_src;
+  img.onload = function() { box.down('.loading').hide(); img.show(); };
+
   img.width = alt_width;
   img.height = alt_height;
 

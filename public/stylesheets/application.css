@@ -425,6 +425,11 @@ fieldset .section {
   background: white;
 }
 
+#lightbox .loading {
+  text-align: center;
+  margin: 50px 0;
+}
+
 #lightbox img {
   margin: 5px;
 }
