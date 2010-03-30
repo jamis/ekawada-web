@@ -415,10 +415,19 @@ fieldset .section {
 
 .group {
   margin-bottom: 20px;
+  padding: 0;
+}
+
+.group .more {
+  background: #eee;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-top: 1px solid #ccc;
 }
 
 .group table {
   border-collapse: collapse;
+  margin: 5px;
 }
 
 .group td {

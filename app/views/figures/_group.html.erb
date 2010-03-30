@@ -15,7 +15,9 @@
   </table>
 
   <% if more %>
-    &rarr; <%= link_to "See all #{title}", more_url %>
+    <div class="more">
+      &rarr; <%= link_to "See all #{title}", more_url %>
+    </div>
   <% end %>
 </fieldset>
 <div style="clear: both"></div>
