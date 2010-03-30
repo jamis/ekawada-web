@@ -1,0 +1,21 @@
+<fieldset class="group" style="float: left">
+  <legend>Recently updated <%= title %></legend>
+
+  <table>
+    <tr>
+      <%= render :partial => "summary", :collection => figures.first(4).in_groups_of(4).first, :locals => { :size => :small } %>
+    </tr>
+    <% if figures.length > 4 %>
+      <% figures.to_a.from(4).in_groups_of(8).each do |row| %>
+        <tr>
+          <%= render :partial => "summary", :collection => row, :locals => { :size => :thumb } %>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+
+  <% if more %>
+    &rarr; <%= link_to "See all #{title}", more_url %>
+  <% end %>
+</fieldset>
+<div style="clear: both"></div>

@@ -1,0 +1,20 @@
+<td class="<%= size %> <%= "empty" if summary.blank? %>" colspan="<%= size == :small ? 2 : 1 %>">
+  <% if summary %>
+    <% if summary.illustrations.any? %>
+      <div class="image">
+        <%= link_to(image_tag(summary.illustrations.first.url(size),
+              :size => summary.illustrations.first.dimensions(size)), summary) %>
+      </div>
+    <% end %>
+    <div class="info">
+      <div class="name"><%= link_to(summary.canonical_name, summary) %></div>
+      <% if summary.aliases.any? %>
+        <ul class="aka">
+          <% summary.aliases.each do |aka| %>
+            <li><%= aka.name %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  <% end %>
+</td>

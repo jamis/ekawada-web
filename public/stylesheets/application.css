@@ -407,6 +407,55 @@ fieldset .section {
   width: 400px;
 }
 
+/* --- FIGURE INDEX ---------------- */
+
+.group {
+  margin-bottom: 20px;
+}
+
+.group table {
+  border-collapse: collapse;
+}
+
+.group td {
+  text-align: center;
+  border: 1px solid #eee;
+}
+
+.group td.empty {
+  border: none;
+}
+
+.group td img {
+  border: none;
+}
+
+.group td.small .name {
+  font-size: 18px;
+  font-weight: bold;
+  width: 180px;
+  padding: 10px;
+}
+
+.group td.thumb .name {
+  font-size: 12px;
+  font-weight: bold;
+  width: 90px;
+  padding: 5px;
+}
+
+.group ul.aka {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.group ul.aka li {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: normal;
+}
+
 /* --- LIGHTBOX-ISH STUFF ---------- */
 
 #background {

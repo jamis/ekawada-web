@@ -3,7 +3,16 @@ class FiguresController < ApplicationController
   before_filter :ensure_can_alter_data, :only => %w(new create edit update destroy)
 
   def index
-    @figures = Figure.order(:sort_name)
+    @openings, @more_openings   = recent_figures(:openings)
+    @endings, @more_endings     = recent_figures(:endings)
+    @maneuvers, @more_maneuvers = recent_figures(:maneuvers)
+    @figures, @more_figures     = recent_figures(:figures)
+  end
+
+  def figures
+    @figures = Figure.figures.order(:sort_name)
+    @title = "All Figures"
+    render "all"
   end
 
   def show
@@ -35,5 +44,10 @@ class FiguresController < ApplicationController
 
   def find_figure
     @figure = Figure.find(params[:id])
+  end
+
+  def recent_figures(collection)
+    list = Figure.send(collection).recent.limit(13)
+    [list.first(12), list.length > 12]
   end
 end

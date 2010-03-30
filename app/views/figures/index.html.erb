@@ -1,8 +1,18 @@
-<ul>
-<% @figures.each do |figure| %>
-  <li><%= link_to(figure.canonical_name, figure_path(figure)) %></li>
+<% if @figures.any? %>
+  <%= render "group", :figures => @figures, :title => "figures", :more_url => figures_figures_path, :more => @more_figures %>
 <% end %>
-</ul>
+
+<% if @openings.any? %>
+  <%= render "group", :figures => @openings, :title => "openings", :more_url => openings_figures_path, :more => @more_openings %>
+<% end %>
+
+<% if @endings.any? %>
+  <%= render "group", :figures => @endings, :title => "endings and extensions", :more_url => endings_figures_path, :more => @more_endings %>
+<% end %>
+
+<% if @maneuvers.any? %>
+  <%= render "group", :figures => @maneuvers, :title => "maneuvers", :more_url => maneuvers_figures_path, :more => @more_manevuers %>
+<% end %>
 
 <% if can_alter_data? %>
   <%= link_to("Add a new figure", new_figure_path) %>

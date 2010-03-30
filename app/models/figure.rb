@@ -9,6 +9,8 @@ class Figure < ActiveRecord::Base
   scope :openings, where(:opening => true)
   scope :endings, where(:ending => true)
   scope :maneuvers, where(:maneuver => true)
+  scope :figures, where(:opening => false, :ending => false, :maneuver => false)
+  scope :recent, order("updated_at DESC")
 
   attr_writer :construction
   attr_accessor :submitter_id, :new_aliases, :old_aliases

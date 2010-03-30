@@ -1,0 +1,11 @@
+<h2><%= @title %></h2>
+
+<div class="group">
+  <table>
+    <% @figures.in_groups_of(8).each do |row| %>
+      <tr>
+        <%= render :partial => "summary", :collection => row, :locals => { :size => :thumb } %>
+      </tr>
+    <% end %>
+  </table>
+</div>
