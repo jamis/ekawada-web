@@ -468,16 +468,18 @@ fieldset .section {
 /* --- LIGHTBOX-ISH STUFF ---------- */
 
 #background {
-  zIndex: 1000;
+  z-index: 1000;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  background: transparent;
+  background: white;
+  opacity: 0.5;
+  filter: alpha(opacity = 50);
 }
 
 #lightbox {
-  zIndex: 1001;
+  z-index: 1001;
   position: absolute;
   border: 1px solid #ccc;
   background: white;

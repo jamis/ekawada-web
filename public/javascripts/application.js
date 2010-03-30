@@ -147,13 +147,15 @@ Behaviors.add("click", "zoom-illustration", function(element, event) {
     caption = illustration.down('.caption').innerHTML;
   }
 
+  var docHeight = $(document.body).getHeight();
+
   var bg = $('background');
   bg.show();
-  bg.style.height = $(document.body).getHeight() + "px";
+  bg.style.height = docHeight + "px";
 
+  img.onload = function() { box.down('.loading').hide(); img.show(); };
   img.hide();
   img.src = alt_src;
-  img.onload = function() { box.down('.loading').hide(); img.show(); };
 
   img.width = alt_width;
   img.height = alt_height;
@@ -167,8 +169,8 @@ Behaviors.add("click", "zoom-illustration", function(element, event) {
   }
 
   var top = event.pointerY() - box.getHeight() / 2
-  if (top + box.getHeight() > document.body.getHeight() - 5)
-    top = document.body.getHeight() - box.getHeight() - 5;
+  if (top + box.getHeight() > docHeight - 5)
+    top = docHeight - box.getHeight() - 5;
   if (top < 5) top = 5;
 
   box.style.top = top + "px";
