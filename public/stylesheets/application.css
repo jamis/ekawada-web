@@ -6,6 +6,10 @@ a {
   color: #00f;
 }
 
+a img {
+  border: none;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -423,10 +427,6 @@ fieldset .section {
 }
 
 .group td.empty {
-  border: none;
-}
-
-.group td img {
   border: none;
 }
 

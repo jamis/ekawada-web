@@ -53,7 +53,9 @@ module FormattingHelper
         opts["data-to"] = step.duplicate_to
       end
 
-      link_to(step.duplicate.figure_name, expand_construction_path(step.duplicate), opts)
+      link_to((step.duplicate.figure_name + " " +
+        image_tag("expand.png", :size => "12x12", :title => "expand this figure")).html_safe,
+        expand_construction_path(step.duplicate), opts)
     elsif step.nil?
       content_tag(:span, "\"make\" directive present, but no step information available")
     else

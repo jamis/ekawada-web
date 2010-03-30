@@ -1,3 +1,8 @@
+- display whether a figure is an opening, ending, or maneuver
+- filter index by notation
+- show all figures that use a particular opening, ending, or maneuver
+- allow source to be specified at figure creation
+
 - edit sources
 - delete sources
 - edit figure_sources
@@ -5,8 +10,3 @@
 - disallow figure deletion if it or any of its constructions are referenced in another figure
 - disallow construction deletion if it is referenced in another figure
 - reorder illustrations
-- allow source to be specified at figure creation
-- display whether a figure is an opening, ending, or maneuver
-- filter index by notation
-- show all figures that use a particular opening, ending, or maneuver
-- visually differentiate between "expand" links and normal hyperlinks
