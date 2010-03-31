@@ -17,7 +17,6 @@ class Notation::Fsfn < Notation
   end
 
   def extract_step_data(line, instruction)
-    instruction = instruction.strip.sub(/\[(.*?)\]/) { "[{make:#{$1}}]" }
     instruction, comment = instruction.split(/#/, 2)
 
     instruction = instruction.strip if instruction

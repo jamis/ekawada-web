@@ -80,12 +80,6 @@ STEPS
     assert_step 0, :instruction => "2 pu SN", :comment => "vigorously"
   end
 
-  test "parsing fsfn should extract references" do
-    assert_equal 1, parse(:fsfn, "[P1]")
-    assert_parsed_as Notation::Fsfn
-    assert_step 0, :instruction => "[{make}]", :type => "make", :duplicate => constructions(:position1_fsfn)
-  end
-
   test "making unknown figure should not cause error" do
     assert_nothing_raised do
       parse :isfa, "{make:Opening K}.\nRelease 3.\n"
