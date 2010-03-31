@@ -1,10 +1,9 @@
+- for fsfn, don't auto-interpret [foo] as a make instruction
+- indicate a specific construction via make: (e.g. let simplified "A Crab" instructions reference the traditional "A Crab" instructions)
 - display whether a figure is an opening, ending, or maneuver
 - filter index by notation
 - show all figures that use a particular opening, ending, or maneuver
 - allow source to be specified at figure creation
-- if notation_id changes, definition should be reparsed
-- for fsfn, don't auto-interpret [foo] as a make instruction
-- indicate a specific construction via make: (e.g. let simplified "A Crab" instructions reference the traditional "A Crab" instructions)
 
 - edit sources
 - delete sources

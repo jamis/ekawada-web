@@ -51,7 +51,7 @@ class Construction < ActiveRecord::Base
   private # --------------------------------------------------------------
 
   def parse_definition
-    if definition_changed?
+    if notation_id_changed? || definition_changed?
       steps.clear
       flag_for_review
       notation.parse(definition) do |position, data|

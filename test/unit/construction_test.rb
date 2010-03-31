@@ -42,4 +42,11 @@ class ConstructionTest < ActiveSupport::TestCase
 
     assert constructions(:openinga_isfa, :reload).references.any?
   end
+
+  test "updating the notation_id should force definition to be reparsed" do
+    ids = constructions(:openinga_isfa).steps.map(&:id).sort
+    constructions(:openinga_isfa).update_attribute(:notation_id, "other")
+    new_ids = constructions(:openinga_isfa, :reload).steps.map(&:id).sort
+    assert_not_equal ids, new_ids
+  end
 end
