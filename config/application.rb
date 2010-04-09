@@ -40,7 +40,7 @@ module Ekawada
     config.filter_parameters << :password
 
     config.session_store :cookie_store, :key => '_ekawada_session'
-    config.cookie_secret = 'f70658bbbf1b99f236f4fed931ff26d0f33c1d38cc0a2f2c942832' +
+    config.secret_token = 'f70658bbbf1b99f236f4fed931ff26d0f33c1d38cc0a2f2c942832' +
        '360ffb7d5bb8f812a6afe31a19a9346deb4ca347b91826c8792246032038ada9a093b58794'
   end
 end
