@@ -1,4 +1,6 @@
-- indicate a specific construction via make: (e.g. let simplified "A Crab" instructions reference the traditional "A Crab" instructions)
+- instead of "See all figures" link at the bottom of the summary block, try putting it in the last cell of the table
+- allow one construction to reference illustrations from another construction (e.g. mizz code for rattlesnake & boy pointing at illustrations for cfj version)
+- indicate a specific construction via make: (e.g. let simplified "A Crab" instructions reference the traditional "A Crab" instructions, also Leashing Lochiel's Dogs w/ 3 CFJ versions)
 - display whether a figure is an opening, ending, or maneuver
 - filter index by notation
 - show all figures that use a particular opening, ending, or maneuver
