@@ -457,6 +457,10 @@ fieldset .section {
   background: #eef;
 }
 
+.group td.more:hover {
+  background: #ccf;
+}
+
 .group td.thumb.more a {
   display: block;
   width: 90px;
