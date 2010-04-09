@@ -17,6 +17,10 @@ class Construction < ActiveRecord::Base
   scope :for, lambda { |notation_id| where(:notation_id => notation_id) }
 
   def self.find_best_match(name, notation_id)
+    if name =~ /^#(\d+)$/
+      return Construction.find_by_id_and_notation_id($1, notation_id)
+    end
+
     c = Construction.find_by_name_and_notation_id(name, notation_id)
     return c if c
 
