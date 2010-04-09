@@ -147,7 +147,7 @@ class Notation
           end
 
           data[:duplicate] ? "{make}" : "{#{directive}}"
-        when /^(a|i|url):/
+        when /^(a|i|url|cref):/
           # processed at render-time
           "{#{directive}}"
         else raise ArgumentError, "unknown directive: #{directive.inspect}"

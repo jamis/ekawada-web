@@ -15,14 +15,30 @@ module FormattingHelper
 
     (text || "").gsub(/\{(.*?)\}/) do |m|
       case $1
-      when /^url:(.*)$/   then format_url_for($1, opts)
-      when /^a:(.*)$/     then format_anchor_for($1, opts)
-      when /^i:(.*)$/     then format_illustration($1, opts)
-      when "make"         then format_make(opts)
-      when /make:([^:]+)/ then format_invalid_make($1, opts)
+      when /^url:(.*)$/        then format_url_for($1, opts)
+      when /^a:(.*)$/          then format_anchor_for($1, opts)
+      when /^cref:(\d+):(.*)$/ then format_construction_reference($1.to_i, $2, opts)
+      when /^i:(.*)$/          then format_illustration($1, opts)
+      when "make"              then format_make(opts)
+      when /make:([^:]+)/      then format_invalid_make($1, opts)
       else
         content_tag(:span, "unrecognized directive \"#{$1}\"", :class => "error")
       end
+    end
+  end
+
+  def format_construction_reference(id, info, options)
+    construction = Construction.find_by_id(id)
+    if construction
+      options[:construction] = construction
+
+      case info
+      when /^i:(.*)$/ then format_illustration($1, options)
+      else
+        content_tag(:span, "unrecognized reference directive \"#{info}\"", :class => "error")
+      end
+    else
+      content_tag(:span, "no construction ##{id}", :class => "error")
     end
   end
 
