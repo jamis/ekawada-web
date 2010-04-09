@@ -47,7 +47,7 @@ class FiguresController < ApplicationController
   end
 
   def recent_figures(collection)
-    list = Figure.send(collection).recent.limit(13)
-    [list.first(12), list.length > 12]
+    list = Figure.send(collection).recent.limit(12)
+    [list.first(11), list.length > 11 ? Figure.send(collection).count : false]
   end
 end

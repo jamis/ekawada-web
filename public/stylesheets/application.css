@@ -453,6 +453,21 @@ fieldset .section {
   padding: 5px;
 }
 
+.group td.more {
+  background: #eef;
+}
+
+.group td.thumb.more a {
+  display: block;
+  width: 90px;
+  text-decoration: none;
+}
+
+.group td.thumb.more .count {
+  font-size: 32px;
+  font-weight: bold;
+}
+
 .group ul.aka {
   margin: 0;
   padding: 0;

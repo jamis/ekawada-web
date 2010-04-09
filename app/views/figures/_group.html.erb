@@ -8,16 +8,19 @@
     <% if figures.length > 4 %>
       <% figures.to_a.from(4).in_groups_of(8).each do |row| %>
         <tr>
-          <%= render :partial => "summary", :collection => row, :locals => { :size => :thumb } %>
+          <%= render :partial => "summary", :collection => row[0..-2], :locals => { :size => :thumb } %>
+          <% if more %>
+            <td class="thumb more">
+              <%= link_to more_url do %>
+                See all<br />
+                <span class="count"><%= more %></span><br />
+                <%= title %>
+              <% end %>
+            </td>
+          <% end %>
         </tr>
       <% end %>
     <% end %>
   </table>
-
-  <% if more %>
-    <div class="more">
-      &rarr; <%= link_to "See all #{title}", more_url %>
-    </div>
-  <% end %>
 </fieldset>
 <div style="clear: both"></div>
