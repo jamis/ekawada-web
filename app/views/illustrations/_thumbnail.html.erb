@@ -2,7 +2,7 @@
   <%= form.fields_for "#{name}[]", thumbnail do |i| %>
     <%= link_to "(x)", "#" %>
     <div class="image">
-      <%= image_tag(thumbnail.url(:thumb), :size => thumbnail.dimensions(:thumb), :alt => thumbnail.caption, :style => "margin-top: #{(80-thumbnail.size(:thumb)[:height])/2}") %>
+      <%= image_tag(thumbnail.url(:thumb), :size => thumbnail.dimensions(:thumb), :alt => thumbnail.caption, :style => "margin-top: #{(80-thumbnail.size(:thumb)[:height])/2}px") %>
     </div>
     <%= i.text_field :caption %><br />
     <span class="number"><%= thumbnail.number %></span>
