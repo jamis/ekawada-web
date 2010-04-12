@@ -52,7 +52,7 @@ module FormattingHelper
         caption = illustration.caption unless caption.present?
         link_to(caption, "#", "data-behaviors" => "zoom-illustration", "data-illustration" => dom_id(illustration))
       else
-        content_tag(:span, "no such illustration ##{number}", :class => "error")
+        content_tag(:span, "no illustration ##{number}", :class => "error")
       end
     else
       content_tag(:span, "incorrect format for illustration", :class => "error")
@@ -102,7 +102,7 @@ module FormattingHelper
     if url
       link_to(name, url)
     else
-      content_tag(:span, "[no figure #{name.inspect} found]", :class => "error")
+      content_tag(:span, name, :class => "error")
     end
   end
 end

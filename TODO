@@ -1,3 +1,5 @@
+- thumbnail images are no longer centered vertically
+
 - updating/adding/deleting a construction should update the updated_at field in the figure
 - display whether a figure is an opening, ending, or maneuver
 - filter index by notation
